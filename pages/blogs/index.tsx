@@ -1,33 +1,46 @@
-// pages/blogs/index.tsx
 import Link from 'next/link';
-import { getBlogs, Blog } from '../../utils/getBlogs';
 import { GetStaticProps } from 'next';
-import React from 'react';
+import { getAllBlogs, BlogData } from '../../utils/getBlogs';
 
-interface BlogListProps {
-  blogs: Blog[];
+interface BlogIndexProps {
+  blogs: BlogData[];
 }
 
-const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
+const BlogIndex: React.FC<BlogIndexProps> = ({ blogs }) => {
   return (
-    <div className="max-w-2xl mx-auto my-8">
-      <h1 className="text-3xl font-bold mb-4">Blog Posts</h1>
-      <ul className="list-disc pl-4">
+    <div className="container mx-auto my-8">
+      <h1 className="text-3xl font-bold mb-4">Blog</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {blogs.map((blog) => (
-          <li key={blog.slug} className="mb-2">
-            <Link href={`/blogs/${blog.slug}`}>
-              <a className="text-blue-500 hover:underline">{blog.title}</a>
-            </Link>
-          </li>
+          <Link key={blog.slug} href={`/blogs/${blog.slug}`}>
+            <a>
+              <div className="bg-white p-4 rounded-lg shadow-md">
+                <img
+                  src={blog.frontmatter.preview}
+                  alt={blog.frontmatter.title}
+                  className="w-full h-32 object-cover mb-4 rounded-md"
+                />
+                <h2 className="text-xl font-semibold">
+                  {blog.frontmatter.title}
+                </h2>
+                <p className="text-gray-600 text-sm">{blog.frontmatter.date}</p>
+              </div>
+            </a>
+          </Link>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
 
-export const getStaticProps: GetStaticProps<BlogListProps> = async () => {
-  const blogs = await getBlogs(); // Await the result of the asynchronous function
-  return { props: { blogs } };
+export const getStaticProps: GetStaticProps<BlogIndexProps> = async () => {
+  const blogs = getAllBlogs();
+
+  return {
+    props: {
+      blogs,
+    },
+  };
 };
 
-export default BlogList;
+export default BlogIndex;

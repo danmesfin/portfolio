@@ -1,37 +1,54 @@
-// utils/getBlogs.ts
 import fs from 'fs';
 import path from 'path';
-import { remark } from 'remark';
-import html from 'remark-html';
+import matter from 'gray-matter';
 
-export interface Blog {
-  slug: string;
+export interface FrontMatter {
   title: string;
-  content: string;
+  description: string;
+  date: Date;
+  preview: string;
+  draft: boolean;
+  tags: string[];
+  categories: string[];
+  keywords: string[];
 }
 
-const blogsDirectory = path.join(process.cwd(), 'content', 'blogs');
+export interface BlogData {
+  slug: string;
+  frontmatter: {
+    date: string;
+    [key: string]: any;
+  };
+  markdownBody: string;
+}
 
-export const getBlogs = async (): Promise<Blog[]> => {
-  const fileNames = fs.readdirSync(blogsDirectory);
+const blogsDirectory = path.join(process.cwd(), './content/blogs');
 
-  const blogs = await Promise.all(
-    fileNames.map(async (fileName) => {
-      const slug = fileName.replace(/\.md$/, '');
-      const fullPath = path.join(blogsDirectory, fileName);
-      const fileContent = fs.readFileSync(fullPath, 'utf8');
+export function getBlogSlugs(): string[] {
+  return fs.readdirSync(blogsDirectory);
+}
 
-      // Use remark to convert Markdown to HTML
-      const processedContent = await remark().use(html).process(fileContent);
-      const content = processedContent.toString();
+export function getBlogBySlug(slug: string): BlogData {
+  const realSlug = slug.replace(/\.md$/, '');
+  const fullPath = path.join(blogsDirectory, `${realSlug}.md`);
+  const fileContents = fs.readFileSync(fullPath, 'utf8');
+  const { data, content } = matter(fileContents);
 
-      return {
-        slug,
-        title: `Blog ${slug}`, // You can customize the title based on your needs
-        content,
-      };
-    })
-  );
+  // Check if data.date exists before converting to a string
+  const formattedDate = data.date ? data.date.toISOString() : '';
 
+  return {
+    slug: realSlug,
+    frontmatter: {
+      ...data,
+      date: formattedDate,
+    },
+    markdownBody: content,
+  };
+}
+
+export function getAllBlogs(): BlogData[] {
+  const slugs = getBlogSlugs();
+  const blogs = slugs.map((slug) => getBlogBySlug(slug));
   return blogs;
-};
+}

@@ -1,35 +1,58 @@
+import BlogPost from '../../components/BlogPost';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import Link from 'next/link';
-import { getBlogs, Blog } from '../../utils/getBlogs';
+import { getAllBlogs, getBlogBySlug, BlogData } from '../../utils/getBlogs';
+import React from 'react';
+import { unified } from 'unified';
+import remarkParse from 'remark-parse';
+import remarkRehype from 'remark-rehype';
+import rehypeStringify from 'rehype-stringify';
 
-interface BlogPostProps {
-  blog: Blog;
+interface BlogProps {
+  frontmatter: {
+    [key: string]: any; // Adjust this according to your actual frontmatter structure
+  };
+  markdownBody: string;
 }
 
-const BlogPost: React.FC<BlogPostProps> = ({ blog }) => {
-  return (
-    <div className="max-w-2xl mx-auto my-8">
-      <h1 className="text-3xl font-bold mb-4">{blog.title}</h1>
-      <div
-        className="prose"
-        dangerouslySetInnerHTML={{ __html: blog.content }}
-      />
-    </div>
-  );
+const markdownToHtml = async (markdown: string): Promise<string> => {
+  // Your markdown-to-HTML conversion logic here
+  try {
+    const result = await unified()
+      .use(remarkParse) // Parse markdown content to a syntax tree
+      .use(remarkRehype) // Turn markdown syntax tree to HTML syntax tree, ignoring embedded HTML
+      .use(rehypeStringify) // Serialize HTML syntax tree
+      .process(markdown);
+
+    return String(result);
+  } catch (error) {
+    throw error;
+  }
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const blogs = await getBlogs();
-  const paths = blogs.map((blog) => ({ params: { slug: blog.slug } }));
-  return { paths, fallback: false };
+  const blogs = getAllBlogs();
+  const paths = blogs.map((blog) => `/blogs/${blog.slug}`);
+
+  return {
+    paths,
+    fallback: false,
+  };
 };
 
-export const getStaticProps: GetStaticProps<BlogPostProps> = async ({
-  params,
-}) => {
-  const blogs = await getBlogs();
-  const blog = blogs.find((b) => b.slug === params.slug);
-  return { props: { blog } };
+export const getStaticProps: GetStaticProps<BlogProps> = async ({ params }) => {
+  const blog = getBlogBySlug(params.slug);
+  const markdownBody = await markdownToHtml(blog.markdownBody);
+
+  return {
+    props: {
+      frontmatter: blog.frontmatter,
+      markdownBody,
+    },
+  };
 };
 
-export default BlogPost;
+const Blog: React.FC<BlogProps> = ({ frontmatter, markdownBody }) => {
+  return <BlogPost frontmatter={frontmatter} markdownBody={markdownBody} />;
+};
+
+export default Blog;

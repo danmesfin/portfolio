@@ -14,7 +14,7 @@ function Navbar() {
     { title: 'About', link: '#about' },
     { title: 'Projects', link: '#projects' },
     { title: 'Contact', link: '#contact' },
-    { title: 'Blogs', link: '/blog' },
+    { title: 'Blogs', link: '/blogs' },
     { title: 'Resume', link: '/resume' },
   ];
 
