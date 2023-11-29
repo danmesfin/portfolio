@@ -14,6 +14,8 @@ function Navbar() {
     { title: 'About', link: '#about' },
     { title: 'Projects', link: '#projects' },
     { title: 'Contact', link: '#contact' },
+    { title: 'Blogs', link: '/blog' },
+    { title: 'Resume', link: '/resume' },
   ];
 
   useEffect(() => {

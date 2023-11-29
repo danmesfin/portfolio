@@ -58,8 +58,8 @@ export default function Index() {
                 layout="fill"
                 objectFit="cover"
                 alt="daniel"
-                color="black"
-                className="grayscale"
+                // color="black"
+                // className="grayscale"
               />
             </div>
           </div>
