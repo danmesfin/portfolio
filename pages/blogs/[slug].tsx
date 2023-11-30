@@ -13,17 +13,13 @@ interface BlogProps {
 }
 
 const markdownToHtml = async (markdown: string): Promise<string> => {
-  try {
-    const result = await unified()
-      .use(remarkParse) // Parse markdown content to a syntax tree
-      .use(remarkRehype) // Turn markdown syntax tree to HTML syntax tree, ignoring embedded HTML
-      .use(rehypeStringify) // Serialize HTML syntax tree
-      .process(markdown);
+  const result = await unified()
+    .use(remarkParse) // Parse markdown content to a syntax tree
+    .use(remarkRehype) // Turn markdown syntax tree to HTML syntax tree, ignoring embedded HTML
+    .use(rehypeStringify) // Serialize HTML syntax tree
+    .process(markdown);
 
-    return String(result);
-  } catch (error) {
-    throw error;
-  }
+  return String(result);
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -51,8 +47,8 @@ export const getStaticProps: GetStaticProps<BlogProps> = async ({ params }) => {
   };
 };
 
-const Blog: React.FC<BlogProps> = ({ frontmatter, markdownBody }) => {
-  return <BlogPost frontmatter={frontmatter} markdownBody={markdownBody} />;
-};
+const Blog: React.FC<BlogProps> = ({ frontmatter, markdownBody }) => (
+  <BlogPost frontmatter={frontmatter} markdownBody={markdownBody} />
+);
 
 export default Blog;
