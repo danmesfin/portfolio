@@ -1,21 +1,18 @@
-import BlogPost from '../../components/BlogPost';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { getAllBlogs, getBlogBySlug, BlogData } from '../../utils/getBlogs';
 import React from 'react';
 import { unified } from 'unified';
 import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
 import rehypeStringify from 'rehype-stringify';
+import BlogPost from '../../components/BlogPost';
+import { getAllBlogs, getBlogBySlug, BlogData } from '../../utils/getBlogs';
 
 interface BlogProps {
-  frontmatter: {
-    [key: string]: any; // Adjust this according to your actual frontmatter structure
-  };
+  frontmatter: any;
   markdownBody: string;
 }
 
 const markdownToHtml = async (markdown: string): Promise<string> => {
-  // Your markdown-to-HTML conversion logic here
   try {
     const result = await unified()
       .use(remarkParse) // Parse markdown content to a syntax tree
@@ -38,9 +35,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
     fallback: false,
   };
 };
-
 export const getStaticProps: GetStaticProps<BlogProps> = async ({ params }) => {
-  const blog = getBlogBySlug(params.slug);
+  const slug: string | undefined = Array.isArray(params?.slug)
+    ? params?.slug[0]
+    : params?.slug;
+
+  const blog = getBlogBySlug(slug);
   const markdownBody = await markdownToHtml(blog.markdownBody);
 
   return {

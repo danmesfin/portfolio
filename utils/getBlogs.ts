@@ -14,7 +14,7 @@ export interface FrontMatter {
 }
 
 export interface BlogData {
-  slug: string;
+  slug: string | undefined;
   frontmatter: {
     date: string;
     [key: string]: any;
@@ -28,8 +28,8 @@ export function getBlogSlugs(): string[] {
   return fs.readdirSync(blogsDirectory);
 }
 
-export function getBlogBySlug(slug: string): BlogData {
-  const realSlug = slug.replace(/\.md$/, '');
+export function getBlogBySlug(slug: string | undefined): BlogData {
+  const realSlug = slug?.replace(/\.md$/, '');
   const fullPath = path.join(blogsDirectory, `${realSlug}.md`);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   const { data, content } = matter(fileContents);
