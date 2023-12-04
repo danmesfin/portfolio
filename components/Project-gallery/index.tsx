@@ -1,0 +1,126 @@
+import React, { useState } from 'react';
+import {
+  ParallaxProvider,
+  Parallax,
+  ParallaxBanner,
+} from 'react-scroll-parallax';
+import Image from 'next/image';
+
+interface Project {
+  imgurl: string;
+  title: string;
+  role: string;
+  description: string;
+  projecturl: string;
+}
+
+interface ProjectCardProps {
+  project: Project;
+  onClick: () => void;
+}
+
+export const ProjectCard: React.FC<ProjectCardProps> = ({
+  project,
+  onClick,
+}) => (
+  <div
+    onClick={onClick}
+    className="cursor-pointer transition transform duration-300 hover:scale-105"
+  >
+    <Parallax y={[-20, 20]} tagouter="figure">
+      <div className="relative w-72 h-72 md:w-96 shadow-md shadow-gray-600 dark:shadow-gray-900">
+        <Image
+          src={project.imgurl}
+          alt={project.title}
+          layout="fill"
+          objectFit="cover"
+          className=" grayscale hover:grayscale-0 rounded-md"
+        />
+      </div>
+    </Parallax>
+    <div className="mt-2 text-center">
+      <h3 className="text-lg font-bold">{project.title}</h3>
+      <p className="text-sm">{project.role}</p>
+    </div>
+  </div>
+);
+
+interface ProjectModalProps {
+  project: Project;
+  onClose: () => void;
+}
+
+const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => (
+  <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50">
+    <div className="bg-base p-6 rounded-md max-w-xl w-full text-center">
+      <h2 className="text-2xl font-display font-bold mb-2">{project.title}</h2>
+      <p className="text-sm md:text-md font-hand mb-4">{project.role}</p>
+      <div className="relative h-48 mb-4">
+        <Image
+          src={project.imgurl}
+          alt={project.title}
+          layout="fill"
+          objectFit="cover"
+          className="rounded-md"
+        />
+      </div>
+      <div className="flex flex-col md:flex-row max-w-md w-full text-center border-t mx-auto">
+        <p className="mt-4 text-center text-sm md:text-xl font-hand">
+          {project.description}
+        </p>
+      </div>
+      <div className="flex justify-end mt-4">
+        <a
+          href={project.projecturl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="px-4 py-2 border border-primary hover:bg-primary text-white rounded-md mr-2"
+        >
+          Project Link
+        </a>
+        <button
+          type="submit"
+          onClick={onClose}
+          className="px-4 py-2 border border-secondary hover:bg-secondary text-white rounded-md"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+);
+
+interface ProjectGalleryProps {
+  projects: Project[];
+}
+const ProjectGallery: React.FC<ProjectGalleryProps> = ({ projects }) => {
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
+  const openModal = (project: Project) => {
+    setSelectedProject(project);
+  };
+
+  const closeModal = () => {
+    setSelectedProject(null);
+  };
+
+  return (
+    <Parallax speed={-10} translateY={[-20, 20]} className="">
+      <div className="w-full grid grid-cols-2 col-span-2 gap-8">
+        {projects.map((project, index) => (
+          <ProjectCard
+            key={index}
+            project={project}
+            onClick={() => openModal(project)}
+          />
+        ))}
+
+        {selectedProject && (
+          <ProjectModal project={selectedProject} onClose={closeModal} />
+        )}
+      </div>
+    </Parallax>
+  );
+};
+
+export default ProjectGallery;

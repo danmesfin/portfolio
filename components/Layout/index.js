@@ -20,10 +20,7 @@ function Layout({ children }) {
     };
   }, []);
   return (
-    <html
-      lang="eng"
-      className="!scroll-smooth snap-y h-screen  overflow-y-scroll"
-    >
+    <main lang="eng" className="!scroll-smooth snap-y dark:bg-base">
       <Head>
         <title>Daniel Mesfin</title>
         <meta name="description" content="Daniel Mesfin" />
@@ -33,15 +30,15 @@ function Layout({ children }) {
         <link
           href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&amp;display=swap"
           rel="stylesheet"
-        ></link>
-        <link
-          rel="stylesheet"
-          href="https://use.typekit.net/vja6aok.css"
-        ></link>
+        />
+        <link rel="stylesheet" href="https://use.typekit.net/vja6aok.css" />
       </Head>
       {/* <CustomCursor mousePosition={mousePosition} /> */}
-      <body>{children}</body>
-    </html>
+
+      <Navbar />
+      {children}
+      <Footer />
+    </main>
   );
 }
 

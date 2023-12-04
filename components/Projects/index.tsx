@@ -1,4 +1,4 @@
-//@ts-nocheck
+// @ts-nocheck
 
 import React from 'react';
 import Image from 'next/image';
@@ -69,12 +69,11 @@ const mobileProjects = [
 export default function index() {
   return (
     <section
-      id="daniel mesfin projects"
-      className="flex flex-wrap md:flex-nowrap
-         pt-20 font-mono mx-auto bg-base py-8 md:py-20"
+      className="w-full flex justify-center flex-wrap md:flex-nowrap
+         pt-20 font-mono mx-auto bg-gray-300 py-8 md:py-20"
       id="projects"
     >
-      <div className="flex flex-col md:px-24" id="danmesfin projects">
+      <div className="flex flex-col " id="danmesfin projects">
         <div className="mx-auto">
           <div className="flex flex-col text-center my-5 pt-5 text-base">
             <span className="text-4xl md:text-5xl  font-display text-primary">
@@ -85,29 +84,8 @@ export default function index() {
             </span>
           </div>
         </div>
-        {/* <div className="flex flex-col w-full mt-10 px-5">
-          <div className="flex my-8 px-2  mx-auto text-cente">
-            <p className="flex text-2xl md:text-5xl font-semibold font-display">
-              <span className="">Web&nbsp;</span>Case Studies
-            </p>
-          </div>
-          <motion.div>
-            <ProjectSlider projects={webProjects} />
-          </motion.div>
-        </div>
-        <div className="flex flex-col w-full my-20 px-5 md:px-20">
-          <div className="flex my-8 px-2 mx-auto text-center">
-            <p className="flex text-2xl md:text-5xl font-semibold font-display">
-              <span className="">Mobile&nbsp;</span> Case Studies
-            </p>
-          </div>
-          <motion.div>
-            <ProjectSlider projects={mobileProjects} />
 
-            {/* <MobileCaseStudy projects={mobileProjects} /> */}
-        {/* </motion.div>
-        </div> */}
-        <div className="flex">
+        <div className="flex w-full">
           <ProjectGallery projects={webProjects} />
         </div>
       </div>

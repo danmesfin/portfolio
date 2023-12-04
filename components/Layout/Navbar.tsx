@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Navitem from '../Navitem';
 import Image from 'next/image';
+import Navitem from '../Navitem';
 import ThemeChanger from '../Button';
 
 function Navbar() {
   const [mounted, setMounted] = useState(false);
 
-  let [activeIdx, setActiveIdx] = useState(0);
+  const [activeIdx, setActiveIdx] = useState(0);
   const [navActive, setNavActive] = useState(false);
   const Menu = [
     { title: 'Home', link: '/#banner' },
@@ -68,11 +68,11 @@ function Navbar() {
               fillRule="evenodd"
               d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
               clipRule="evenodd"
-            ></path>
+            />
           </svg>
         </button>
         <div
-          className={`w-full bg-primary bg-opacity-50 shadow-md  
+          className={`w-full bg-primary bg-opacity-50  
           rounded-lg md:block md:w-auto dark:bg-opacity-0 ${
             navActive ? '' : 'hidden'
           }`}
@@ -83,14 +83,12 @@ function Navbar() {
           md:flex-row md:space-x-8 md:mt-0  md:font-medium md:border-0"
           >
             {Menu.map((menu, idx) => (
-              <div
-                key={menu.title}
-                onClick={() => {
-                  setActiveIdx(idx);
-                  setNavActive(false);
-                }}
-              >
+              <div key={menu.title}>
                 <Navitem
+                  onClick={() => {
+                    setActiveIdx(idx);
+                    setNavActive(false);
+                  }}
                   menu={menu.title}
                   link={menu.link}
                   active={activeIdx === idx}
@@ -100,17 +98,16 @@ function Navbar() {
           </ul>
         </div>
         <div className="flex">
-          <div className="flex justify-center w-7 h-7 mx-2 hover:bg-gray-200 dark:hover:bg-gray-500 rounded-full">
+          <div className="flex justify-center items-center w-7 h-7 mx-2 hover:bg-gray-200 dark:hover:bg-gray-500 rounded-full">
             {renderThemechanger()}
           </div>
           <a href="#contact">
-            {' '}
-            <button
+            <div
               className="px-2 py-1 rounded-lg border border-primary
              hover:bg-gray-200 dark:text-primary dark:hover:bg-gray-600"
             >
-              Let's talk
-            </button>
+              Let&apos;s talk
+            </div>
           </a>
         </div>
       </div>

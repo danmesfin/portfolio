@@ -1,8 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-// import background from '../../public/images/background.jpg';
 import Navbar from '../Layout/Navbar';
+
 export default function Index() {
   const mySkills = [
     'Design',
@@ -13,13 +13,21 @@ export default function Index() {
     'Web Flow',
   ];
 
+  // Define animation variants
+  const containerVariants = {
+    hidden: { opacity: 0, y: 100 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
     <section className="dark:bg-base">
-      <Navbar />
-
-      <article
+      <motion.article
         className="h-screen flex flex-col justify-center px-2 items-center"
         id="banner"
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+        transition={{ duration: 1 }} // Duration set to 1 second
       >
         <div className="h-4/5 mx-auto flex flex-wrap flex-col-reverse md:flex-row md:flex-nowrap">
           <div className="w-full md:w-1/2 flex flex-col px-5 md:pl-40 justify-center md:justify-center py-5">
@@ -27,7 +35,7 @@ export default function Index() {
               className="flex flex-col mt-4 p-1 font-display text-primary text-center md:text-left
            text-xl md:text-5xl"
             >
-              <span className="text-primary">HI, I'M DANIEL.</span>
+              <span className="text-primary">HI, I&apos;M DANIEL.</span>
               <span>A FULLSTACK DEVELOPER</span>
               <span>BASED IN ADDIS</span>
             </div>
@@ -58,13 +66,11 @@ export default function Index() {
                 layout="fill"
                 objectFit="cover"
                 alt="daniel"
-                // color="black"
-                // className="grayscale"
               />
             </div>
           </div>
         </div>
-      </article>
+      </motion.article>
     </section>
   );
 }
