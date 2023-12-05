@@ -69,14 +69,14 @@ const mobileProjects = [
 export default function index() {
   return (
     <section
-      className="w-full flex justify-center flex-wrap md:flex-nowrap
+      className="w-full flex flex-col justify-center flex-wrap md:flex-nowrap
          pt-20 font-mono mx-auto bg-gray-300 py-8 md:py-20"
       id="projects"
     >
-      <div className="flex flex-col " id="danmesfin projects">
+      <div className="flex flex-col items-center my-10" id="danmesfin projects">
         <div className="mx-auto">
           <div className="flex flex-col text-center my-5 pt-5 text-base">
-            <span className="text-4xl md:text-5xl  font-display text-primary">
+            <span className="text-4xl md:text-9xl  font-display text-primary">
               Projects
             </span>
             <span className="text-lg md:text-2xl text-primary font-hand">
@@ -84,10 +84,9 @@ export default function index() {
             </span>
           </div>
         </div>
-
-        <div className="flex w-full">
-          <ProjectGallery projects={webProjects} />
-        </div>
+      </div>
+      <div className="flex w-full mx-auto justify-center ">
+        <ProjectGallery projects={webProjects} />
       </div>
     </section>
   );

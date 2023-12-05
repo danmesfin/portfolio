@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
@@ -6,7 +6,7 @@ import Image from 'next/image';
 const ProjectSlider = ({ projects }) => {
   const [current, setCurrent] = useState(0);
 
-  const length = projects.length;
+  const { length } = projects;
 
   const nextSlide = () => {
     setCurrent(current === length - 1 ? 0 : current + 1);
@@ -70,7 +70,11 @@ const ProjectSlider = ({ projects }) => {
             {projects[current]?.description}
           </div>
           <div className="flex p-2 mt-4 md:pr-20">
-            <a href={projects[current]?.projecturl} target="_blank">
+            <a
+              href={projects[current]?.projecturl}
+              target="_blank"
+              rel="noreferrer"
+            >
               <div
                 className="text-black py-1 px-2 border rounded-md bg-gray-50
              hover:bg-blue-500 hover:shadow-allSide hover:shadow-blue-500 font-hand text-xl"
