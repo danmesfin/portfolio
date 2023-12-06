@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import ProjectSlider from '../ProjectSlider';
 import ProjectGallery from '../Project-gallery';
+import ProjectCard from '../ProjectCard';
 
 const webProjects = [
   {
@@ -68,26 +69,41 @@ const mobileProjects = [
 
 export default function index() {
   return (
-    <section
+    <div
       className="w-full flex flex-col justify-center flex-wrap md:flex-nowrap
-         pt-20 font-mono mx-auto bg-gray-300 py-8 md:py-20"
+         py-20 font-mono mx-auto bg-gray-100"
       id="projects"
     >
-      <div className="flex flex-col items-center my-10" id="danmesfin projects">
+      <div
+        className="top-0 sticky flex flex-col items-center my-10"
+        id="danmesfin projects"
+      >
         <div className="mx-auto">
           <div className="flex flex-col text-center my-5 pt-5 text-base">
-            <span className="text-4xl md:text-9xl  font-display text-primary">
+            <span className="text-4xl md:text-9xl  font-display text-sky">
               Projects
             </span>
-            <span className="text-lg md:text-2xl text-primary font-hand">
+            <span className="mt-16 text-lg md:text-2xl text-sky font-hand">
               Here are some of my works so far
             </span>
           </div>
         </div>
       </div>
-      <div className="flex w-full mx-auto justify-center ">
-        <ProjectGallery projects={webProjects} />
+      <div className="relative flex justify-between w-full md:pb-[100rem]">
+        <div className="left-20 absolute border">
+          <ProjectCard project={webProjects[0]} />
+        </div>
+        <div className="right-40 absolute top-[5rem] border">
+          <ProjectCard project={webProjects[1]} />
+        </div>
+        <div className="left-28 top-[70rem] absolute border">
+          <ProjectCard project={webProjects[2]} />
+        </div>
+        <div className="right-40 absolute top-[50rem] border">
+          <ProjectCard project={webProjects[3]} />
+        </div>
       </div>
-    </section>
+    </div>
   );
 }
+// V0NY2M0DVFRH;
