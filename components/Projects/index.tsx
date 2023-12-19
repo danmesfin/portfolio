@@ -1,10 +1,6 @@
 // @ts-nocheck
 
 import React from 'react';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import ProjectSlider from '../ProjectSlider';
-import ProjectGallery from '../Project-gallery';
 import ProjectCard from '../ProjectCard';
 
 const webProjects = [
@@ -42,27 +38,6 @@ const webProjects = [
     stack: ['React Native', 'TypeScript', 'Redux'],
     description:
       'ShopX Mobile is a powerful e-commerce mobile application built using React Native. Enjoy a seamless shopping experience with features like user sign up and login, account information management, cart functionality, and easy browsing by category.',
-    imgurl: '/images/shopx-mobile-01.jpg',
-  },
-];
-
-const mobileProjects = [
-  {
-    title: 'Sebl: AI Farm Assist',
-    projecturl: 'https://github.com/danmesfin/shopx-mobile',
-    role: 'Sebl: AI Farm Assist',
-    stack: ['React Native', 'TypeScript', 'Redux'],
-    description:
-      'shopx mobile shopx is an ecommerce mobile application built in react-native.',
-    imgurl: '/images/sebl-mobile-01.jpg',
-  },
-  {
-    title: 'shopx - mobile',
-    projecturl: 'https://github.com/danmesfin/shopx-mobile',
-    role: 'Mobile development',
-    stack: ['React Native', 'TypeScript', 'Redux'],
-    description:
-      'shopx mobile shopx is an ecommerce mobile application built in react-native.',
     imgurl: '/images/shopx-mobile-01.jpg',
   },
 ];

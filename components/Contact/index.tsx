@@ -1,18 +1,14 @@
-// @ts-nocheck
-
-import React, { useRef, useState } from 'react';
-import emailjs from '@emailjs/browser';
+import React, { useRef, useState, FormEvent } from 'react';
+import emailjs, { EmailJSResponseStatus } from '@emailjs/browser';
 import { motion } from 'framer-motion';
-import { GoMailRead } from 'react-icons/go';
-import { BsMailbox } from 'react-icons/bs';
 
-const Contact = () => {
-  const form = useRef();
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState(false);
+const Contact: React.FC = () => {
+  const form = useRef<HTMLFormElement | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [success, setSuccess] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
 
-  const sendEmail = (e) => {
+  const sendEmail = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
 
@@ -24,11 +20,11 @@ const Contact = () => {
         'j2BrhHxE89sWzCe-6'
       )
       .then(
-        (result) => {
+        (result: EmailJSResponseStatus) => {
           console.log(result.text);
           setSuccess(true);
         },
-        (error) => {
+        (error: EmailJSResponseStatus) => {
           console.log(error.text);
           setError(true);
         }
@@ -37,7 +33,7 @@ const Contact = () => {
         setLoading(false);
       });
 
-    e.target.reset();
+    e.currentTarget.reset();
   };
 
   return (
@@ -46,17 +42,6 @@ const Contact = () => {
       id="contact"
     >
       <div className="flex flex-wrap md:flex-nowrap py-10 md:mx-20">
-        <div className="relative w-full md:w-1/3 flex items-center justify-center">
-          <div className="flex mx-auto">
-            <GoMailRead
-              className="top-1/2 shadow-allSide shadow-gray-700 rounded-xl fill-green-500 text-5xl"
-              size={100}
-            />
-          </div>
-          <div className="absolute right-5 md:-right-10 ml-auto transform rotate-45">
-            <BsMailbox className="" size={100} />
-          </div>
-        </div>
         <motion.div
           initial={{ x: 50, opacity: 0.5 }}
           transition={{
@@ -64,12 +49,12 @@ const Contact = () => {
           }}
           whileInView={{ x: 0, opacity: 1 }}
           viewport={{ once: true }}
-          className="flex flex-col w-full md:w-2/3 py-4 md:pb-4"
+          className="flex flex-col w-full md:w-2/3 py-4 md:pb-4 mx-auto"
         >
-          <div className="flex border border-gray-500 bg-opacity-30 hover:bg-opacity-30 shadow-lg shadow-gray-600 rounded-lg pb-4 px-2">
+          <div className="flex border border-gray-500 bg-opacity-30 hover:bg-opacity-30 rounded-md pb-4 px-2">
             <div className="mx-auto">
               <div className="flex flex-col text-center mb-5 py-5 text-xl md:text-5xl font-bold">
-                <span className="text-green-500">Get in touch </span>
+                <span className="text-sky">Get in touch </span>
                 <span>for more.</span>
               </div>
             </div>
@@ -102,7 +87,6 @@ const Contact = () => {
                 className="form-control bg-red-50 border-2 border-black mt-4 p-2 text-black rounded-md"
               />
               <textarea
-                type="text"
                 name="message"
                 required
                 placeholder="Message*"
@@ -111,18 +95,17 @@ const Contact = () => {
               <input
                 type="submit"
                 value={loading ? 'Sending...' : 'Send'}
-                className={`w-24 mx-auto py-2 px-4 mt-4 shadow-sm text-sm text-white border ${
-                  success
-                    ? 'glow-green bg-green-500'
-                    : 'glow-green hover:shadow-allSide hover:shadow-green-500'
-                } ${
+                className={`w-24 mx-auto py-2 px-4 mt-4 shadow-sm text-sm
+                 text-white border border-primary hover:bg-gray-600 cursor-pointer ${
+                   success ? ' ' : ' '
+                 } ${
                   error ? 'border-red-500 bg-red-500' : 'border-glow-green'
                 } rounded-md`}
                 disabled={loading}
               />
               {success && (
                 <p className="text-green-500 text-center mt-2">
-                  Message sent successfully!
+                  I have received your message, I will get back to you soon!
                 </p>
               )}
               {error && (

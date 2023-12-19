@@ -31,7 +31,7 @@ function About() {
         </div>
         <article className="w-full md:w-1/2 flex flex-col text-left items-center align-middle">
           <h2 className="text-left self-start font-display text-base text-2xl md:text-5xl">
-            How it started ...
+            How it started
           </h2>
           <p className="w-full md:w-2/3 mt-5 flex text-wrap self-start font-hand text-left text-base text-2xl">
             In 2017, armed with just an Android phone and sheer determination, I
