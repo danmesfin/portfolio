@@ -55,26 +55,26 @@ export default function index() {
       >
         <div className="mx-auto">
           <div className="flex flex-col text-center my-5 pt-5 text-base">
-            <span className="text-4xl md:text-9xl  font-display text-sky">
+            <span className="text-4xl md:text-9xl  font-display text-base">
               Projects
             </span>
-            <span className="mt-16 text-lg md:text-2xl text-sky font-hand">
+            <span className="mt-16 text-lg md:text-2xl text-base font-hand">
               Here are some of my works so far
             </span>
           </div>
         </div>
       </div>
-      <div className="relative flex flex-wrap  md:flex-nowrap  w-full md:pb-[100rem]">
-        <div className="left-5 md:left-10 lg:left-20 md:absolute border">
+      <div className="relative w-full pb-[120rem] md:pb-[120rem]">
+        <div className="left-5 md:left-10 lg:left-20 absolute border">
           <ProjectCard project={webProjects[0]} />
         </div>
-        <div className="right-5 md:right-20 lg:right-40 md:absolute lg:top-[5rem] border">
+        <div className="right-5 md:right-10 lg:right-40 absolute top-[30rem] md:top-[5rem] border">
           <ProjectCard project={webProjects[1]} />
         </div>
-        <div className="left-4 md:left-16 lg:left-28 top-[70rem] md:absolute border">
+        <div className="left-5 md:left-10 lg:left-28 top-[60rem] md:top-[70rem] absolute border">
           <ProjectCard project={webProjects[2]} />
         </div>
-        <div className="right-5 md:right-20 lg:right-40 md:absolute  md:top-[50rem] border">
+        <div className="right-5 md:right-10 lg:right-40 absolute top-[90rem] md:top-[50rem] border">
           <ProjectCard project={webProjects[3]} />
         </div>
       </div>

@@ -38,23 +38,23 @@ const Contact: React.FC = () => {
 
   return (
     <section
-      className="flex flex-col justify-center py-10 md:py-20 w-full bg-base"
+      className="flex flex-col justify-center py-20 md:py-32 w-full bg-base"
       id="contact"
     >
       <div className="flex flex-wrap md:flex-nowrap py-10 md:mx-20">
         <motion.div
-          initial={{ x: 50, opacity: 0.5 }}
+          initial={{ y: 50, opacity: 0.5 }}
           transition={{
             duration: 1,
           }}
-          whileInView={{ x: 0, opacity: 1 }}
+          whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
           className="flex flex-col w-full md:w-2/3 py-4 md:pb-4 mx-auto"
         >
-          <div className="flex border border-gray-500 bg-opacity-30 hover:bg-opacity-30 rounded-md pb-4 px-2">
+          <div className="flex bg-opacity-30 hover:bg-opacity-30 rounded-md pb-4 px-2">
             <div className="mx-auto">
               <div className="flex flex-col text-center mb-5 py-5 text-xl md:text-5xl font-bold">
-                <span className="text-sky">Get in touch </span>
+                <span className="">Get in touch </span>
                 <span>for more.</span>
               </div>
             </div>
