@@ -24,9 +24,9 @@ export default function TechStack() {
           </h2>
         </div>
         {/* rotate={[180, 270]} */}
-        <div className="flex flex-col gap-12">
+        <div className="flex flex-col flex-wrap md:flex-nowrap gap-12">
           <Parallax speed={-10}>
-            <div className="flex gap-12 left-24 items-center justify-center text-center parallax-container">
+            <div className="flex gap-4 md:gap-12 items-center justify-center text-center parallax-container">
               <TechItem icon={<SiJavascript size={40} />} label="JavaScript" />
               <TechItem icon={<SiTypescript size={40} />} label="TypeScript" />
               <TechItem icon={<SiNodedotjs size={40} />} label="Node.js" />
@@ -34,7 +34,7 @@ export default function TechStack() {
             </div>
           </Parallax>
           <Parallax speed={-10}>
-            <div className="flex gap-12 left-24 items-center justify-center text-center parallax-container">
+            <div className="flex flex-wrap gap-4 md:gap-12 items-center justify-center text-center parallax-container">
               <Parallax speed={2}>
                 <TechItem icon={<SiGraphql size={40} />} label="GraphQL" />
               </Parallax>
@@ -53,14 +53,7 @@ export default function TechStack() {
             </div>
           </Parallax>
           <Parallax speed={-10}>
-            <div className="flex gap-12 left-24  items-center justify-center text-center parallax-container">
-              <Parallax speed={4}>
-                <TechItem icon={<SiNodedotjs size={40} />} label="Node.js" />
-              </Parallax>
-              <Parallax speed={4}>
-                <TechItem icon={<SiNextdotjs size={40} />} label="Next.js" />
-              </Parallax>
-
+            <div className="flex gap-4 md:gap-12 items-center justify-center text-center parallax-container">
               <Parallax speed={4}>
                 <TechItem
                   icon={<SiTensorflow size={40} />}
@@ -87,6 +80,8 @@ export default function TechStack() {
 const TechItem = ({ icon, label }) => (
   <div className="flex flex-col items-center gap-2 mt-4 hover:scale-105 transform transition-transform">
     {icon}
-    <span className="text-center text-xl block mt-2">{label}</span>
+    <span className="text-center md:text-lg lg:text-xl block mt-2">
+      {label}
+    </span>
   </div>
 );
