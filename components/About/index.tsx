@@ -9,7 +9,7 @@ function About() {
     setIsClient(true);
   }, []);
   return (
-    <div className="bg-sky pb-[5rem] md:pb-[10rem]" id="about">
+    <div className="bg-gray-300 pb-[5rem] md:pb-[10rem]" id="about">
       <svg
         className="w-full block-edge relative z-10 dark:text-base text-white"
         xmlns="http://www.w3.org/2000/svg"
@@ -43,72 +43,6 @@ function About() {
           </p>
         </article>
       </div>
-      {/* <div className="flex md:flex-row mt-20 mx-auto">
-        <div className="relative w-1/2 flex justify-end">
-          <img
-            src="/images/mobile.png"
-            alt="daniel"
-            className="absolute w-1/2 mx-auto z-10"
-          />
-        </div>
-        <article
-          id="Education"
-          className="w-full  md:w-1/2 flex flex-col text-left items-center align-middle"
-        >
-          <h2 className="text-left self-start font-display text-base text-2xl md:text-4xl">
-            5 years{' '}
-            <span className="line-through font-normal text-2xl">Wasted</span> at
-            university
-          </h2>
-          <p className="w-full md:w-2/3 mt-5 flex flex-col text-wrap self-start font-hand text-left text-base text-2xl">
-            <span className="text-2xl">Addis Institute of Technology</span>
-            <span className="text-3xl">ECE, Computer Engineering</span>
-          </p>
-        </article>
-      </div> */}
-
-      {/* <div className=" m-36 mx-auto">
-        <motion.div
-          initial={{ x: 0, opacity: 0 }}
-          transition={{
-            duration: 1,
-          }}
-          whileInView={{ x: 0, opacity: 1 }}
-          viewport={{ once: false }}
-          className="flex flex-col font-display text-center my-5 py-5 text-xl 
-              md:text-5xl"
-        >
-          <span className="">Highlights from 3+ years</span>
-          <span>of development.</span>
-          <span className="font-bold mt-5 px-5 text-sm md:text-md">
-            I Have been delivering problem solving software solutions to the
-            standard
-          </span>
-        </motion.div>
-      </div>
-      <div className="flex flex-wrap md:flex-nowrap justify-center uppercase font-mono pt-10">
-        <div
-          className="flex flex-col justify-center text-center w-60 px-5 
-        py-10 font-bold border-2 border-black"
-        >
-          <span className="text-4xl">3+</span>
-          <span>Years of experiance</span>
-        </div>
-        <div
-          className="flex flex-col justify-center text-center w-60 px-5 py-10 
-        border-2 border-black bg-black font-bold text-white"
-        >
-          <span className="text-4xl">7+</span>
-          <span>Projects</span>
-        </div>
-        <div
-          className="flex flex-col justify-center text-center w-60 px-5 
-        py-10 border-2 border-black font-bold"
-        >
-          <span className="text-4xl">4+</span>
-          <span>Happy Clients</span>
-        </div>
-      </div> */}
     </div>
   );
 }
