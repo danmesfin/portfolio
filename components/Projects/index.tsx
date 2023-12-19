@@ -64,17 +64,17 @@ export default function index() {
           </div>
         </div>
       </div>
-      <div className="relative flex justify-between w-full md:pb-[100rem]">
-        <div className="left-20 absolute border">
+      <div className="relative flex flex-wrap  md:flex-nowrap  w-full md:pb-[100rem]">
+        <div className="left-5 md:left-10 lg:left-20 md:absolute border">
           <ProjectCard project={webProjects[0]} />
         </div>
-        <div className="right-40 absolute top-[5rem] border">
+        <div className="right-5 md:right-20 lg:right-40 md:absolute lg:top-[5rem] border">
           <ProjectCard project={webProjects[1]} />
         </div>
-        <div className="left-28 top-[70rem] absolute border">
+        <div className="left-4 md:left-16 lg:left-28 top-[70rem] md:absolute border">
           <ProjectCard project={webProjects[2]} />
         </div>
-        <div className="right-40 absolute top-[50rem] border">
+        <div className="right-5 md:right-20 lg:right-40 md:absolute  md:top-[50rem] border">
           <ProjectCard project={webProjects[3]} />
         </div>
       </div>
