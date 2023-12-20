@@ -5,7 +5,6 @@ import Contact from '../components/Contact';
 import Projects from '../components/Projects';
 import Services from '../components/Services';
 import TeckStacks from '../components/TechStacks';
-import Footer from '../components/Layout/Footer';
 
 function Home() {
   return (
@@ -16,7 +15,6 @@ function Home() {
       <Services />
       <TeckStacks />
       <Contact />
-      <Footer />
     </div>
   );
 }

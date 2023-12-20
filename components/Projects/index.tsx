@@ -1,10 +1,7 @@
-//@ts-nocheck
+// @ts-nocheck
 
 import React from 'react';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import ProjectSlider from '../ProjectSlider';
-import ProjectGallery from '../Project-gallery';
+import ProjectCard from '../ProjectCard';
 
 const webProjects = [
   {
@@ -45,72 +42,43 @@ const webProjects = [
   },
 ];
 
-const mobileProjects = [
-  {
-    title: 'Sebl: AI Farm Assist',
-    projecturl: 'https://github.com/danmesfin/shopx-mobile',
-    role: 'Sebl: AI Farm Assist',
-    stack: ['React Native', 'TypeScript', 'Redux'],
-    description:
-      'shopx mobile shopx is an ecommerce mobile application built in react-native.',
-    imgurl: '/images/sebl-mobile-01.jpg',
-  },
-  {
-    title: 'shopx - mobile',
-    projecturl: 'https://github.com/danmesfin/shopx-mobile',
-    role: 'Mobile development',
-    stack: ['React Native', 'TypeScript', 'Redux'],
-    description:
-      'shopx mobile shopx is an ecommerce mobile application built in react-native.',
-    imgurl: '/images/shopx-mobile-01.jpg',
-  },
-];
-
 export default function index() {
   return (
-    <section
-      id="daniel mesfin projects"
-      className="flex flex-wrap md:flex-nowrap
-         pt-20 font-mono mx-auto bg-base py-8 md:py-20"
+    <div
+      className="w-full flex flex-col justify-center flex-wrap md:flex-nowrap
+         py-20 font-mono mx-auto bg-gray-100"
       id="projects"
     >
-      <div className="flex flex-col md:px-24" id="danmesfin projects">
+      <div
+        className="top-0 sticky flex flex-col items-center my-10"
+        id="danmesfin projects"
+      >
         <div className="mx-auto">
           <div className="flex flex-col text-center my-5 pt-5 text-base">
-            <span className="text-4xl md:text-5xl  font-display text-primary">
+            <span className="text-6xl md:text-9xl  font-display text-[]">
               Projects
             </span>
-            <span className="text-lg md:text-2xl text-primary font-hand">
+            <span className="mt-16 text-2xl md:text-2xl text-[] font-hand">
               Here are some of my works so far
             </span>
           </div>
         </div>
-        {/* <div className="flex flex-col w-full mt-10 px-5">
-          <div className="flex my-8 px-2  mx-auto text-cente">
-            <p className="flex text-2xl md:text-5xl font-semibold font-display">
-              <span className="">Web&nbsp;</span>Case Studies
-            </p>
-          </div>
-          <motion.div>
-            <ProjectSlider projects={webProjects} />
-          </motion.div>
+      </div>
+      <div className="relative w-full pb-[120rem] md:pb-[120rem]">
+        <div className="left-5 md:left-10 lg:left-20 absolute border">
+          <ProjectCard project={webProjects[0]} />
         </div>
-        <div className="flex flex-col w-full my-20 px-5 md:px-20">
-          <div className="flex my-8 px-2 mx-auto text-center">
-            <p className="flex text-2xl md:text-5xl font-semibold font-display">
-              <span className="">Mobile&nbsp;</span> Case Studies
-            </p>
-          </div>
-          <motion.div>
-            <ProjectSlider projects={mobileProjects} />
-
-            {/* <MobileCaseStudy projects={mobileProjects} /> */}
-        {/* </motion.div>
-        </div> */}
-        <div className="flex">
-          <ProjectGallery projects={webProjects} />
+        <div className="right-5 md:right-10 lg:right-40 absolute top-[30rem] md:top-[5rem] border">
+          <ProjectCard project={webProjects[1]} />
+        </div>
+        <div className="left-5 md:left-10 lg:left-28 top-[60rem] md:top-[70rem] absolute border">
+          <ProjectCard project={webProjects[2]} />
+        </div>
+        <div className="right-5 md:right-10 lg:right-40 absolute top-[90rem] md:top-[50rem] border">
+          <ProjectCard project={webProjects[3]} />
         </div>
       </div>
-    </section>
+    </div>
   );
 }
+// V0NY2M0DVFRH;

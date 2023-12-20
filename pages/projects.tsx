@@ -1,3 +1,5 @@
+import React from 'react';
+
 function Page({ data }: { data: Array<object> | any }) {
   // Render data...
   return (
@@ -19,7 +21,7 @@ function Page({ data }: { data: Array<object> | any }) {
               <div className="flex flex-col m-2 p-1 font-mono  text-blue-500">
                 <div className="uppercase  text-xl font-bold flex justify-between">
                   <p className="flex wrap">{repo.name}</p>
-                  <p>star:' '{repo.stargazers_count}</p>
+                  <p>star:&apos; &apos;{repo.stargazers_count}</p>
                 </div>
 
                 <p className="text-gray-600 text-xs">{repo.description}</p>

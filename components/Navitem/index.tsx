@@ -1,15 +1,26 @@
 import React from 'react';
-import Link from 'next/link';
+import { Link as ScrollLink } from 'react-scroll';
 
-function Navitem(Props: any) {
+interface NavitemProps {
+  active: boolean;
+  link: string;
+  menu: string;
+  onClick: Function;
+}
+
+function Navitem({ active, link, menu, onClick }: NavitemProps) {
   return (
     <li
-      className={`transform duration-200 delay-175 block font-hand text-2xl py-2 pr-4 pl-3 rounded-md  md:p-0 ${
-        Props.active ? 'glow-red' : ''
+      className={`cursor-pointer transform duration-200 delay-175 block font-hand text-3xl py-2 pr-4 pl-3 rounded-md text-center text-primary  md:p-0 ${
+        active ? '' : ''
       }`}
       aria-current="page"
     >
-      <Link href={Props.link}>{Props.menu}</Link>
+      <a href={`/#${link}`}>
+        {/* <ScrollLink to={link} smooth duration={800} onClick={() => onClick()}> */}
+        {menu}
+        {/* </ScrollLink> */}
+      </a>
     </li>
   );
 }

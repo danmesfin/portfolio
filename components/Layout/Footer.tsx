@@ -3,12 +3,13 @@ import { SiGithub, SiLinkedin, SiFacebook, SiInstagram } from 'react-icons/si';
 
 function Footer() {
   return (
-    <footer className="p-10 flex flex-col justify-center mt-2 border-t bg-base">
+    <footer className="py-20 flex flex-col justify-center bg-gradient-to-b from-base to-black">
       <div className="flex mx-auto">
         <a
           className="mx-3 hover:bg-gray-400 dark:hover:bg-gray-500 rounded-full"
           href="http://github.com/danmesfin"
           target="_blank"
+          rel="noreferrer"
         >
           <SiGithub className="h-6 w-6" />
         </a>
@@ -16,6 +17,7 @@ function Footer() {
           className="mx-3 hover:bg-gray-400 dark:hover:bg-gray-500 rounded-full"
           href="http://linkedin.com/in/danielmesfin"
           target="_blank"
+          rel="noreferrer"
         >
           <SiLinkedin className="h-6 w-6" />
         </a>
@@ -23,6 +25,7 @@ function Footer() {
           className="mx-3 hover:bg-gray-400 dark:hover:bg-gray-500 rounded-full"
           href="http://instagram.com/danmesfinn"
           target="_blank"
+          rel="noreferrer"
         >
           <SiInstagram className="h-6 w-6" />
         </a>
@@ -30,6 +33,7 @@ function Footer() {
           className="mx-3 hover:bg-gray-400 dark:hover:bg-gray-500 rounded-full"
           href="http://facebook.com/"
           target="_blank"
+          rel="noreferrer"
         >
           <SiFacebook className="h-6 w-6" />
         </a>
