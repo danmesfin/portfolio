@@ -3,7 +3,7 @@ import { SiGithub, SiLinkedin, SiFacebook, SiInstagram } from 'react-icons/si';
 
 function Footer() {
   return (
-    <footer className="p-10 flex flex-col justify-center mt-2 border-t bg-base">
+    <footer className="py-20 flex flex-col justify-center bg-gradient-to-b from-base to-black">
       <div className="flex mx-auto">
         <a
           className="mx-3 hover:bg-gray-400 dark:hover:bg-gray-500 rounded-full"

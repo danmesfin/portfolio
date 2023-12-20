@@ -47,7 +47,7 @@ const Contact: React.FC = () => {
         >
           <div className="flex bg-opacity-30 hover:bg-opacity-30 rounded-md pb-4 px-2">
             <div className="mx-auto">
-              <div className="flex flex-col text-center mb-5 py-5 text-xl md:text-5xl font-bold">
+              <div className="flex flex-col text-center mb-5 py-5 text-xl md:text-5xl font-display text-white">
                 <span className="">Get in touch </span>
                 <span>for more.</span>
               </div>

@@ -27,7 +27,7 @@ const TechItem: React.FC<TechItemProps> = ({ icon, label }) => (
 
 const TechStack: React.FC = () => (
   <div
-    className="w-full flex flex-col justify-center mx-auto  py-8 md:py-10 bg-base"
+    className="w-full flex flex-col justify-center mx-auto py-8 md:py-10 bg-base text-white"
     id="TechStack"
   >
     <div className="flex flex-wrap w-full justify-center">
