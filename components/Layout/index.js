@@ -20,7 +20,10 @@ function Layout({ children }) {
     };
   }, []);
   return (
-    <main lang="eng" className="!scroll-smooth snap-y dark:bg-base">
+    <main
+      lang="eng"
+      className=" dark:bg-base snap-y h-screen overflow-scroll scroll-smooth"
+    >
       <Head>
         <title>Daniel Mesfin</title>
         <meta name="description" content="Daniel Mesfin" />

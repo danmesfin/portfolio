@@ -27,19 +27,19 @@ export default function Index() {
         initial="hidden"
         animate="visible"
         variants={containerVariants}
-        transition={{ duration: 1 }} // Duration set to 1 second
+        transition={{ duration: 1 }}
       >
         <div className="h-4/5 mx-auto flex flex-wrap-reverse md:flex-row md:flex-nowrap">
           <div className="w-full md:w-1/2 flex flex-col px-5 md:pl-40 justify-start md:justify-center py-5">
             <div
               className="flex flex-col mt-4 p-1 font-display text-primary text-center md:text-left
-           text-xl md:text-5xl"
+           text-4xl md:text-5xl"
             >
               <span className="text-primary">HI, I&apos;M DANIEL.</span>
               <span>A FULLSTACK DEVELOPER</span>
               <span>BASED IN ADDIS</span>
             </div>
-            <span className="text-center md:text-start text-lg font-hand md:text-4xl mt-4 p-1 text-blue-400">
+            <span className="text-center md:text-start text-3xl font-hand md:text-4xl mt-4 p-1 text-blue-400">
               DESIGN - DEVELOP - DEPLOY
             </span>
             <div className="flex mt-4 p-1 mx-auto md:ml-0">

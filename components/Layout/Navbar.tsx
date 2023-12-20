@@ -9,11 +9,10 @@ function Navbar() {
   const [activeIdx, setActiveIdx] = useState(0);
   const [navActive, setNavActive] = useState(false);
   const Menu = [
-    { title: 'Home', link: '/' },
-    { title: 'About', link: '/#about' },
-    { title: 'Projects', link: '/#projects' },
-    { title: 'Contact', link: '/#contact' },
-    { title: 'Blogs', link: '/blogs' },
+    { title: 'Home', link: 'banner' },
+    { title: 'About', link: 'about' },
+    { title: 'Projects', link: 'projects' },
+    { title: 'Contact', link: 'contact' },
   ];
 
   useEffect(() => {
@@ -26,16 +25,10 @@ function Navbar() {
   };
 
   return (
-    <header className="top-0 z-[99] px-2 py-2 md:px-10">
+    <header className="sticky  top-0 z-[99] px-2 py-2 md:px-10">
       <div className="flex flex-wrap justify-between items-center mx-auto">
         <Link href="/">
           <div className="cursor-pointer flex justify-center text-xl font-display whitespace-nowrap text-primary">
-            {/* <Image
-                alt="logo"
-                src="/Icon/favicon.ico"
-                width={32}
-                height={32}
-              /> */}
             <p className="my-auto text-3xl">
               D<span className="text-primary">M</span>
             </p>
@@ -66,7 +59,7 @@ function Navbar() {
         </div>
 
         <div
-          className={`w-full bg-primary bg-opacity-50 rounded-lg md:block md:w-auto dark:bg-opacity-0 ${
+          className={`w-full dark:bg-base bg-primary bg-opacity-50 rounded-lg md:block md:w-auto dark:bg-opacity-100 ${
             navActive ? '' : 'hidden'
           }`}
         >
@@ -76,7 +69,6 @@ function Navbar() {
           >
             {Menu.map((menu, idx) => (
               <Navitem
-                key={menu.title}
                 onClick={() => {
                   setActiveIdx(idx);
                   setNavActive(false);
@@ -86,6 +78,17 @@ function Navbar() {
                 active={activeIdx === idx}
               />
             ))}
+
+            <li
+              className={`cursor-pointer transform duration-200 delay-175 
+              block font-hand text-3xl py-2 pr-4 pl-3 rounded-md text-center text-primary  md:p-0 `}
+              aria-current="page"
+            >
+              {
+                // eslint-disable-next-line @next/next/no-html-link-for-pages
+                <a href="/blogs">Blogs</a>
+              }
+            </li>
             <div
               className="flex justify-center items-center w-7 h-7 mx-2 my-1 hover:bg-gray-200
              dark:hover:bg-gray-500 rounded-full"

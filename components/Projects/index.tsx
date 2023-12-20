@@ -55,10 +55,10 @@ export default function index() {
       >
         <div className="mx-auto">
           <div className="flex flex-col text-center my-5 pt-5 text-base">
-            <span className="text-4xl md:text-9xl  font-display text-base">
+            <span className="text-6xl md:text-9xl  font-display text-[]">
               Projects
             </span>
-            <span className="mt-16 text-lg md:text-2xl text-base font-hand">
+            <span className="mt-16 text-2xl md:text-2xl text-[] font-hand">
               Here are some of my works so far
             </span>
           </div>
