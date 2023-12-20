@@ -38,25 +38,24 @@ const Index: React.FC = () => {
       name: 'UX/UI',
       icon: MdOutlineDesignServices,
       description:
-        'I design modern and elegant websites for any kind of business using tools like Figma, AdobeXD.',
+        'I love creating cool and stylish websites! Using tools like Figma and AdobeXD, I make sure your website not only looks great but also feels awesome for anyone who visits.',
     },
     {
       name: 'Web Development',
       icon: FaHtml5,
       description:
-        'I can transform your idea/design into a fully functional website using HTML, CSS, JavaScript, jQuery, and frameworks like React/Next.js, Vue.',
+        'Got a cool idea? I can turn it into a fully working website! I use HTML, CSS, JavaScript, and fancy frameworks like React and Vue to bring your vision to life. Your website will not only be functional but also super user-friendly.',
     },
     {
       name: 'Mobile Development',
       icon: FaMobileAlt,
       description:
-        'I design and develop native mobile apps using React Native.',
+        'Need a mobile app? I got you covered! I design and build apps using React Native, so they look fantastic and work smoothly on any device. Your users will love it!',
     },
     {
       name: 'FULL STACK',
       icon: FaTools,
-      description:
-        'I have experience working with various tools and technologies such as Git, Firebase, Heroku, Tailwind CSS, and more.',
+      description: `I bring a blend of coding expertise and tech wizardry to your project. Whether it's ensuring smooth version control, optimizing for the cloud, or adding a touch of style, I've got your full-stack needs covered!`,
     },
   ];
 

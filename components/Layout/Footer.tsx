@@ -9,6 +9,7 @@ function Footer() {
           className="mx-3 hover:bg-gray-400 dark:hover:bg-gray-500 rounded-full"
           href="http://github.com/danmesfin"
           target="_blank"
+          rel="noreferrer"
         >
           <SiGithub className="h-6 w-6" />
         </a>
@@ -16,6 +17,7 @@ function Footer() {
           className="mx-3 hover:bg-gray-400 dark:hover:bg-gray-500 rounded-full"
           href="http://linkedin.com/in/danielmesfin"
           target="_blank"
+          rel="noreferrer"
         >
           <SiLinkedin className="h-6 w-6" />
         </a>
@@ -23,6 +25,7 @@ function Footer() {
           className="mx-3 hover:bg-gray-400 dark:hover:bg-gray-500 rounded-full"
           href="http://instagram.com/danmesfinn"
           target="_blank"
+          rel="noreferrer"
         >
           <SiInstagram className="h-6 w-6" />
         </a>
@@ -30,6 +33,7 @@ function Footer() {
           className="mx-3 hover:bg-gray-400 dark:hover:bg-gray-500 rounded-full"
           href="http://facebook.com/"
           target="_blank"
+          rel="noreferrer"
         >
           <SiFacebook className="h-6 w-6" />
         </a>

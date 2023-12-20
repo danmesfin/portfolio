@@ -54,7 +54,7 @@ export default function Index() {
                   className="py-3 ml-4 px-4 text-lg font-bold border-2
                  rounded-lg border-primary text-primary"
                 >
-                  Let's talk
+                  Let&apos;s talk
                 </span>
               </a>
             </div>
