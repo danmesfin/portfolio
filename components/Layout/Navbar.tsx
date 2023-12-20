@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import Navitem from '../Navitem';
 import ThemeChanger from '../Button';
 
@@ -10,12 +9,11 @@ function Navbar() {
   const [activeIdx, setActiveIdx] = useState(0);
   const [navActive, setNavActive] = useState(false);
   const Menu = [
-    { title: 'Home', link: '/#banner' },
-    { title: 'About', link: '#about' },
-    { title: 'Projects', link: '#projects' },
-    { title: 'Contact', link: '#contact' },
+    { title: 'Home', link: '/' },
+    { title: 'About', link: '/#about' },
+    { title: 'Projects', link: '/#projects' },
+    { title: 'Contact', link: '/#contact' },
     { title: 'Blogs', link: '/blogs' },
-    { title: 'Resume', link: '/resume' },
   ];
 
   useEffect(() => {
@@ -30,20 +28,18 @@ function Navbar() {
   return (
     <header className="top-0 z-[99] px-2 py-2 md:px-10">
       <div className="flex flex-wrap justify-between items-center mx-auto">
-        <Link href="/" className="cursor-pointer">
-          <a>
-            <div className="flex justify-center text-xl font-display whitespace-nowrap text-primary">
-              <Image
+        <Link href="/">
+          <div className="cursor-pointer flex justify-center text-xl font-display whitespace-nowrap text-primary">
+            {/* <Image
                 alt="logo"
                 src="/Icon/favicon.ico"
                 width={32}
                 height={32}
-              />
-              <p className="my-auto text-3xl">
-                D<span className="text-primary">M</span>
-              </p>
-            </div>
-          </a>
+              /> */}
+            <p className="my-auto text-3xl">
+              D<span className="text-primary">M</span>
+            </p>
+          </div>
         </Link>
 
         <div className="flex md:hidden">
@@ -96,12 +92,12 @@ function Navbar() {
             >
               {renderThemechanger()}
             </div>
-            <a href="#contact">
+            <a href="/downloads/Daniel_Mesfin.pdf" target="_blank">
               <div
                 className="px-2 py-1 my-1 rounded-lg border border-primary hover:bg-gray-200
                dark:text-primary dark:hover:bg-gray-600"
               >
-                Let&apos;s talk
+                See Resume
               </div>
             </a>
           </ul>

@@ -37,8 +37,8 @@ const TechStack: React.FC = () => (
         </h2>
       </div>
       {/* rotate={[180, 270]} */}
-      <div className="flex flex-col flex-wrap md:flex-nowrap gap-12">
-        <Parallax speed={-10}>
+      <div className="flex flex-col flex-wrap md:flex-nowrap gap-12 font-normal font-display">
+        <Parallax speed={2}>
           <div className="flex gap-4 md:gap-12 items-center justify-center text-center parallax-container">
             <TechItem icon={<SiJavascript size={40} />} label="JavaScript" />
             <TechItem icon={<SiTypescript size={40} />} label="TypeScript" />
@@ -46,7 +46,7 @@ const TechStack: React.FC = () => (
             <TechItem icon={<SiNextdotjs size={40} />} label="Next.js" />
           </div>
         </Parallax>
-        <Parallax speed={-10}>
+        <Parallax speed={2}>
           <div className="flex flex-wrap gap-4 md:gap-12 items-center justify-center text-center parallax-container">
             <Parallax speed={2}>
               <TechItem icon={<SiGraphql size={40} />} label="GraphQL" />
@@ -65,7 +65,7 @@ const TechStack: React.FC = () => (
             </Parallax>
           </div>
         </Parallax>
-        <Parallax speed={-10}>
+        <Parallax speed={5}>
           <div className="flex gap-4 md:gap-12 items-center justify-center text-center parallax-container">
             <Parallax speed={4}>
               <TechItem
