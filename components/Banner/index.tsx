@@ -20,7 +20,7 @@ export default function Index() {
   };
 
   return (
-    <section className="dark:bg-base">
+    <section className="dark:bg-base ">
       <motion.div
         className="h-screen flex flex-col justify-center px-2 items-center"
         id="banner"
@@ -39,13 +39,13 @@ export default function Index() {
               <span>A FULLSTACK DEVELOPER</span>
               <span>BASED IN ADDIS</span>
             </div>
-            <span className="text-center md:text-start text-3xl font-hand md:text-4xl mt-4 p-1 text-blue-400">
+            <span className="text-center md:text-start text-3xl font-hand font-bold md:text-4xl mt-4 p-1 text-redish">
               DESIGN - DEVELOP - DEPLOY
             </span>
             <div className="flex mt-4 p-1 mx-auto md:ml-0">
               <a href="#contact">
                 <span
-                  className="py-3 px-4 text-lg  border-2 rounded-lg border-primary text-white bg-black
+                  className="py-3 px-4 text-lg border-2 rounded-lg border-primary text-white
                font-neon"
                 >
                   Got a project?
@@ -64,7 +64,7 @@ export default function Index() {
            items-start "
           >
             <div
-              className="relative flex h-72 w-52 md:w-96 md:h-full
+              className="relative flex h-72 w-52 md:w-[20rem] md:h-[30rem]
              overflow-hidden rounded-lg bg-opacity-20"
             >
               <Image

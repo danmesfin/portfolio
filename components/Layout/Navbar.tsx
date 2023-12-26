@@ -64,7 +64,7 @@ function Navbar() {
           }`}
         >
           <ul
-            className=" flex flex-col py-2 px-4 mt-4 rounded-lg border border-primary md:flex-row md:space-x-8 
+            className=" flex flex-col items-center py-2 px-4 mt-4 rounded-lg border border-primary md:flex-row md:space-x-8 
           md:mt-0 md:font-medium md:border-0"
           >
             {Menu.map((menu, idx) => (
@@ -81,7 +81,7 @@ function Navbar() {
 
             <li
               className={`cursor-pointer transform duration-200 delay-175 
-              block font-hand text-3xl py-2 pr-4 pl-3 rounded-md text-center text-primary  md:p-0 `}
+              block font-display  py-2 pr-4 pl-3 rounded-md text-center text-primary  md:p-0 `}
               aria-current="page"
             >
               {

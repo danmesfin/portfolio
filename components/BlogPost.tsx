@@ -25,7 +25,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ frontmatter, markdownBody }) => (
       />
       <link rel="canonical" href="https://danielmesfin.com/blogs" />
     </Head>
-    <h1 className="text-4xl font-bold mb-4">{frontmatter.title}</h1>
+    <h1 className="text-4xl mb-4 font-display">{frontmatter.title}</h1>
     <p className="text-gray-600 mb-4">{formatDate(frontmatter.date)}</p>
     <img
       src={frontmatter.preview}

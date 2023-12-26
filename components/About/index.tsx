@@ -10,11 +10,11 @@ function About() {
   }, []);
   return (
     <section
-      className="relative bg-gray-300 pb-[35rem] md:pb-[15rem]"
+      className="relative bg-gradient-to-b from-gray-300 to-gray-100 pb-[35rem] md:pb-[15rem]"
       id="about"
     >
       <svg
-        className="w-full block-edge absolute top-[0rem] z-10 dark:text-[#042f2e] text-white"
+        className="w-full block-edge absolute top-[0rem] z-10 dark:text-orangish text-white"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 1440 320"
       >
@@ -36,12 +36,12 @@ function About() {
           className="absolute top-[15rem] mx-auto md:top-[10rem] md:relative w-full md:w-1/2 
         flex flex-col text-left items-center align-middle"
         >
-          <h2 className="text-left self-start font-display text-[#042f2e] text-3xl md:text-5xl  px-8 md:px-0">
+          <h2 className="text-left self-start font-display text-redish text-3xl md:text-5xl  px-8 md:px-0">
             How it started
           </h2>
           <p
             className="w-full px-8 md:px-4 md:w-2/3 mt-5 flex text-wrap self-start font-hand 
-          text-left text-[#042f2e] text-xl md:text-2xl"
+          text-left text-orangish text-xl md:text-2xl"
           >
             In 2017, armed with just an Android phone and sheer determination, I
             started coding using ES File Explorer to write HTML and CSS. My

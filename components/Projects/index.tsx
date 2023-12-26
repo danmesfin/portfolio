@@ -46,7 +46,7 @@ export default function index() {
   return (
     <div
       className="w-full flex flex-col justify-center flex-wrap md:flex-nowrap
-         py-20 font-mono mx-auto bg-gray-100"
+         py-20 font-mono mx-auto bg-gradient-to-b from-gray-100 to-gray-300"
       id="projects"
     >
       <div

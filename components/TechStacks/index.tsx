@@ -27,7 +27,7 @@ const TechItem: React.FC<TechItemProps> = ({ icon, label }) => (
 
 const TechStack: React.FC = () => (
   <div
-    className="w-full flex flex-col justify-center mx-auto py-8 md:py-10 bg-base text-white"
+    className="w-full flex flex-col justify-center mx-auto py-8 md:py-10 bg-gradient-to-b from-gray-300 to-base text-white"
     id="TechStack"
   >
     <div className="flex flex-wrap w-full justify-center">
@@ -36,8 +36,7 @@ const TechStack: React.FC = () => (
           My tech Stacks
         </h2>
       </div>
-      {/* rotate={[180, 270]} */}
-      <div className="flex flex-col flex-wrap md:flex-nowrap gap-12 font-normal font-display">
+      <div className="flex flex-col flex-wrap md:flex-nowrap gap-6 font-normal font-display">
         <Parallax speed={2}>
           <div className="flex gap-4 md:gap-12 items-center justify-center text-center parallax-container">
             <TechItem icon={<SiJavascript size={40} />} label="JavaScript" />
