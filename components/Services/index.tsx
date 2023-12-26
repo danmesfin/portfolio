@@ -67,7 +67,7 @@ const Index: React.FC = () => {
     >
       <div className="flex flex-col mx-auto">
         <div className="mx-auto">
-          <div className="text-[#042f2e] flex flex-col text-center my-5 py-5 text-6xl md:text-5xl font-display item-center">
+          <div className="text-redish flex flex-col text-center my-5 py-5 text-6xl md:text-5xl font-display item-center">
             <span>Services</span>
             <span className="font-bold mt-5 px-5 text-sm md:text-md mx-auto">
               open to any digital services
