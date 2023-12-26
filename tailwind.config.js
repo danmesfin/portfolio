@@ -23,8 +23,10 @@ module.exports = {
       colors: {
         primary: '#fdba74',
         secondary: '#059669',
-        base: '#042f2e',
-        sky: '#14b8a6',
+        orangish: '#bc3908',
+        redish: '#BD1600',
+        base: '#bc3908',
+        sky: '#941b0c',
       },
     },
   },
