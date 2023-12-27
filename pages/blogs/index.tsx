@@ -1,8 +1,7 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { GetStaticProps } from 'next';
-import { useTheme } from 'next-themes';
 import { getAllBlogs, BlogData } from '../../utils/getBlogs';
 import formatDate from '../../utils/date';
 
@@ -20,29 +19,27 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ blogs }) => (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {blogs.map((blog) => (
         <Link key={blog.slug} href={`/blogs/${blog.slug}`}>
-          <a>
-            <div className="bg-white dark:bg-gray-500 dark:bg-opacity-60 p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300 border dark:border-gray-700">
-              <img
-                src={blog.frontmatter.preview}
-                alt={blog.frontmatter.title}
-                className="w-full h-40 object-cover mb-4 rounded-md"
-              />
-              <h2 className="text-2xl font-semibold mb-2 dark:text-white text-black">
-                {blog.frontmatter.title}
-              </h2>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-                {blog.frontmatter.description}
+          <div className="bg-white dark:bg-gray-500 dark:bg-opacity-60 p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300 border dark:border-gray-700">
+            <Image
+              src={blog.frontmatter.preview}
+              alt={blog.frontmatter.title}
+              className="w-full h-40 object-cover mb-4 rounded-md"
+            />
+            <h2 className="text-2xl font-semibold mb-2 dark:text-white text-black">
+              {blog.frontmatter.title}
+            </h2>
+            <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+              {blog.frontmatter.description}
+            </p>
+            <div className="flex items-center justify-between">
+              <p className="text-xs text-gray-600 dark:text-gray-400">
+                Posted on {formatDate(blog.frontmatter.date)}
               </p>
-              <div className="flex items-center justify-between">
-                <p className="text-xs text-gray-600 dark:text-gray-400">
-                  Posted on {formatDate(blog.frontmatter.date)}
-                </p>
-                <span className="text-xs text-gray-600 dark:text-gray-400">
-                  {blog.frontmatter.category}
-                </span>
-              </div>
+              <span className="text-xs text-gray-600 dark:text-gray-400">
+                {blog.frontmatter.category}
+              </span>
             </div>
-          </a>
+          </div>
         </Link>
       ))}
     </div>

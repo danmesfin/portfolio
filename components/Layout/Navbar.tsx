@@ -6,7 +6,7 @@ import ThemeChanger from '../Button';
 function Navbar() {
   const [mounted, setMounted] = useState(false);
 
-  const [activeIdx, setActiveIdx] = useState(0);
+  const [activeIdx] = useState(0);
   const [navActive, setNavActive] = useState(false);
   const Menu = [
     { title: 'Home', link: 'banner' },
@@ -69,10 +69,11 @@ function Navbar() {
           >
             {Menu.map((menu, idx) => (
               <Navitem
-                onClick={() => {
-                  setActiveIdx(idx);
-                  setNavActive(false);
-                }}
+                // onClick={() => {
+                //   setActiveIdx(idx);
+                //   setNavActive(false);
+                // }}
+                key={menu.title}
                 menu={menu.title}
                 link={menu.link}
                 active={activeIdx === idx}
@@ -84,10 +85,7 @@ function Navbar() {
               block font-display  py-2 pr-4 pl-3 rounded-md text-center text-primary  md:p-0 `}
               aria-current="page"
             >
-              {
-                // eslint-disable-next-line @next/next/no-html-link-for-pages
-                <a href="/blogs">Blogs</a>
-              }
+              <Link href="/blogs">Blogs</Link>
             </li>
             <div
               className="flex justify-center items-center w-7 h-7 mx-2 my-1 hover:bg-gray-200

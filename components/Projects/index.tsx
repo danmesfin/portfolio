@@ -46,7 +46,7 @@ export default function index() {
   return (
     <div
       className="w-full flex flex-col justify-center flex-wrap md:flex-nowrap
-         py-20 font-mono mx-auto bg-gradient-to-b from-gray-100 to-gray-300"
+         py-20 font-mono mx-auto bg-gradient-to-b from-gray-100 to-gray-300 dark:from-black"
       id="projects"
     >
       <div
@@ -65,16 +65,16 @@ export default function index() {
         </div>
       </div>
       <div className="relative w-full pb-[120rem] md:pb-[120rem]">
-        <div className="left-5 md:left-10 lg:left-20 absolute border">
+        <div className="left-5 md:left-10 lg:left-20 absolute">
           <ProjectCard project={webProjects[0]} />
         </div>
-        <div className="right-5 md:right-10 lg:right-40 absolute top-[30rem] md:top-[5rem] border">
+        <div className="right-5 md:right-10 lg:right-40 absolute top-[30rem] md:top-[5rem]">
           <ProjectCard project={webProjects[1]} />
         </div>
-        <div className="left-5 md:left-10 lg:left-28 top-[60rem] md:top-[70rem] absolute border">
+        <div className="left-5 md:left-10 lg:left-28 top-[60rem] md:top-[70rem] absolute">
           <ProjectCard project={webProjects[2]} />
         </div>
-        <div className="right-5 md:right-10 lg:right-40 absolute top-[90rem] md:top-[50rem] border">
+        <div className="right-5 md:right-10 lg:right-40 absolute top-[90rem] md:top-[50rem]">
           <ProjectCard project={webProjects[3]} />
         </div>
       </div>

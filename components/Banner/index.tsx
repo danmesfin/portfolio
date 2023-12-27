@@ -55,8 +55,10 @@ export default function Index() {
             >
               <Image
                 src="/images/danmesfin.webp"
-                layout="fill"
-                objectFit="cover"
+                style={{ objectFit: 'contain' }}
+                fill
+                blurDataURL="data:..."
+                placeholder="blur"
                 alt="daniel"
               />
             </div>

@@ -25,7 +25,8 @@ function About() {
             <Image
               src="/images/mobile.png"
               alt="mobile app image"
-              layout="fill"
+              fill
+              style={{ objectFit: 'contain' }}
             />
           </div>
         </div>

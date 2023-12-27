@@ -32,7 +32,7 @@ const Contact: React.FC = () => {
 
   return (
     <section
-      className="flex flex-col justify-center py-20 md:py-32 w-full bg-base"
+      className="flex flex-col justify-center py-20 md:py-32 w-full bg-base dark:bg-zinc-900"
       id="contact"
     >
       <div className="flex flex-wrap md:flex-nowrap py-10 md:mx-20">

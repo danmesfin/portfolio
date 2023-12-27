@@ -1,6 +1,5 @@
-/* eslint-disable @next/next/no-img-element */
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
+import Image from 'next/image';
 import parse from 'html-react-parser';
 import Link from 'next/link';
 import Head from 'next/head';
@@ -27,9 +26,13 @@ const BlogPost: React.FC<BlogPostProps> = ({ frontmatter, markdownBody }) => (
     </Head>
     <h1 className="text-4xl mb-4 font-display">{frontmatter.title}</h1>
     <p className="text-gray-600 mb-4">{formatDate(frontmatter.date)}</p>
-    <img
+    <Image
       src={frontmatter.preview}
       alt={frontmatter.title}
+      fill
+      style={{ objectFit: 'contain' }}
+      blurDataURL="data:..."
+      placeholder="blur"
       className="w-full h-64 object-cover mb-4 rounded-md"
     />
     <div className="pose">{parse(markdownBody)}</div>
@@ -38,9 +41,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ frontmatter, markdownBody }) => (
       type="button"
       className="border border-primary text-white px-4 py-2 rounded-md mt-4"
     >
-      <Link href="/blogs">
-        <a>See All Posts</a>
-      </Link>
+      <Link href="/blogs">See All Posts</Link>
     </button>
   </div>
 );
