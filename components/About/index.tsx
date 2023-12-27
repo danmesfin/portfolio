@@ -5,7 +5,7 @@ import Image from 'next/image';
 function About() {
   return (
     <section
-      className="relative bg-gradient-to-b from-gray-300 to-gray-100 pb-[35rem] md:pb-[15rem]"
+      className="relative bg-gradient-to-b from-gray-300 to-gray-100 pb-[45rem] md:pb-[20rem]"
       id="about"
     >
       <svg
@@ -25,7 +25,9 @@ function About() {
             <Image
               src="/images/mobile.png"
               alt="mobile app image"
+              priority
               fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               style={{ objectFit: 'contain' }}
             />
           </div>

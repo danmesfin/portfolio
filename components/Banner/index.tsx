@@ -57,6 +57,7 @@ export default function Index() {
                 src="/images/danmesfin.webp"
                 style={{ objectFit: 'contain' }}
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 blurDataURL="data:..."
                 placeholder="blur"
                 alt="daniel"
