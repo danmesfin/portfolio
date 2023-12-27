@@ -5,14 +5,15 @@ import ThemeChanger from '../Button';
 
 function Navbar() {
   const [mounted, setMounted] = useState(false);
-
   const [activeIdx] = useState(0);
   const [navActive, setNavActive] = useState(false);
+
   const Menu = [
-    { title: 'Home', link: 'banner' },
-    { title: 'About', link: 'about' },
-    { title: 'Projects', link: 'projects' },
-    { title: 'Contact', link: 'contact' },
+    { title: 'Home', link: '/#banner' },
+    { title: 'About', link: '/#about' },
+    { title: 'Projects', link: '/#projects' },
+    { title: 'Contact', link: '/#contact' },
+    { title: 'Blogs', link: '/blogs' },
   ];
 
   useEffect(() => {
@@ -24,8 +25,13 @@ function Navbar() {
     return <ThemeChanger />;
   };
 
+  const closeNav = () => {
+    console.log('nav closed');
+    setNavActive(false);
+  };
+
   return (
-    <header className="sticky  top-0 z-[99] px-2 py-2 md:px-10">
+    <header className="sticky top-0 z-[99] px-2 py-2 md:px-10">
       <div className="flex flex-wrap justify-between items-center mx-auto">
         <Link href="/">
           <div className="cursor-pointer flex justify-center text-xl font-display whitespace-nowrap text-primary">
@@ -63,37 +69,28 @@ function Navbar() {
             navActive ? '' : 'hidden'
           }`}
         >
-          <ul
-            className=" flex flex-col items-center py-2 px-4 mt-4 rounded-lg border border-primary md:flex-row md:space-x-8 
-          md:mt-0 md:font-medium md:border-0"
-          >
+          <ul className="flex flex-col items-center py-2 px-4 mt-4 rounded-lg border border-primary md:flex-row md:space-x-8 md:mt-0 md:font-medium md:border-0">
             {Menu.map((menu, idx) => (
               <Navitem
-                // onClick={() => {
-                //   setActiveIdx(idx);
-                //   setNavActive(false);
-                // }}
                 key={menu.title}
                 menu={menu.title}
                 link={menu.link}
                 active={activeIdx === idx}
+                onClick={closeNav}
               />
             ))}
 
-            <li
-              className={`cursor-pointer transform duration-200 delay-175 
-              block font-display  py-2 pr-4 pl-3 rounded-md text-center text-primary  md:p-0 `}
-              aria-current="page"
-            >
-              <Link href="/blogs">Blogs</Link>
-            </li>
             <div
               className="flex justify-center items-center w-7 h-7 mx-2 my-1 hover:bg-gray-200
              dark:hover:bg-gray-500 rounded-full"
             >
               {renderThemechanger()}
             </div>
-            <a href="/downloads/Daniel_Mesfin.pdf" target="_blank">
+            <a
+              href="/downloads/Daniel_Mesfin.pdf"
+              target="_blank"
+              onClick={closeNav}
+            >
               <div
                 className="px-2 py-1 my-1 rounded-lg border border-primary hover:bg-gray-200
                dark:text-primary dark:hover:bg-gray-600"
