@@ -1,28 +1,17 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import Navbar from '../Layout/Navbar';
 
 export default function Index() {
-  const mySkills = [
-    'Design',
-    'Development',
-    'Branding',
-    'Strategy',
-    'Product Design',
-    'Web Flow',
-  ];
-
-  // Define animation variants
   const containerVariants = {
     hidden: { opacity: 0, y: 100 },
     visible: { opacity: 1, y: 0 },
   };
 
   return (
-    <section className="dark:bg-base ">
+    <section className="dark:bg-black bg-base">
       <motion.div
-        className="h-screen flex flex-col justify-center px-2 items-center"
+        className="flex flex-col justify-center px-2 items-center"
         id="banner"
         initial="hidden"
         animate="visible"
@@ -35,7 +24,7 @@ export default function Index() {
               className="flex flex-col mt-4 p-1 font-display text-primary text-center md:text-left
            text-4xl md:text-5xl"
             >
-              <span className="text-primary">HI, I&apos;M DANIEL.</span>
+              <span>HI, I&apos;M DANIEL.</span>
               <span>A FULLSTACK DEVELOPER</span>
               <span>BASED IN ADDIS</span>
             </div>
@@ -44,10 +33,7 @@ export default function Index() {
             </span>
             <div className="flex mt-4 p-1 mx-auto md:ml-0">
               <a href="#contact">
-                <span
-                  className="py-3 px-4 text-lg border-2 rounded-lg border-primary text-white
-               font-neon"
-                >
+                <span className="py-3 px-4 text-lg border-2 rounded-lg border-primary text-primary">
                   Got a project?
                 </span>
                 <span
@@ -68,7 +54,7 @@ export default function Index() {
              overflow-hidden rounded-lg bg-opacity-20"
             >
               <Image
-                src="/images/danmesfin.jpg"
+                src="/images/danmesfin.webp"
                 layout="fill"
                 objectFit="cover"
                 alt="daniel"

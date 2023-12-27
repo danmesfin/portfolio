@@ -11,7 +11,7 @@ const webProjects = [
     stack: ['React/Next.js', 'TailwindCss', 'TypeScript', 'Redux'],
     description:
       'trackCovid19 is a web  project that provides real time data on covid 19 distribution across the world. Users can get analysis of the data based on country and/or continent. I built the project using Next.js, Typescript,Tailwind, Charts.js, react-leaflet and reliable data from diseas.sh API endpoints',
-    imgurl: '/images/project1.png',
+    imgurl: '/images/project1.webp',
   },
   {
     title: 'Shopx - ecommerce',
@@ -20,7 +20,7 @@ const webProjects = [
     stack: ['React/Next.js', 'TailwindCss', 'Redux', 'REST API'],
     description:
       'Shopx is an innovative e-commerce platform designed to provide a seamless online shopping experience for users. This web-based e-commerce website offers a wide range of products and services, catering to the diverse needs of shoppers. Shopx aims to revolutionize the way people shop online by providing a user-friendly interface, robust features, and efficient performance.I designed the user interface and also implemented the front end using Next.js Framework.',
-    imgurl: '/images/shopx.jpg',
+    imgurl: '/images/shopx.webp',
   },
   {
     title: 'Sebl: AI Farm Assist',
@@ -29,7 +29,7 @@ const webProjects = [
     stack: ['React Native', 'TypeScript', 'Redux'],
     description:
       '"Sebl" Farm Assistant App, an innovative mobile application aimed at enhancing farming practices through the power of AI. The app offers features such as plant disease detection, crop yield prediction, cultivation tips, weather forecasts, and a community interaction platform. Technologies Used: React Native, Firebase, Node.js, Express.js.',
-    imgurl: '/images/sebl-mobile-01.jpg',
+    imgurl: '/images/sebl-mobile-01.webp',
   },
   {
     title: 'shopx - mobile',
@@ -38,7 +38,7 @@ const webProjects = [
     stack: ['React Native', 'TypeScript', 'Redux'],
     description:
       'ShopX Mobile is a powerful e-commerce mobile application built using React Native. Enjoy a seamless shopping experience with features like user sign up and login, account information management, cart functionality, and easy browsing by category.',
-    imgurl: '/images/shopx-mobile-01.jpg',
+    imgurl: '/images/shopx-mobile-01.webp',
   },
 ];
 

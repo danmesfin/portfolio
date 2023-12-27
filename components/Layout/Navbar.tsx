@@ -59,7 +59,7 @@ function Navbar() {
         </div>
 
         <div
-          className={`w-full dark:bg-base bg-primary bg-opacity-50 rounded-lg md:block md:w-auto dark:bg-opacity-100 ${
+          className={`w-full bg-base dark:bg-black bg-opacity-50 rounded-lg md:block md:w-auto dark:bg-opacity-100 ${
             navActive ? '' : 'hidden'
           }`}
         >

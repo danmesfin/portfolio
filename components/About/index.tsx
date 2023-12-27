@@ -1,20 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 function About() {
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
   return (
     <section
       className="relative bg-gradient-to-b from-gray-300 to-gray-100 pb-[35rem] md:pb-[15rem]"
       id="about"
     >
       <svg
-        className="w-full block-edge absolute top-[0rem] z-10 dark:text-orangish text-white"
+        className="w-full block-edge absolute top-[0rem] z-10 dark:text-black text-orangish"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 1440 320"
       >
@@ -26,11 +21,13 @@ function About() {
       </svg>
       <div className="relative flex flex-col md:flex-row mx-auto md:py-[5rem]">
         <div className="relative w-full md:w-1/2 flex justify-center md:justify-end">
-          <img
-            src="/images/mobile.png"
-            alt="daniel"
-            className="absolute w-1/2 mx-auto z-10"
-          />
+          <div className="absolute w-52 h-48 md:w-80 md:h-80 mx-auto z-10">
+            <Image
+              src="/images/mobile.png"
+              alt="mobile app image"
+              layout="fill"
+            />
+          </div>
         </div>
         <article
           className="absolute top-[15rem] mx-auto md:top-[10rem] md:relative w-full md:w-1/2 
@@ -43,12 +40,13 @@ function About() {
             className="w-full px-8 md:px-4 md:w-2/3 mt-5 flex text-wrap self-start font-hand 
           text-left text-orangish text-xl md:text-2xl"
           >
-            In 2017, armed with just an Android phone and sheer determination, I
-            started coding using ES File Explorer to write HTML and CSS. My
-            dream? To build a school website. University brought me my first
-            laptop, expanding my horizons. Today, I&apos;m a software developer
-            in constant pursuit of knowledge and innovation. Explore my
-            portfolio and join me on this exciting journey.
+            In 2017, I began coding using ES File Explorer, an Android file
+            explorer app, to write HTML and CSS. My goal was to build a school
+            website. At that time, I only had an Android phone and a strong
+            desire to learn. After joining university, I finally owned my first
+            computer. Today, I&apos;m a software developer who is constantly
+            seeking knowledge and innovation. I invite you to explore my
+            portfolio and join me on this exciting journey.{' '}
           </p>
         </article>
       </div>

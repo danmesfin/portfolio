@@ -22,7 +22,7 @@ function Layout({ children }) {
   return (
     <main
       lang="eng"
-      className=" dark:bg-base snap-y h-screen overflow-y-scroll scroll-smooth"
+      className=" bg-base dark:bg-black snap-y h-screen overflow-y-scroll scroll-smooth"
     >
       <Head>
         <title>Daniel Mesfin</title>
