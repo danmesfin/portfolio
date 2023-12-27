@@ -9,11 +9,19 @@ function Navbar() {
   const [navActive, setNavActive] = useState(false);
 
   const Menu = [
-    { title: 'Home', link: '/#banner' },
-    { title: 'About', link: '/#about' },
-    { title: 'Projects', link: '/#projects' },
-    { title: 'Contact', link: '/#contact' },
-    { title: 'Blogs', link: '/blogs' },
+    { title: 'Home', link: '/#banner', description: 'Go to the Home section' },
+    { title: 'About', link: '/#about', description: 'Learn about me' },
+    {
+      title: 'Projects',
+      link: '/#projects',
+      description: 'Explore my projects',
+    },
+    {
+      title: 'Contact',
+      link: '/#contact',
+      description: 'Get in touch with me',
+    },
+    { title: 'Blogs', link: '/blogs', description: 'Read my blog posts' },
   ];
 
   useEffect(() => {
@@ -26,7 +34,6 @@ function Navbar() {
   };
 
   const closeNav = () => {
-    console.log('nav closed');
     setNavActive(false);
   };
 
@@ -75,6 +82,7 @@ function Navbar() {
                 key={menu.title}
                 menu={menu.title}
                 link={menu.link}
+                description={menu.description}
                 active={activeIdx === idx}
                 onClick={closeNav}
               />
