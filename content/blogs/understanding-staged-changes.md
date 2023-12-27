@@ -2,7 +2,7 @@
 title: Understanding Git Staged Changes
 description: Learn how to effectively use Git staging for precise version control.
 date: 2023-12-15T10:30:00.000Z
-preview: https://miro.medium.com/v2/resize:fit:720/format:webp/1*W3CRSTKWV32bNwPPUIS5fA.png
+preview: /images/git-staged-changes.webp
 draft: false
 tags:
   - git
@@ -47,7 +47,7 @@ Staging changes in Git refers to the process of preparing modifications to be co
 
 2. **Add All Changes:**
 
-   - Use `git add .` or `git add -A` to stage all changes.
+- Use `git add .` or `git add -A` to stage all changes.
 
 &nbsp;<br>
 
@@ -59,7 +59,7 @@ Staging changes in Git refers to the process of preparing modifications to be co
 
 3. **Interactive Staging:**
 
-   - Utilize `git add -i` for interactive staging, allowing you to choose changes to stage.
+- Utilize `git add -i` for interactive staging, allowing you to choose changes to stage.
 
 &nbsp;<br>
 
@@ -71,14 +71,12 @@ Staging changes in Git refers to the process of preparing modifications to be co
 
 ## **Checking Staged Changes**
 
-&nbsp;<br>
-
 To view the changes you've staged, you can use:
 
 &nbsp;<br>
 
 ```bash
-git diff --staged
+  git diff --staged
 ```
 
 &nbsp;<br>
@@ -89,13 +87,11 @@ This command shows the differences between the staging area and the last commit.
 
 ## **Unstaging Changes**
 
-&nbsp;<br>
-
 If you mistakenly stage a file or want to unstage changes, you can use:
 
 &nbsp;<br>
 
-```
+```bash
 git reset <filename>
 ```
 
@@ -114,8 +110,6 @@ git commit -m "Your commit message here"
 &nbsp;<br>
 
 ## **Conclusion**
-
-&nbsp;<br>
 
 Mastering the art of staging changes in Git provides a flexible and efficient way to manage your project's history. By selectively choosing which modifications to include in each commit, you maintain a clean and organized version history that reflects the logical progression of your development work.
 

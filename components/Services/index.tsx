@@ -61,18 +61,18 @@ const Index: React.FC = () => {
 
   return (
     <section
-      className="py-10 md:py-20 "
+      className="h-[80rem] py-10 md:py-20 "
       id="services"
       style={{ backgroundImage: `url('/images/nature-bg-img-01.jpg') ` }}
     >
       <div className="flex flex-col mx-auto">
         <div className="mx-auto">
-          <div className="text-redish flex flex-col text-center my-5 py-5 text-6xl md:text-5xl font-display item-center">
+          <div className="text-redish flex flex-col text-center my-5 py-5 text-6xl md:text-6xl font-display item-center">
             <span>Services</span>
             <span className="font-bold mt-5 px-5 text-sm md:text-md mx-auto">
               open to any digital services
             </span>
-            <hr className="mx-auto rounded-lg w-48 bg-gray-400 border-2 shadow-allSide" />
+            <hr className="mx-auto rounded-lg w-48 bg-gray-400 border-2" />
           </div>
         </div>
         <div className="flex flex-col justify-center mx-auto font-mono">

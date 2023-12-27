@@ -1,11 +1,11 @@
-import React from 'react';
-import { Link as ScrollLink } from 'react-scroll';
+import React, { MouseEventHandler } from 'react';
+import Link from 'next/link';
 
 interface NavitemProps {
   active: boolean;
   link: string;
   menu: string;
-  onClick: Function;
+  onClick: MouseEventHandler<HTMLAnchorElement>;
 }
 
 function Navitem({ active, link, menu, onClick }: NavitemProps) {
@@ -16,11 +16,9 @@ function Navitem({ active, link, menu, onClick }: NavitemProps) {
       }`}
       aria-current="page"
     >
-      <a href={`/#${link}`}>
-        {/* <ScrollLink to={link} smooth duration={800} onClick={() => onClick()}> */}
+      <Link onClick={onClick} href={link}>
         {menu}
-        {/* </ScrollLink> */}
-      </a>
+      </Link>
     </li>
   );
 }

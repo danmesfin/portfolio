@@ -22,8 +22,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => (
           <Image
             src={project.imgurl}
             alt={project.title}
-            layout="fill"
-            objectFit="cover"
+            fill
+            style={{ objectFit: 'contain' }}
+            blurDataURL="data:..."
+            placeholder="blur"
             className="transform delay-150 duration-75 grayscale hover:grayscale-0 "
           />
         </div>

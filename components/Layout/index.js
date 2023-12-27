@@ -22,20 +22,8 @@ function Layout({ children }) {
   return (
     <main
       lang="eng"
-      className=" dark:bg-base snap-y h-screen overflow-y-scroll scroll-smooth"
+      className=" bg-base dark:bg-black snap-y h-screen overflow-y-scroll scroll-smooth"
     >
-      <Head>
-        <title>Daniel Mesfin</title>
-        <meta name="description" content="Daniel Mesfin" />
-        <meta name="description" content="danmesfin" />
-        <meta name="description" content="Fullstack developer" />
-        <link rel="icon" href="/Icon/favicon.ico" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&amp;display=swap"
-          rel="stylesheet"
-        />
-        <link rel="stylesheet" href="https://use.typekit.net/vja6aok.css" />
-      </Head>
       {/* <CustomCursor mousePosition={mousePosition} /> */}
 
       <Navbar />
