@@ -55,7 +55,7 @@ function Navbar() {
           <button
             onClick={() => setNavActive(!navActive)}
             type="button"
-            className="inline-flex items-center p-2 ml-3 text-sm text-orangish rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+            className="inline-flex items-center p-2 ml-3 text-sm text-primary rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
           >
             <span className="sr-only">Open main menu</span>
             <svg

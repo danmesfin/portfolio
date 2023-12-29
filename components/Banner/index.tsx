@@ -9,7 +9,7 @@ export default function Index() {
   };
 
   return (
-    <section className="dark:bg-black " id="banner">
+    <section className="dark:bg-black md:pt-16" id="banner">
       <motion.div
         className="flex flex-col justify-center px-2 items-center"
         initial="hidden"
