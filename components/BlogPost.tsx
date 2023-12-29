@@ -54,13 +54,12 @@ const BlogPost: React.FC<BlogPostProps> = ({ frontmatter, markdownBody }) => {
           className="rounded-md"
         />
       </div>
-      <div className="pose mt-8 text-gray-300 dark:text-gray-200">
-        {parse(markdownBody)}
-      </div>
+      <div className="pose mt-8 dark:text-gray-200">{parse(markdownBody)}</div>
 
       <button
         type="button"
-        className="border border-primary text-white px-4 py-2 rounded-md mt-4"
+        className="mt-8 py-1 px-2 text-lg border-2 rounded-lg dark:border-primarytext-orangish dark:text-primary
+         transition duration-300  hover:bg-primary hover:text-black dark:hover:text-black"
       >
         <Link href="/blogs">See All Posts</Link>
       </button>

@@ -9,7 +9,7 @@ import TeckStacks from '../components/TechStacks';
 
 function Home() {
   return (
-    <div className="flex flex-col mt-0">
+    <div className="flex flex-col">
       <Head>
         <title>Daniel Mesfin</title>
       </Head>
