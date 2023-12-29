@@ -19,7 +19,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => (
     <a href={project.projecturl} target="_blank" rel="noreferrer">
       <div
         className="p-5 cursor-pointer transition transform delay-75 duration-300 
-      hover:scale-[1.01] bg-gray-200 rounded-lg dark:bg-zinc-600 dark:bg-opacity-80 bg-opacity-90 "
+      hover:scale-[1.01] bg-gray-200 border-4 rounded-lg dark:bg-zinc-600 dark:bg-opacity-80 bg-opacity-80"
       >
         <div
           className="relative w-60 h-60 md:h-72 md:w-72 lg:w-96 lg:h-96 
