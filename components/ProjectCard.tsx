@@ -17,7 +17,7 @@ interface ProjectCardProps {
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => (
   <Parallax translateY={[-10, 10]} onClick={onClick}>
     <a href={project.projecturl} target="_blank" rel="noreferrer">
-      <div className="p-5 cursor-pointer transition transform duration-300 hover:scale-105 border border-base">
+      <div className="p-5 cursor-pointer transition transform duration-300 hover:scale-[1.01] border border-base">
         <div className="relative w-60 h-60 md:h-72 md:w-72 lg:w-96 lg:h-96 shadow-md shadow-gray-600 dark:shadow-gray-900">
           <Image
             src={project.imgurl}

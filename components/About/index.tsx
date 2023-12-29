@@ -5,7 +5,7 @@ import Image from 'next/image';
 function About() {
   return (
     <section
-      className="relative bg-gradient-to-b from-gray-300 to-gray-100 pb-[45rem] md:pb-[20rem]"
+      className="relative bg-gradient-to-b from-gray-300 to-white dark:from-zinc-800  pb-[45rem] md:pb-[20rem]"
       id="about"
     >
       <svg
@@ -36,12 +36,12 @@ function About() {
           className="absolute top-[15rem] mx-auto md:top-[10rem] md:relative w-full md:w-1/2 
         flex flex-col text-left items-center align-middle"
         >
-          <h2 className="text-left self-start font-display text-redish text-3xl md:text-5xl  px-8 md:px-0">
+          <h2 className="text-left self-start font-display text-redish dark:text-white text-3xl md:text-5xl  px-8 md:px-0">
             How it started
           </h2>
           <p
             className="w-full px-8 md:px-4 md:w-2/3 mt-5 flex text-wrap self-start font-hand 
-          text-left text-orangish text-xl md:text-2xl"
+          text-left text-orangish dark:text-white text-xl md:text-2xl"
           >
             In 2017, I began coding using ES File Explorer, an Android file
             explorer app, to write HTML and CSS. My goal was to build a school

@@ -100,8 +100,8 @@ function Navbar() {
               onClick={closeNav}
             >
               <div
-                className="px-2 py-1 my-1 rounded-lg border border-primary hover:bg-gray-200
-               dark:text-primary dark:hover:bg-gray-600"
+                className="px-2 py-1 my-1 rounded-lg transform delay-75 duration-100 border border-white dark:border-primary hover:bg-orange-300
+              text-white  dark:text-primary dark:hover:text-black"
               >
                 See Resume
               </div>
