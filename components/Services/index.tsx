@@ -1,95 +1,106 @@
-// @ts-nocheck
 import React from 'react';
-import { motion } from 'framer-motion';
-import { MdOutlineDesignServices } from 'react-icons/md';
-import { FaMobileAlt, FaTools, FaHtml5 } from 'react-icons/fa';
+import {
+  FaPalette,
+  FaCode,
+  FaMobileAlt,
+  FaBullhorn,
+  FaChalkboardTeacher,
+} from 'react-icons/fa';
 
-interface Skill {
-  name: string;
-  icon: React.ElementType;
-  description: string;
-}
-
-interface SkillCardProps {
-  skill: Skill;
-}
-
-const SkillCard: React.FC<SkillCardProps> = ({ skill }) => (
-  <motion.div
-    whileHover={{ scale: 1.05 }}
-    whileTap={{ scale: 0.95 }}
-    className="flex flex-col justify-center text-left w-full md:w-96 px-1 md:px-3 py-2 my-4 md:m-4 rounded-lg shadow-lg text-base"
-  >
-    {React.createElement(skill.icon, {
-      className: 'w-12 h-12 md:w-24 md:h-24 font-neon',
-    })}
-    <span className="text-xl md:text-3xl uppercase font-display">
-      {skill.name}
-    </span>
-    <span className="text-md pt-2 md:text-xl font-hand">
-      {skill.description}
-    </span>
-  </motion.div>
-);
-
-const Index: React.FC = () => {
-  const skills: Skill[] = [
+const Services = () => {
+  const serviceCategories = [
     {
-      name: 'UX/UI',
-      icon: MdOutlineDesignServices,
-      description:
-        'I love creating cool and stylish websites! Using tools like Figma and AdobeXD, I make sure your website not only looks great but also feels awesome for anyone who visits.',
+      category: 'UI/UX Design',
+      icon: <FaPalette />,
+      services: [
+        'Creating cool and stylish designs',
+        'Landing Pages for Organizations',
+        'Portfolio or Personal Websites',
+        'Product Landing Pages',
+        'Other customized design solutions based on client needs',
+      ],
     },
     {
-      name: 'Web Development',
-      icon: FaHtml5,
-      description:
-        'Got a cool idea? I can turn it into a fully working website! I use HTML, CSS, JavaScript, and fancy frameworks like React and Vue to bring your vision to life. Your website will not only be functional but also super user-friendly.',
+      category: 'Web Application Development',
+      icon: <FaCode />,
+      services: [
+        'Building scalable and responsive web applications',
+        'Booking systems',
+        'Reservation systems',
+        'Content Management Systems (CMS)',
+        'Other customized web application solutions',
+      ],
     },
     {
-      name: 'Mobile Development',
-      icon: FaMobileAlt,
-      description:
-        'Need a mobile app? I got you covered! I design and build apps using React Native, so they look fantastic and work smoothly on any device. Your users will love it!',
+      category: 'Mobile Application Development',
+      icon: <FaMobileAlt />,
+      services: [
+        'Crafting mobile applications for iOS and Android platforms',
+        'Other customized mobile application solutions',
+      ],
     },
     {
-      name: 'FULL STACK',
-      icon: FaTools,
-      description: `I bring a blend of coding expertise and tech wizardry to your project. Whether it's ensuring smooth version control, optimizing for the cloud, or adding a touch of style, I've got your full-stack needs covered!`,
+      category: 'Branding and Digital Marketing',
+      icon: <FaBullhorn />,
+      services: [
+        'Developing brand identity and strategy',
+        'Executing digital marketing campaigns to enhance online presence',
+      ],
+    },
+    {
+      category: 'Technical Consultation and Training',
+      icon: <FaChalkboardTeacher />,
+      services: [
+        'Providing expert advice on software architecture',
+        'Guidance on selecting the right technology stack',
+        'Assistance with project planning',
+        'Offering training sessions to empower clients with technical skills',
+      ],
     },
   ];
 
   return (
-    <section
-      className="h-[80rem] py-10 md:py-20 "
-      id="services"
-      style={{ backgroundImage: `url('/images/nature-bg-img-01.jpg') ` }}
-    >
-      <div className="flex flex-col mx-auto">
-        <div className="mx-auto">
-          <div className="text-redish flex flex-col text-center my-5 py-5 text-6xl md:text-6xl font-display item-center">
-            <span>Services</span>
-            <span className="font-bold mt-5 px-5 text-sm md:text-md mx-auto">
-              open to any digital services
-            </span>
-            <hr className="mx-auto rounded-lg w-48 bg-gray-400 border-2" />
-          </div>
-        </div>
-        <div className="flex flex-col justify-center mx-auto font-mono">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
-            className="grid grid-col-1 md:grid-cols-2 px-10 md:px-0"
-          >
-            {skills.map((skill) => (
-              <SkillCard key={skill.name} skill={skill} />
-            ))}
-          </motion.div>
+    <section className="bg-gray-100 py-16 dark:bg-zinc-800">
+      <div className="container mx-auto">
+        <h2
+          className="text-5xl font-display font-bold text-center mb-16
+         dark:text-white underline decoration-wavy text-orange-900"
+        >
+          what can I help you with ?
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:px-24 md:gap-16">
+          {serviceCategories.map((category) => (
+            <div
+              key={category.category}
+              className=" dark:bg-zinc-700 p-6 border-4 border-primary dark:border-gray-500
+               rounded-md transition duration-300 hover:shadow-lg flex flex-col items-center"
+            >
+              <span className="text-6xl text-primary mb-4">
+                {category.icon}
+              </span>
+              <h3
+                className="text-2xl text-center font-display font-semibold
+               text-orange-900 dark:text-orange-400 mb-4"
+              >
+                {category.category}
+              </h3>
+              <ul className="list-disc pl-6 ">
+                {category.services.map((service, index) => (
+                  <li
+                    // eslint-disable-next-line react/no-array-index-key
+                    key={index}
+                    className="text-gray-600 dark:text-fuchsia-200  mb-2"
+                  >
+                    {service}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </div>
     </section>
   );
 };
 
-export default Index;
+export default Services;

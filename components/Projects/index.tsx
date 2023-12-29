@@ -46,7 +46,7 @@ export default function index() {
   return (
     <div
       className="w-full flex flex-col justify-center flex-wrap md:flex-nowrap
-         py-20 font-mono mx-auto bg-gradient-to-b from-gray-100 to-gray-300 dark:from-black"
+         py-20 font-mono mx-auto bg-gray-100 dark:bg-zinc-800"
       id="projects"
     >
       <div
@@ -54,8 +54,8 @@ export default function index() {
         id="danmesfin projects"
       >
         <div className="mx-auto">
-          <div className="flex flex-col text-center my-5 pt-5 text-base">
-            <span className="text-6xl md:text-9xl  font-display text-[]">
+          <div className="flex flex-col text-center my-5 pt-5 ">
+            <span className="text-6xl font-display dark:text-primary text-[]">
               Projects
             </span>
             <span className="mt-16 text-2xl md:text-2xl text-[] font-hand">
