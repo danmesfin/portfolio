@@ -32,7 +32,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => (
             style={{ objectFit: 'contain' }}
             blurDataURL="data:..."
             placeholder="blur"
-            className="transform rounded-md delay-75 duration-75  "
+            className="transform rounded-md delay-75 duration-75"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         </div>
 
