@@ -38,7 +38,10 @@ function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 z-[99] px-2 py-2 md:px-10">
+    <header
+      className="sticky top-0 z-[99] px-2 md:px-10 bg-base dark:bg-black"
+      id="#banner"
+    >
       <div className="flex flex-wrap justify-between items-center mx-auto">
         <Link href="/">
           <div className="cursor-pointer flex justify-center text-xl font-display whitespace-nowrap text-primary">
@@ -52,7 +55,7 @@ function Navbar() {
           <button
             onClick={() => setNavActive(!navActive)}
             type="button"
-            className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+            className="inline-flex items-center p-2 ml-3 text-sm text-orangish rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
           >
             <span className="sr-only">Open main menu</span>
             <svg
@@ -72,11 +75,14 @@ function Navbar() {
         </div>
 
         <div
-          className={`w-full bg-base dark:bg-black bg-opacity-50 rounded-lg md:block md:w-auto dark:bg-opacity-100 ${
+          className={`w-full rounded-lg md:block md:w-auto dark:bg-opacity-100 ${
             navActive ? '' : 'hidden'
           }`}
         >
-          <ul className="flex flex-col items-center py-2 px-4 mt-4 rounded-lg border border-primary md:flex-row md:space-x-8 md:mt-0 md:font-medium md:border-0">
+          <ul
+            className="flex flex-col items-center py-2 px-4 mt-4 
+          rounded-lg border border-primary md:flex-row md:space-x-8 md:mt-0 md:font-medium md:border-0"
+          >
             {Menu.map((menu, idx) => (
               <Navitem
                 key={menu.title}
@@ -89,8 +95,8 @@ function Navbar() {
             ))}
 
             <div
-              className="flex justify-center items-center w-7 h-7 mx-2 my-1 hover:bg-gray-200
-             dark:hover:bg-gray-500 rounded-full"
+              className="flex justify-center items-center w-7 h-7 mx-2 my-1 hover:bg-primary
+            rounded-full"
             >
               {renderThemechanger()}
             </div>
@@ -100,8 +106,8 @@ function Navbar() {
               onClick={closeNav}
             >
               <div
-                className="px-2 py-1 my-1 rounded-lg border border-primary hover:bg-gray-200
-               dark:text-primary dark:hover:bg-gray-600"
+                className="py-1 px-2 text-lg border-2 rounded-lg dark:border-primary text-white dark:text-primary
+         transition duration-300 hover:bg-primary hover:text-black dark:hover:text-black"
               >
                 See Resume
               </div>
