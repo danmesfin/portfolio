@@ -19,7 +19,7 @@ function Layout({ children }) {
   //   };
   // }, []);
   return (
-    <main className=" bg-base dark:bg-black snap-y h-screen overflow-y-scroll scroll-smooth">
+    <main className="bg-white dark:bg-black snap-y h-screen overflow-y-scroll scroll-smooth">
       {/* <CustomCursor mousePosition={mousePosition} /> */}
       <Navbar />
       {children}

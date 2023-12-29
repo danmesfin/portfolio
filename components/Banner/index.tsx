@@ -9,10 +9,9 @@ export default function Index() {
   };
 
   return (
-    <section className="dark:bg-black bg-base">
+    <section className="dark:bg-black " id="banner">
       <motion.div
         className="flex flex-col justify-center px-2 items-center"
-        id="banner"
         initial="hidden"
         animate="visible"
         variants={containerVariants}
@@ -21,24 +20,30 @@ export default function Index() {
         <div className="h-4/5 mx-auto flex flex-wrap-reverse md:flex-row md:flex-nowrap">
           <div className="w-full md:w-1/2 flex flex-col px-5 md:pl-40 justify-start md:justify-center py-5">
             <div
-              className="flex flex-col mt-4 p-1 font-display text-primary text-center md:text-left
-           text-4xl md:text-5xl"
+              className="flex flex-col mt-4 p-1 font-display text-orangish dark:text-primary 
+              text-center md:text-left text-4xl md:text-5xl"
             >
               <span>HI, I&apos;M DANIEL.</span>
               <span>A FULLSTACK DEVELOPER</span>
               <span>BASED IN ADDIS</span>
             </div>
-            <span className="text-center md:text-start text-3xl font-hand font-bold md:text-4xl mt-4 p-1 text-redish">
+            <span
+              className="text-center md:text-start text-3xl font-hand font-bold 
+            md:text-4xl mt-4 p-1 text-orangish dark:text-lightOrange"
+            >
               DESIGN - DEVELOP - DEPLOY
             </span>
             <div className="flex mt-4 p-1 mx-auto md:ml-0">
-              <a href="#contact">
-                <span className="py-3 px-4 text-lg border-2 rounded-lg border-primary text-primary">
+              <a href="#contact" className="flex items-center">
+                <span
+                  className="py-3 px-4 text-lg border-2 rounded-lg dark:border-primary
+                 text-orangish dark:text-primary transition duration-300  hover:bg-primary hover:text-black dark:hover:text-black"
+                >
                   Got a project?
                 </span>
                 <span
-                  className="py-3 ml-4 px-4 text-lg font-bold border-2
-                 rounded-lg border-primary text-primary"
+                  className="py-3 ml-4 px-4 text-lg font-bold border-2 rounded-lg dark:border-primary
+                   text-orangish transition duration-300 hover:bg-primary dark:hover:text-black hover:text-black dark:text-primary"
                 >
                   Let&apos;s talk
                 </span>
