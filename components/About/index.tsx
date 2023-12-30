@@ -1,11 +1,10 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 function About() {
   return (
     <section
-      className="relative bg-gradient-to-b from-gray-300 to-white dark:from-zinc-800  pb-[45rem] md:pb-[20rem]"
+      className="relative bg-gradient-to-b from-gray-300 to-white dark:from-zinc-800 pb-[40rem] md:pb-[15rem]"
       id="about"
     >
       <svg

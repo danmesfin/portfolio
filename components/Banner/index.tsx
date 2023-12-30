@@ -9,10 +9,9 @@ export default function Index() {
   };
 
   return (
-    <section className="dark:bg-black bg-base">
+    <section className="dark:bg-black bg-base md:pt-16" id="banner">
       <motion.div
         className="flex flex-col justify-center px-2 items-center"
-        id="banner"
         initial="hidden"
         animate="visible"
         variants={containerVariants}
@@ -21,8 +20,8 @@ export default function Index() {
         <div className="h-4/5 mx-auto flex flex-wrap-reverse md:flex-row md:flex-nowrap">
           <div className="w-full md:w-1/2 flex flex-col px-5 md:pl-40 justify-start md:justify-center py-5">
             <div
-              className="flex flex-col mt-4 p-1 font-display text-white dark:text-primary text-center md:text-left
-           text-4xl md:text-5xl"
+              className="flex flex-col mt-4 p-1 font-display text-white dark:text-primary
+               text-center md:text-left text-4xl md:text-5xl"
             >
               <span>HI, I&apos;M DANIEL.</span>
               <span>A FULLSTACK DEVELOPER</span>

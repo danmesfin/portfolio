@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import {
   FaPalette,
   FaCode,
@@ -62,13 +63,17 @@ const Services = () => {
   return (
     <section className="bg-gray-100 py-16 dark:bg-zinc-800">
       <div className="container mx-auto">
-        <h2
-          className="text-5xl font-display font-bold text-center mb-16
-         dark:text-white underline decoration-wavy text-orange-900"
+        <motion.h2
+          initial={{ y: 50, opacity: 0.1 }}
+          transition={{ duration: 0.5 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          className="text-4xl md:text-5xl font-display font-bold text-center
+          mb-16 dark:text-white underline decoration-wavy text-orange-900"
         >
           what can I help you with ?
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:px-24 md:gap-16">
+        </motion.h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 md:px-24 md:gap-16">
           {serviceCategories.map((category) => (
             <div
               key={category.category}

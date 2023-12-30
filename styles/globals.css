@@ -2,6 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
+.border-gradient-shiny {
+  border-image: linear-gradient(45deg, #ff6b6b, #d610dd);
+  border-image-slice: 1;
+}
+
+/* PartnersSection.css */
+.partners-section {
+  overflow: hidden;
+}
+
+.partner-icons {
+  display: flex;
+  animation: scroll 12s linear infinite;
+}
+
+.partner-icon {
+  margin-right: 30px; /* Adjust the spacing between icons */
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-200%);
+  }
+}
+
 @layer base {
   h1 {
     @apply text-2xl;
