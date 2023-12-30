@@ -14,25 +14,31 @@ interface ProjectCardProps {
   project: Project;
   onClick: () => void;
 }
+
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => (
   <Parallax translateY={[-10, 10]} onClick={onClick}>
-    <a href={project.projecturl} target="_blank" rel="noreferrer">
-      <div className="p-5 cursor-pointer transition transform duration-300 hover:scale-[1.01] border border-base">
-        <div className="relative w-60 h-60 md:h-72 md:w-72 lg:w-96 lg:h-96 shadow-md shadow-gray-600 dark:shadow-gray-900">
+    <a
+      href={project.projecturl}
+      target="_blank"
+      rel="noreferrer"
+      className="transition-transform duration-300 transform hover:scale-101"
+    >
+      <div className="p-5 border-2 border-gray-700 dark:border-gray-300 bg-gradient-to-br from-orange-800 to-zinc-900 rounded-md bg-opacity-80 ">
+        <div className="relative w-60 h-60 md:h-72 md:w-72 lg:w-96 lg:h-96 overflow-hidden rounded-md">
           <Image
             src={project.imgurl}
-            alt={project.title}
+            alt={`Preview of ${project.title} project`}
             fill
             style={{ objectFit: 'contain' }}
             blurDataURL="data:..."
             placeholder="blur"
-            className="transform delay-150 duration-75 grayscale hover:grayscale-0 "
+            className="transform delay-150 duration-75"
           />
         </div>
 
-        <div className=" mt-14 md:mt-24 text-center text-base font-display">
-          <h3 className="text-lg ">{project.title}</h3>
-          <p className="text-sm">{project.role}</p>
+        <div className="mt-4 md:mt-6 text-center text-white">
+          <h3 className="text-2xl font-bold">{project.title}</h3>
+          <p className="text-sm text-gray-300">{project.role}</p>
         </div>
       </div>
     </a>
