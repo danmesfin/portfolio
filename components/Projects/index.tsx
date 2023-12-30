@@ -5,6 +5,15 @@ import ProjectCard from '../ProjectCard';
 
 const webProjects = [
   {
+    title: 'Sebl: AI Farm Assist',
+    projecturl: 'https://github.com/danmesfin/sebl-mobile',
+    role: 'Sebl: AI Farm Assist',
+    stack: ['React Native', 'TypeScript', 'Redux'],
+    description:
+      '"Sebl" Farm Assistant App, an innovative mobile application aimed at enhancing farming practices through the power of AI. The app offers features such as plant disease detection, crop yield prediction, cultivation tips, weather forecasts, and a community interaction platform. Technologies Used: React Native, Firebase, Node.js, Express.js.',
+    imgurl: '/images/sebl-mobile-01.webp',
+  },
+  {
     title: 'Covid-19 Tracker',
     projecturl: 'http://trackcovid19.vercel.app',
     role: 'web development',
@@ -22,15 +31,7 @@ const webProjects = [
       'Shopx is an innovative e-commerce platform designed to provide a seamless online shopping experience for users. This web-based e-commerce website offers a wide range of products and services, catering to the diverse needs of shoppers. Shopx aims to revolutionize the way people shop online by providing a user-friendly interface, robust features, and efficient performance.I designed the user interface and also implemented the front end using Next.js Framework.',
     imgurl: '/images/shopx.webp',
   },
-  {
-    title: 'Sebl: AI Farm Assist',
-    projecturl: 'https://github.com/danmesfin/sebl-mobile',
-    role: 'Sebl: AI Farm Assist',
-    stack: ['React Native', 'TypeScript', 'Redux'],
-    description:
-      '"Sebl" Farm Assistant App, an innovative mobile application aimed at enhancing farming practices through the power of AI. The app offers features such as plant disease detection, crop yield prediction, cultivation tips, weather forecasts, and a community interaction platform. Technologies Used: React Native, Firebase, Node.js, Express.js.',
-    imgurl: '/images/sebl-mobile-01.webp',
-  },
+
   {
     title: 'shopx - mobile',
     projecturl: 'https://github.com/danmesfin/shopx-mobile',
