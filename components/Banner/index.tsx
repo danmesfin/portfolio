@@ -34,14 +34,14 @@ export default function Index() {
               <a href="#contact">
                 <span
                   className="py-3 px-4 text-lg rounded-lg transform delay-75 duration-100 border border-white dark:border-primary hover:bg-orange-300
-              text-white  dark:text-primary hover:text-black"
+              text-white  dark:text-primary dark:hover:text-black hover:text-black"
                 >
                   Got a project?
                 </span>
                 <span
-                  className="py-3 ml-4 px-4 text-lg font-bold 
-                 rounded-lg transform delay-75 duration-100 border border-white dark:border-primary hover:bg-orange-300
-              text-white  dark:text-primary hover:text-black"
+                  className="py-3 ml-4 px-4 text-lg rounded-lg transform delay-75
+                   duration-100 border border-white dark:border-primary hover:bg-orange-300
+                 text-white dark:hover:text-black hover:text-black"
                 >
                   Let&apos;s talk
                 </span>
