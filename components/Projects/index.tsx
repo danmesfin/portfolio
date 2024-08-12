@@ -41,6 +41,14 @@ const webProjects = [
       'ShopX Mobile is a powerful e-commerce mobile application built using React Native. Enjoy a seamless shopping experience with features like user sign up and login, account information management, cart functionality, and easy browsing by category.',
     imgurl: '/images/shopx-mobile-01.webp',
   },
+  {
+    title: 'Hire Armada',
+    projecturl: 'https://arezarmada.com',
+    role: 'Web developement',
+    stack: ['Next.js', 'TypeScript', 'Redux'],
+    description: 'talent outsourcing and recruitment platform.',
+    imgurl: '/images/arez-armada.png',
+  },
 ];
 
 export default function index() {
@@ -67,15 +75,18 @@ export default function index() {
       </div>
       <div className="relative w-full pb-[120rem] md:pb-[120rem]">
         <div className="left-5 md:left-10 lg:left-20 absolute">
-          <ProjectCard project={webProjects[0]} />
+          <ProjectCard project={webProjects[4]} />
         </div>
-        <div className="right-5 md:right-10 lg:right-40 absolute top-[30rem] md:top-[5rem]">
+        <div className="left-5 md:left-10 lg:left-20 absolute md:top-[40rem]">
           <ProjectCard project={webProjects[1]} />
         </div>
-        <div className="left-5 md:left-10 lg:left-28 top-[60rem] md:top-[70rem] absolute">
+        <div className="right-5 md:right-10 lg:right-40 absolute top-[60rem] md:top-[5rem]">
+          <ProjectCard project={webProjects[0]} />
+        </div>
+        <div className="left-5 md:left-10 lg:left-28 top-[60rem] md:top-[90rem] absolute">
           <ProjectCard project={webProjects[2]} />
         </div>
-        <div className="right-5 md:right-10 lg:right-40 absolute top-[90rem] md:top-[50rem]">
+        <div className="right-5 md:right-10 lg:right-40 absolute top-[110rem] md:top-[50rem]">
           <ProjectCard project={webProjects[3]} />
         </div>
       </div>
