@@ -51,46 +51,33 @@ const webProjects = [
   },
 ];
 
-export default function index() {
+export default function Projects() {
   return (
-    <div
-      className="w-full flex flex-col justify-center flex-wrap md:flex-nowrap
-         py-20 font-mono mx-auto bg-gradient-to-b from-white via-orange-300 to-white dark:from-black dark:to-zinc-800"
+    <section
+      className="w-full py-20 bg-gradient-to-b from-white via-orange-100 to-white dark:from-black dark:via-zinc-900 dark:to-black"
       id="projects"
     >
-      <div
-        className="top-0 sticky flex flex-col items-center my-10"
-        id="danmesfin projects"
-      >
-        <div className="mx-auto">
-          <div className="flex flex-col text-center my-5 pt-5 text-base">
-            <span className="text-6xl md:text-7xl  font-display text-[]">
-              Projects
-            </span>
-            <span className="mt-16 text-2xl md:text-2xl text-[] font-hand">
-              Here are some of my works so far
-            </span>
-          </div>
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-6xl md:text-7xl font-display text-zinc-800 dark:text-white mb-4">
+            Projects
+          </h2>
+          <p className="text-2xl md:text-3xl font-hand text-zinc-600 dark:text-zinc-300">
+            Here are some of my works so far
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {webProjects.map((project) => (
+            <ProjectCard
+              key={project.title}
+              project={project}
+              onClick={() => {}}
+            />
+          ))}
         </div>
       </div>
-      <div className="relative w-full pb-[120rem] md:pb-[120rem]">
-        <div className="left-5 md:left-10 lg:left-20 absolute">
-          <ProjectCard project={webProjects[4]} />
-        </div>
-        <div className="left-5 md:left-10 lg:left-20 absolute md:top-[40rem]">
-          <ProjectCard project={webProjects[1]} />
-        </div>
-        <div className="right-5 md:right-10 lg:right-40 absolute top-[60rem] md:top-[5rem]">
-          <ProjectCard project={webProjects[0]} />
-        </div>
-        <div className="left-5 md:left-10 lg:left-28 top-[60rem] md:top-[90rem] absolute">
-          <ProjectCard project={webProjects[2]} />
-        </div>
-        <div className="right-5 md:right-10 lg:right-40 absolute top-[110rem] md:top-[50rem]">
-          <ProjectCard project={webProjects[3]} />
-        </div>
-      </div>
-    </div>
+    </section>
   );
 }
 // V0NY2M0DVFRH;
