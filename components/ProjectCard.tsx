@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { Parallax } from 'react-scroll-parallax';
 
@@ -12,37 +12,104 @@ interface Project {
 
 interface ProjectCardProps {
   project: Project;
-  onClick: () => void;
+  // onClick: () => void;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => (
-  <Parallax translateY={[-10, 10]} onClick={onClick}>
-    <a
-      href={project.projecturl}
-      target="_blank"
-      rel="noreferrer"
-      className="transition-transform duration-300 transform hover:scale-101"
-    >
-      <div className="p-5 border-2 border-gray-700 dark:border-gray-300 bg-gradient-to-br from-orange-800 to-zinc-900 rounded-md bg-opacity-80 ">
-        <div className="relative w-60 h-60 md:h-72 md:w-72 lg:w-96 lg:h-96 overflow-hidden rounded-md">
-          <Image
-            src={project.imgurl}
-            alt={`Preview of ${project.title} project`}
-            fill
-            style={{ objectFit: 'contain' }}
-            blurDataURL="data:..."
-            placeholder="blur"
-            className="transform delay-150 duration-75"
-          />
-        </div>
+interface ProjectModalProps {
+  project: Project;
+  onClose: () => void;
+}
 
-        <div className="mt-4 md:mt-6 text-center text-white">
-          <h3 className="text-2xl font-bold">{project.title}</h3>
-          <p className="text-sm text-gray-300">{project.role}</p>
-        </div>
+const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => (
+  <div className="fixed inset-0 flex items-end justify-center bg-black bg-opacity-75 z-50">
+    <div className="bg-zinc-800 text-white p-6 rounded-t-2xl max-w-xl w-full transform transition-all duration-300 ease-out translate-y-full animate-slide-up">
+      <h2 className="text-3xl font-display font-bold mb-2">{project.title}</h2>
+      <p className="text-lg font-hand mb-4 text-gray-300">{project.role}</p>
+      <div className="relative h-64 mb-4">
+        <Image
+          src={project.imgurl}
+          alt={project.title}
+          layout="fill"
+          objectFit="cover"
+          className="rounded-md"
+        />
       </div>
-    </a>
-  </Parallax>
+      <p className="mt-4 text-lg font-hand mb-6">{project.description}</p>
+      <div className="flex justify-end">
+        <a
+          href={project.projecturl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-md mr-2 transition-colors"
+        >
+          View Project
+        </a>
+        <button
+          type="button"
+          onClick={onClose}
+          className="px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-md transition-colors"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
 );
+
+const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
+  const openModal = (item: Project) => {
+    setSelectedProject(item);
+  };
+
+  const closeModal = () => {
+    setSelectedProject(null);
+  };
+
+  return (
+    <div className="mb-4">
+      <Parallax
+        translateY={[-10, 10]}
+        onClick={() => openModal(project)}
+        className="cursor-pointer"
+      >
+        <div className="p-5 border border-gray-300 dark:border-gray-700 bg-white dark:bg-zinc-800 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+          <div className="relative w-full h-48 md:h-64 lg:h-72 overflow-hidden rounded-md mb-4">
+            <Image
+              src={project.imgurl}
+              alt={`Preview of ${project.title} project`}
+              fill
+              style={{ objectFit: 'cover' }}
+              className="transform transition-transform duration-300 hover:scale-105"
+            />
+          </div>
+          <div className="text-gray-800 dark:text-white">
+            <h3 className="text-2xl font-display font-bold mb-2">
+              {project.title}
+            </h3>
+            <p className="text-lg text-gray-600 dark:text-gray-300 font-hand">
+              {project.role}
+            </p>
+          </div>
+          <div className="mt-4">
+            <a
+              href={project.projecturl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-block px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-md transition-colors"
+              onClick={(e) => e.stopPropagation()}
+            >
+              View Project
+            </a>
+          </div>
+        </div>
+      </Parallax>
+      {selectedProject && (
+        <ProjectModal project={selectedProject} onClose={closeModal} />
+      )}
+    </div>
+  );
+};
 
 export default ProjectCard;
