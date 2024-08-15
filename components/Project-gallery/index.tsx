@@ -62,9 +62,9 @@ interface ProjectGalleryProps {
 const ProjectGallery: React.FC<ProjectGalleryProps> = ({ projects }) => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-  const openModal = (project: Project) => {
-    setSelectedProject(project);
-  };
+  // const openModal = (project: Project) => {
+  //   setSelectedProject(project);
+  // };
 
   const closeModal = () => {
     setSelectedProject(null);
@@ -77,7 +77,7 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({ projects }) => {
           <ProjectCard
             key={project.title}
             project={project}
-            onClick={() => openModal(project)}
+            //  onClick={() => openModal(project)}
           />
         ))}
 
