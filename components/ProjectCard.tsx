@@ -68,13 +68,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   };
 
   return (
-    <div className="mb-4">
+    <div className="mb-8">
       <Parallax
         translateY={[-10, 10]}
         onClick={() => openModal(project)}
         className="cursor-pointer"
       >
-        <div className="p-5 border border-gray-300 dark:border-gray-700 bg-white dark:bg-zinc-800 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+        <div className="p-5 border border-gray-300 dark:border-gray-700 bg-white bg-opacity-40 dark:bg-zinc-800 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
           <div className="relative w-full h-48 md:h-64 lg:h-72 overflow-hidden rounded-md mb-4">
             <Image
               src={project.imgurl}
