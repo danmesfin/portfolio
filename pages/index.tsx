@@ -6,6 +6,7 @@ import Contact from '../components/Contact';
 import Projects from '../components/Projects';
 import Services from '../components/Services';
 import TeckStacks from '../components/TechStacks';
+import Experience from '../components/Experience';
 
 function Home() {
   return (
@@ -15,6 +16,7 @@ function Home() {
       </Head>
       <Banner />
       <About />
+      <Experience />
       <Projects />
       <Services />
       <TeckStacks />
