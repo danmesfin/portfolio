@@ -5,9 +5,26 @@ import ProjectCard from '../ProjectCard';
 
 const webProjects = [
   {
+    title: 'Hire Armada',
+    projecturl: 'https://arezarmada.com',
+    role: 'Web developement',
+    stack: ['Next.js', 'TypeScript', 'Redux'],
+    description: 'talent outsourcing and recruitment platform.',
+    imgurl: '/images/arez-armada.png',
+  },
+  {
+    title: 'Thecarbongames',
+    projecturl: 'https://thecarbongames.com',
+    role: 'web/blockchain developer',
+    stack: ['Next.js', 'web3', 'NEAR Protocol', 'Cairo', 'Particle Network'],
+    description:
+      'Ride sharing app on blockchain maintining sustainablity. Meetups for Carpooling.',
+    imgurl: '/images/thecarbongames-eventcarpooling.png',
+  },
+  {
     title: 'Sebl: AI Farm Assist',
     projecturl: 'https://github.com/danmesfin/sebl-mobile',
-    role: 'Sebl: AI Farm Assist',
+    role: 'Fullstack developer',
     stack: ['React Native', 'TypeScript', 'Redux'],
     description:
       '"Sebl" Farm Assistant App, an innovative mobile application aimed at enhancing farming practices through the power of AI. The app offers features such as plant disease detection, crop yield prediction, cultivation tips, weather forecasts, and a community interaction platform. Technologies Used: React Native, Firebase, Node.js, Express.js.',
@@ -40,14 +57,6 @@ const webProjects = [
     description:
       'ShopX Mobile is a powerful e-commerce mobile application built using React Native. Enjoy a seamless shopping experience with features like user sign up and login, account information management, cart functionality, and easy browsing by category.',
     imgurl: '/images/shopx-mobile-01.webp',
-  },
-  {
-    title: 'Hire Armada',
-    projecturl: 'https://arezarmada.com',
-    role: 'Web developement',
-    stack: ['Next.js', 'TypeScript', 'Redux'],
-    description: 'talent outsourcing and recruitment platform.',
-    imgurl: '/images/arez-armada.png',
   },
 ];
 
