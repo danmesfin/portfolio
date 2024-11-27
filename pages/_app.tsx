@@ -4,6 +4,7 @@ import React from 'react';
 import type { AppProps } from 'next/app';
 import { ThemeProvider } from 'next-themes';
 import { ParallaxProvider } from 'react-scroll-parallax';
+import { Toaster } from 'react-hot-toast';
 import Layout from '../components/Layout';
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -12,6 +13,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <ThemeProvider enableSystem attribute="class">
         <Layout>
           <Component {...pageProps} />
+          <Toaster position="bottom-right" />
         </Layout>
       </ThemeProvider>
     </ParallaxProvider>
