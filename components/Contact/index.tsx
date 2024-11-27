@@ -3,7 +3,6 @@ import emailjs from '@emailjs/browser';
 import { motion } from 'framer-motion';
 import { toast } from 'react-hot-toast';
 
-// Move these to environment variables
 const EMAIL_SERVICE_ID = process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID;
 const EMAIL_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID;
 const EMAIL_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY;
@@ -14,6 +13,7 @@ const Contact: React.FC = () => {
 
   const sendEmail = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const formElement = e.currentTarget; // Store form reference
     setLoading(true);
 
     try {
@@ -34,9 +34,9 @@ const Contact: React.FC = () => {
       );
 
       toast.success('Message sent successfully! I will get back to you soon.');
-      e.currentTarget.reset();
+      formElement.reset();
     } catch (error) {
-      console.error('Email send error:', error);
+      // console.error('Email send error:', error);
       toast.error('Failed to send message. Please try again later.');
     } finally {
       setLoading(false);
