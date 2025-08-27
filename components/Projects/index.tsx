@@ -2,6 +2,8 @@
 
 import React from 'react';
 import ProjectCard from '../ProjectCard';
+import CaseStudyCarousel from '../CaseStudyCarousel';
+import { CaseStudy } from '../../utils/getCaseStudies';
 
 const webProjects = [
   {
@@ -60,7 +62,14 @@ const webProjects = [
   },
 ];
 
-export default function Projects() {
+interface ProjectsProps {
+  caseStudies?: CaseStudy[];
+}
+
+export default function Projects({ caseStudies }: ProjectsProps) {
+  // Use case studies data passed from server-side
+  const studies = caseStudies || [];
+
   return (
     <section
       className="w-full py-20 bg-gradient-to-b from-white via-orange-100 to-white dark:from-black dark:via-zinc-900 dark:to-black"
@@ -72,18 +81,37 @@ export default function Projects() {
             Projects
           </h2>
           <p className="text-2xl md:text-3xl font-hand text-zinc-600 dark:text-zinc-300">
-            Here are some of my works so far
+            Featured case studies showcasing my expertise
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {webProjects.map((project) => (
-            <ProjectCard
-              key={project.title}
-              project={project}
-              onClick={() => {}}
-            />
-          ))}
+        {/* Case Studies Carousel */}
+        {studies.length > 0 && (
+          <div className="mb-20">
+            <CaseStudyCarousel caseStudies={studies} />
+          </div>
+        )}
+
+        {/* Other Projects Grid */}
+        <div className="mt-20">
+          <div className="text-center mb-12">
+            <h3 className="text-4xl md:text-5xl font-display text-zinc-800 dark:text-white mb-4">
+              Other Projects
+            </h3>
+            <p className="text-lg md:text-xl font-hand text-zinc-600 dark:text-zinc-300">
+              Additional work and contributions
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {webProjects.map((project) => (
+              <ProjectCard
+                key={project.title}
+                project={project}
+                onClick={() => {}}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

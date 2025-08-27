@@ -43,7 +43,8 @@
     "remark-parse": "^11.0.0",
     "remark-rehype": "^11.0.0",
     "to-vfile": "^8.0.0",
-    "unified": "^11.0.4"
+    "unified": "^11.0.4",
+    "fs": "^0.0.1-security"
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.9",
