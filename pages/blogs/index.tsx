@@ -8,46 +8,89 @@ import formatDate from '../../utils/date';
 interface BlogIndexProps {
   blogs: BlogData[];
 }
+
 const BlogIndex: React.FC<BlogIndexProps> = ({ blogs }) => (
-  <div className="container mx-auto px-4 sm:px-6 lg:px-8 my-8 ">
-    <h1 className="text-4xl font-bold mb-6 text-center dark:text-white text-primary">
-      Welcome to My Blog
-    </h1>
-    <p className="text-lg text-center mb-8 dark:text-gray-300 text-gray-200">
-      Explore a collection of insightful blog posts on various topics.
-    </p>
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {blogs.map((blog) => (
-        <Link key={blog.slug} href={`/blogs/${blog.slug}`}>
-          <div className="bg-gray-100 dark:bg-black bg-opacity-60 p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300 border dark:border-gray-700">
-            <div className="relative w-full h-40 mb-4 overflow-hidden rounded-md">
-              <Image
-                src={blog.frontmatter.preview}
-                alt={blog.frontmatter.title}
-                layout="fill"
-                objectFit="contain"
-                blurDataURL="data:..."
-                placeholder="blur"
-                className="rounded-md"
-              />
-            </div>
-            <h2 className="text-2xl font-semibold mb-2 dark:text-white text-black">
-              {blog.frontmatter.title}
-            </h2>
-            <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-              {blog.frontmatter.description}
-            </p>
-            <div className="flex items-center justify-between">
-              <p className="text-xs text-gray-600 dark:text-gray-400">
-                Posted on {formatDate(blog.frontmatter.date)}
-              </p>
-              <span className="text-xs text-gray-600 dark:text-gray-400">
-                {blog.frontmatter.category}
-              </span>
-            </div>
-          </div>
-        </Link>
-      ))}
+  <div className="min-h-screen bg-paper-cream dark:bg-zinc-800">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
+      {/* Header Section */}
+      <div className="text-center mb-12 lg:mb-16">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 lg:mb-6 text-gray-900 dark:text-white font-display">
+          Blogs
+        </h1>
+        <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
+          Insights, tutorials, and thoughts on web development, design, and technology
+        </p>
+      </div>
+
+      {/* Blog Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        {blogs.map((blog, index) => {
+          // Define color variations for the top section
+          const colors = [
+            'bg-blue-300',
+            'bg-purple-300', 
+            'bg-green-300',
+            'bg-yellow-300',
+            'bg-pink-300',
+            'bg-orange-300'
+          ];
+          const cardColor = colors[index % colors.length];
+          
+          return (
+            <Link key={blog.slug} href={`/blogs/${blog.slug}`}>
+              <div className="rounded-lg border border-black overflow-hidden hover:shadow-lg transition-all duration-300 group hover:-translate-y-1">
+                {/* Colored Top Section */}
+                <div className={`${cardColor} p-6 relative overflow-hidden`}>
+                  {/* Blog Image - positioned in top right */}
+                  <div className="absolute top-4 right-4 w-20 h-20 rounded-full overflow-hidden border-2 border-black bg-white">
+                    <Image
+                      src={blog.frontmatter.preview}
+                      alt={blog.frontmatter.title}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
+                  </div>
+
+                  {/* Category Badge */}
+                  {blog.frontmatter.category && (
+                    <span className="inline-block px-3 py-1 bg-white/90 border border-black rounded-full text-xs font-bold text-gray-900 mb-4">
+                      {blog.frontmatter.category}
+                    </span>
+                  )}
+
+                  {/* Title in colored section */}
+                  <h2 className="text-xl sm:text-2xl font-bold text-gray-900 line-clamp-3 leading-tight pr-24">
+                    {blog.frontmatter.title}
+                  </h2>
+
+                  {/* Author-like text */}
+                  <p className="text-gray-800 font-medium mt-4">
+                    By Daniel Mesfin
+                  </p>
+                </div>
+
+                {/* White Bottom Section */}
+                <div className="bg-white p-6">
+                  {/* Full title repeat */}
+                  <h3 className="text-lg font-bold text-gray-900 mb-3 line-clamp-2">
+                    {blog.frontmatter.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-gray-600 text-sm line-clamp-2 leading-relaxed mb-4">
+                    {blog.frontmatter.description}
+                  </p>
+
+                  {/* Date */}
+                  <p className="text-sm text-gray-500">
+                    {formatDate(blog.frontmatter.date)}
+                  </p>
+                </div>
+              </div>
+            </Link>
+          );
+        })}
+      </div>
     </div>
   </div>
 );

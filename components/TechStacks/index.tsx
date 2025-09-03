@@ -1,32 +1,94 @@
 import React from 'react';
+import {
+  FaReact,
+  FaDatabase,
+  FaFire,
+  FaRobot,
+  FaNodeJs,
+  FaHtml5,
+  FaCss3,
+  FaAngular,
+  FaJava,
+  FaDocker,
+} from 'react-icons/fa';
+import {
+  SiNextdotjs,
+  SiRedux,
+  SiGraphql,
+  SiTypescript,
+  SiNodedotjs,
+  SiJavascript,
+  SiTensorflow,
+  SiWebpack,
+  SiJava,
+  SiAmazonaws,
+  SiTailwindcss,
+  SiMongodb,
+  SiPostgresql,
+} from 'react-icons/si';
 
-import PartnersSection from './Scroll';
+interface TechTag {
+  icon: React.ComponentType<{ size?: number; className?: string }>;
+  name: string;
+  color: string;
+}
 
-// interface TechItemProps {
-//   icon: React.ReactNode;
-//   label: string;
-// }
+const techStacks: TechTag[] = [
+  { icon: FaReact, name: 'React', color: 'bg-blue-100 text-blue-800 border-blue-200' },
+  { icon: SiNextdotjs, name: 'Next.js', color: 'bg-gray-100 text-gray-800 border-gray-200' },
+  { icon: SiTypescript, name: 'TypeScript', color: 'bg-blue-100 text-blue-800 border-blue-200' },
+  { icon: SiJavascript, name: 'JavaScript', color: 'bg-yellow-100 text-yellow-800 border-yellow-200' },
+  { icon: SiNodedotjs, name: 'Node.js', color: 'bg-green-100 text-green-800 border-green-200' },
+  { icon: SiRedux, name: 'Redux', color: 'bg-purple-100 text-purple-800 border-purple-200' },
+  { icon: SiGraphql, name: 'GraphQL', color: 'bg-pink-100 text-pink-800 border-pink-200' },
+  { icon: SiTailwindcss, name: 'Tailwind', color: 'bg-cyan-100 text-cyan-800 border-cyan-200' },
+  { icon: SiMongodb, name: 'MongoDB', color: 'bg-green-100 text-green-800 border-green-200' },
+  { icon: SiPostgresql, name: 'PostgreSQL', color: 'bg-blue-100 text-blue-800 border-blue-200' },
+  { icon: FaDatabase, name: 'Database', color: 'bg-gray-100 text-gray-800 border-gray-200' },
+  { icon: FaFire, name: 'Firebase', color: 'bg-orange-100 text-orange-800 border-orange-200' },
+  { icon: SiAmazonaws, name: 'AWS', color: 'bg-orange-100 text-orange-800 border-orange-200' },
+  { icon: FaDocker, name: 'Docker', color: 'bg-blue-100 text-blue-800 border-blue-200' },
+  { icon: SiTensorflow, name: 'TensorFlow', color: 'bg-orange-100 text-orange-800 border-orange-200' },
+  { icon: FaRobot, name: 'AI/ML', color: 'bg-purple-100 text-purple-800 border-purple-200' },
+  { icon: FaHtml5, name: 'HTML5', color: 'bg-red-100 text-red-800 border-red-200' },
+  { icon: FaCss3, name: 'CSS3', color: 'bg-blue-100 text-blue-800 border-blue-200' },
+  { icon: FaAngular, name: 'Angular', color: 'bg-red-100 text-red-800 border-red-200' },
+  { icon: FaJava, name: 'Java', color: 'bg-red-100 text-red-800 border-red-200' },
+  { icon: SiWebpack, name: 'Webpack', color: 'bg-blue-100 text-blue-800 border-blue-200' },
+];
 
-// const TechItem: React.FC<TechItemProps> = ({ icon, label }) => (
-//   <div className="flex flex-col items-center gap-2 mt-4 hover:scale-105 transform transition-transform">
-//     {icon}
-//     <span className="text-center text-sm md:text-lg lg:text-xl block mt-2">
-//       {label}
-//     </span>
-//   </div>
-// );
+const TechTag: React.FC<{ tech: TechTag }> = ({ tech }) => {
+  const { icon: Icon, name, color } = tech;
+  
+  return (
+    <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border ${color} hover:shadow-md transition-all duration-200 cursor-pointer hover:scale-105`}>
+      <Icon size={20} className="flex-shrink-0" />
+      <span className="font-medium text-sm whitespace-nowrap">{name}</span>
+    </div>
+  );
+};
 
 const TechStack: React.FC = () => (
   <div
     id="TechStack"
-    className="h-[30rem] w-full overflow-hidden items-center justify-center bg-gray-100 dark:bg-zinc-800"
+    className="py-16 w-full bg-paper-cream dark:bg-zinc-800"
   >
-    <div className="w-full flex px-4 my-8 md:my-16 justify-center mx-auto">
-      <h2 className="self-center text-5xl font-extrabold mb-4 text-center font-display">
-        My tech Stacks
-      </h2>
+    <div className="max-w-6xl mx-auto px-4">
+      <div className="text-center mb-12">
+        <h2 className="text-4xl md:text-5xl font-extrabold mb-4 text-paper-text dark:text-white font-display">
+          Unlimited possibilities
+        </h2>
+        <p className="text-lg text-paper-muted dark:text-gray-300 max-w-2xl mx-auto">
+          Discover the technologies and tools I use to create amazing digital experiences
+        </p>
+      </div>
+      
+      <div className="flex flex-wrap gap-3 justify-center items-center">
+        {techStacks.map((tech, index) => (
+          <TechTag key={index} tech={tech} />
+        ))}
+      </div>
     </div>
-    <PartnersSection />
   </div>
 );
 

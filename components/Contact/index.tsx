@@ -44,69 +44,99 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section
-      className="flex flex-col justify-center py-10 md:py-20 lg:py-32 w-full bg-base dark:bg-zinc-900"
-      id="contact"
-    >
-      <div className="w-full flex flex-wrap md:flex-nowrap justify-center py-4">
+    <div className="w-full px-2 md:px-4">
+      <section
+        className="max-w-7xl mx-auto py-12 md:py-20 bg-paper-text dark:bg-zinc-900 rounded-3xl my-8"
+        id="contact"
+      >
+      <div className="max-w-4xl mx-auto px-4 md:px-6 text-center">
         <motion.div
           initial={{ y: 50, opacity: 0.5 }}
           transition={{ duration: 1 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
-          className="w-full lg:w-2/3 flex flex-wrap md:flex-nowrap px-4"
+          className="mb-12"
         >
-          <div className="w-full md:w-1/2">
-            <div className="flex flex-col text-center mb-5 text-4xl md:text-5xl lg:text-5xl font-display text-white">
-              <span>Get in touch</span>
-              <span>for more.</span>
-            </div>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-paper-white mb-6 font-display leading-tight">
+            Let's work together to bring
+            <br />
+            your ideas to life
+          </h2>
+          <p className="text-lg md:text-xl text-paper-white/80 mb-8 max-w-2xl mx-auto">
+            Ready to start your next project? Get in touch and let's create something amazing together.
+          </p>
+          
+          <div className="btn-secondary inline-block">
+            <div className="btn-secondary-shadow"></div>
+            <button 
+              onClick={() => {
+                const formSection = document.getElementById('contact-form');
+                formSection?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="btn-secondary-content bg-accent-yellow text-paper-text hover:bg-accent-yellow/90 border-accent-yellow px-8 py-4 text-lg font-semibold"
+            >
+              Get started for free →
+            </button>
           </div>
+          
+          <p className="text-paper-white/60 text-sm mt-4">
+            No commitment required. Free consultation.
+          </p>
+        </motion.div>
+        
+        {/* Contact Form Section */}
+        <div id="contact-form" className="mt-16 pt-16 border-t border-paper-white/20">
           <form
-            className="sm:mx-auto sm:px-32 md:px-12 lg:pl-0 lg:pr-0 flex flex-col w-full md:w-1/2"
+            className="max-w-2xl mx-auto"
             ref={form}
             onSubmit={sendEmail}
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               <input
                 type="text"
                 name="name"
                 required
-                placeholder="Name*"
-                className="form-control bg-red-50 border-2 border-black mt-4 p-2 text-black rounded-md"
+                placeholder="Your Name*"
+                className="w-full px-4 py-3 bg-paper-white/10 border border-paper-white/20 rounded-xl text-paper-white placeholder-paper-white/60 focus:outline-none focus:border-accent-yellow focus:bg-paper-white/20 transition-all duration-200"
               />
               <input
-                type="text"
-                name="subject"
+                type="email"
+                name="email"
                 required
-                placeholder="Subject*"
-                className="form-control bg-red-50 border-2 border-black mt-4 p-2 text-black rounded-md"
+                placeholder="Your Email*"
+                className="w-full px-4 py-3 bg-paper-white/10 border border-paper-white/20 rounded-xl text-paper-white placeholder-paper-white/60 focus:outline-none focus:border-accent-yellow focus:bg-paper-white/20 transition-all duration-200"
               />
             </div>
             <input
-              type="email"
-              name="email"
+              type="text"
+              name="subject"
               required
-              placeholder="Email*"
-              className="form-control bg-red-50 border-2 border-black mt-4 p-2 text-black rounded-md"
+              placeholder="Project Subject*"
+              className="w-full px-4 py-3 mb-6 bg-paper-white/10 border border-paper-white/20 rounded-xl text-paper-white placeholder-paper-white/60 focus:outline-none focus:border-accent-yellow focus:bg-paper-white/20 transition-all duration-200"
             />
             <textarea
               name="message"
               required
-              placeholder="Message*"
-              className="form-control bg-red-50 border-2 border-black mt-4 p-2 text-black rounded-md"
+              rows={6}
+              placeholder="Tell me about your project...*"
+              className="w-full px-4 py-3 mb-6 bg-paper-white/10 border border-paper-white/20 rounded-xl text-paper-white placeholder-paper-white/60 focus:outline-none focus:border-accent-yellow focus:bg-paper-white/20 transition-all duration-200 resize-none"
             />
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full md:w-24 mx-auto py-2 px-4 mt-4 shadow-sm text-sm text-white border border-primary hover:bg-gray-600 cursor-pointer border-glow-green rounded-md disabled:opacity-50"
-            >
-              {loading ? 'Sending...' : 'Send'}
-            </button>
+            <div className="btn-primary inline-block">
+              <div className="btn-primary-bg"></div>
+              <div className="btn-primary-shadow"></div>
+              <button
+                type="submit"
+                disabled={loading}
+                className="btn-primary-content px-8 py-3 text-lg font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {loading ? 'Sending...' : 'Send Message'}
+              </button>
+            </div>
           </form>
-        </motion.div>
+        </div>
       </div>
-    </section>
+      </section>
+    </div>
   );
 };
 
