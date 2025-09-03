@@ -2,6 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Paper Design Button Components */
+@layer components {
+  .btn-primary {
+    @apply relative inline-block;
+  }
+  
+  .btn-primary-bg {
+    @apply absolute inset-0 bg-accent-yellow rounded-xl transform translate-x-0 translate-y-0 opacity-0 transition-all duration-200;
+  }
+  
+  .btn-primary-shadow {
+    @apply absolute inset-0 bg-accent-coral rounded-xl transform translate-x-0 translate-y-0 opacity-0 transition-all duration-200;
+  }
+  
+  .btn-primary-content {
+    @apply relative px-6 py-3 bg-paper-text text-paper-white rounded-xl font-medium transition-all duration-200;
+  }
+  
+  .btn-primary:hover .btn-primary-bg {
+    @apply translate-x-1 translate-y-1 opacity-100;
+  }
+  
+  .btn-primary:hover .btn-primary-shadow {
+    @apply translate-x-0.5 translate-y-0.5 opacity-100;
+  }
+  
+  .btn-secondary {
+    @apply relative inline-block;
+  }
+  
+  .btn-secondary-shadow {
+    @apply absolute inset-0 bg-paper-text rounded-full transform translate-x-0 translate-y-0 opacity-0 transition-all duration-200;
+  }
+  
+  .btn-secondary-content {
+    @apply relative px-6 py-3 bg-paper-white text-paper-text border-2 border-paper-text rounded-full font-medium transition-all duration-200;
+  }
+  
+  .btn-secondary:hover .btn-secondary-shadow {
+    @apply translate-x-1 translate-y-1 opacity-100;
+  }
+}
+
 .border-gradient-shiny {
   border-image: linear-gradient(45deg, #ff6b6b, #d610dd);
   border-image-slice: 1;

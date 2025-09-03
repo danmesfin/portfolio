@@ -74,7 +74,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         onClick={() => openModal(project)}
         className="cursor-pointer"
       >
-        <div className="p-5 border border-gray-300 dark:border-gray-700 bg-white bg-opacity-40 dark:bg-zinc-800 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+        <div className="p-6 bg-paper-white rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300">
           <div className="relative w-full h-48 md:h-64 lg:h-72 overflow-hidden rounded-md mb-4">
             <Image
               src={project.imgurl}
@@ -84,24 +84,27 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
               className="transform transition-transform duration-300 hover:scale-105"
             />
           </div>
-          <div className="text-gray-800 dark:text-white">
+          <div className="text-paper-text">
             <h3 className="text-2xl font-display font-bold mb-2">
               {project.title}
             </h3>
-            <p className="text-lg text-gray-600 dark:text-gray-300 font-hand">
+            <p className="text-lg text-paper-muted font-hand">
               {project.role}
             </p>
           </div>
           <div className="mt-4">
-            <a
-              href={project.projecturl}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-block px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-md transition-colors"
-              onClick={(e) => e.stopPropagation()}
-            >
-              View Project
-            </a>
+            <div className="btn-primary inline-block" onClick={(e) => e.stopPropagation()}>
+              <div className="btn-primary-bg"></div>
+              <div className="btn-primary-shadow"></div>
+              <a
+                href={project.projecturl}
+                target="_blank"
+                rel="noreferrer"
+                className="btn-primary-content block"
+              >
+                View Project
+              </a>
+            </div>
           </div>
         </div>
       </Parallax>

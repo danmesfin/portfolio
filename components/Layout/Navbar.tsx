@@ -38,12 +38,13 @@ function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 z-[99] px-2 py-2 md:px-10">
-      <div className="flex flex-wrap justify-between items-center mx-auto">
+    <header className="sticky top-0 z-[99] px-2 py-3 md:px-10">
+      <div className="bg-paper-white/95 backdrop-blur-sm shadow-paper rounded-2xl mx-2 md:mx-4 px-4 py-3 border border-paper-border">
+        <div className="flex flex-wrap justify-between items-center mx-auto">
         <Link href="/">
-          <div className="cursor-pointer flex justify-center text-xl font-display whitespace-nowrap text-primary">
-            <p className="my-auto text-3xl">
-              D<span className="text-primary">M</span>
+          <div className="cursor-pointer flex justify-center text-xl font-display whitespace-nowrap text-paper-text hover:text-accent-coral transition-colors duration-200">
+            <p className="my-auto text-3xl font-bold">
+              D<span className="text-accent-coral">M</span>
             </p>
           </div>
         </Link>
@@ -52,7 +53,7 @@ function Navbar() {
           <button
             onClick={() => setNavActive(!navActive)}
             type="button"
-            className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+            className="inline-flex items-center p-2 ml-3 text-sm text-paper-muted rounded-xl hover:bg-paper-light hover:shadow-paper-hover focus:outline-none focus:ring-2 focus:ring-accent-coral/20 transition-all duration-200"
           >
             <span className="sr-only">Open main menu</span>
             <svg
@@ -72,11 +73,11 @@ function Navbar() {
         </div>
 
         <div
-          className={`w-full bg-base dark:bg-black bg-opacity-50 rounded-lg md:block md:w-auto dark:bg-opacity-100 ${
-            navActive ? '' : 'hidden'
+          className={`w-full bg-paper-white/95 backdrop-blur-sm shadow-paper rounded-2xl border border-paper-border md:block md:w-auto md:bg-transparent md:shadow-none md:border-0 ${
+            navActive ? 'mt-4' : 'hidden'
           }`}
         >
-          <ul className="flex flex-col items-center py-2 px-4 mt-4 rounded-lg border border-primary md:flex-row md:space-x-8 md:mt-0 md:font-medium md:border-0">
+          <ul className="flex flex-col items-center py-3 px-4 md:flex-row md:space-x-8 md:py-0 md:px-0 md:font-medium">
             {Menu.map((menu, idx) => (
               <Navitem
                 key={menu.title}
@@ -89,8 +90,7 @@ function Navbar() {
             ))}
 
             <div
-              className="flex justify-center items-center w-7 h-7 mx-2 my-1 hover:bg-gray-200
-             dark:hover:bg-gray-500 rounded-full"
+              className="flex justify-center items-center w-8 h-8 mx-2 my-1 hover:bg-paper-light hover:shadow-paper rounded-full transition-all duration-200"
             >
               {renderThemechanger()}
             </div>
@@ -99,14 +99,16 @@ function Navbar() {
               target="_blank"
               onClick={closeNav}
             >
-              <div
-                className="px-2 py-1 my-1 rounded-lg transform delay-75 duration-100 border border-white dark:border-primary hover:bg-orange-300
-              text-white  dark:text-primary dark:hover:text-black"
-              >
-                See Resume
+              <div className="btn-primary">
+                <div className="btn-primary-bg"></div>
+                <div className="btn-primary-shadow"></div>
+                <div className="btn-primary-content">
+                  See Resume
+                </div>
               </div>
             </a>
           </ul>
+        </div>
         </div>
       </div>
     </header>

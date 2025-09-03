@@ -19,7 +19,7 @@ export default function CaseStudyCard({ caseStudy, onClick, isActive = false }: 
       onClick={onClick}
     >
       {/* Main Card Container */}
-      <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-zinc-900 to-black">
+      <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] rounded-2xl overflow-hidden shadow-lg bg-paper-white border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-shadow duration-300">
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
@@ -29,24 +29,24 @@ export default function CaseStudyCard({ caseStudy, onClick, isActive = false }: 
             className="object-cover transition-transform duration-700 group-hover:scale-110"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
-          {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80" />
+          {/* Light Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-paper-text/80 via-paper-text/20 to-transparent" />
         </div>
 
         {/* Content Overlay */}
-        <div className="absolute inset-0 p-8 flex flex-col justify-end text-white">
+        <div className="absolute inset-0 p-8 flex flex-col justify-end text-paper-white">
           {/* Technology Tags */}
           <div className="mb-4 flex flex-wrap gap-2">
             {caseStudy.technologies.slice(0, 3).map((tech, index) => (
               <span
                 key={index}
-                className="px-3 py-1 text-xs font-medium bg-white/20 backdrop-blur-sm rounded-full border border-white/30"
+                className="px-3 py-1 text-xs font-medium bg-paper-white/90 text-paper-text backdrop-blur-sm rounded-full border border-paper-border"
               >
                 {tech}
               </span>
             ))}
             {caseStudy.technologies.length > 3 && (
-              <span className="px-3 py-1 text-xs font-medium bg-white/20 backdrop-blur-sm rounded-full border border-white/30">
+              <span className="px-3 py-1 text-xs font-medium bg-paper-white/90 text-paper-text backdrop-blur-sm rounded-full border border-paper-border">
                 +{caseStudy.technologies.length - 3} more
               </span>
             )}
@@ -58,18 +58,20 @@ export default function CaseStudyCard({ caseStudy, onClick, isActive = false }: 
           </h3>
 
           {/* Role */}
-          <p className="text-orange-400 font-medium mb-2 uppercase tracking-wide text-sm">
+          <p className="text-accent-coral font-medium mb-2 uppercase tracking-wide text-sm">
             {caseStudy.role}
           </p>
 
           {/* Description */}
-          <p className="text-zinc-200 text-lg leading-relaxed mb-6 line-clamp-3">
+          <p className="text-paper-white/90 text-lg leading-relaxed mb-6 line-clamp-3">
             {caseStudy.excerpt}
           </p>
 
           {/* CTA Button */}
           <div className="flex items-center justify-between">
-            <button className="group/btn flex items-center space-x-2 bg-orange-500 hover:bg-orange-600 px-6 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105">
+            <div className="btn-secondary group/btn">
+              <div className="btn-secondary-shadow"></div>
+              <button className="btn-secondary-content flex items-center space-x-2 font-semibold">
               <span>View Case Study</span>
               <svg
                 className="w-4 h-4 transition-transform group-hover/btn:translate-x-1"
@@ -84,7 +86,8 @@ export default function CaseStudyCard({ caseStudy, onClick, isActive = false }: 
                   d="M9 5l7 7-7 7"
                 />
               </svg>
-            </button>
+              </button>
+            </div>
 
             {/* Live Demo Link */}
             {caseStudy.liveUrl && (
@@ -92,7 +95,7 @@ export default function CaseStudyCard({ caseStudy, onClick, isActive = false }: 
                 href={caseStudy.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center space-x-1 text-white/80 hover:text-white transition-colors"
+                className="flex items-center space-x-1 text-paper-white/80 hover:text-paper-white transition-colors"
                 onClick={(e) => e.stopPropagation()}
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -110,13 +113,8 @@ export default function CaseStudyCard({ caseStudy, onClick, isActive = false }: 
         </div>
 
         {/* Hover Effect Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-orange-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="absolute inset-0 bg-gradient-to-t from-accent-coral/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </div>
-
-      {/* Movie-style Glow Effect */}
-      <div className={`absolute -inset-1 bg-gradient-to-r from-orange-500 to-pink-500 rounded-2xl blur-lg opacity-0 group-hover:opacity-30 transition-opacity duration-300 -z-10 ${
-        isActive ? 'opacity-20' : ''
-      }`} />
     </div>
   );
 }

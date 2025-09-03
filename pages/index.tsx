@@ -8,6 +8,8 @@ import Projects from '../components/Projects';
 import Services from '../components/Services';
 import TeckStacks from '../components/TechStacks';
 import Experience from '../components/Experience';
+import BentoGrid from '../components/BentoGrid';
+import CaseStudyCarousel from '../components/CaseStudyGrid';
 import { getCaseStudies, CaseStudy } from '../utils/getCaseStudies';
 
 interface HomeProps {
@@ -23,7 +25,9 @@ function Home({ caseStudies }: HomeProps) {
       <Banner />
       <About />
       <Experience />
-      <Projects caseStudies={caseStudies} />
+      {/* <Projects caseStudies={caseStudies} /> */}
+      <BentoGrid />
+      <CaseStudyCarousel />
       <Services />
       <TeckStacks />
       <Contact />
