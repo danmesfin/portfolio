@@ -77,7 +77,7 @@ const Services = () => {
   };
 
   return (
-    <section className="bg-gray-100 py-16 dark:bg-zinc-800">
+    <section className="py-16">
       <div className="container mx-auto">
         <motion.h2
           initial={{ y: 50, opacity: 0 }}
@@ -96,7 +96,7 @@ const Services = () => {
           {serviceCategories.map((category) => (
             <motion.div
               key={category.category}
-              className="bg-white dark:bg-zinc-700 p-6 rounded-lg shadow-lg transition duration-300 hover:shadow-xl flex flex-col items-center"
+              className="dark:bg-zinc-700 p-6 border border-zinc-600 rounded-lg flex flex-col items-center"
               variants={itemVariants}
               whileHover={{ scale: 1.05 }}
             >

@@ -186,7 +186,7 @@ const CaseStudyCarousel: React.FC = () => {
   };
 
   return (
-    <section className="py-12 sm:py-16 lg:py-20 bg-paper-cream dark:bg-zinc-800" id="case-studies">
+    <section className="py-12 sm:py-16 lg:py-20" id="case-studies">
       <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
         <div className="text-center mb-8 sm:mb-12 lg:mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-3 sm:mb-4 lg:mb-6 text-paper-text dark:text-white font-display leading-tight">

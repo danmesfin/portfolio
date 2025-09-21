@@ -4,9 +4,8 @@ import { GetStaticProps } from 'next';
 import Banner from '../components/Banner';
 import About from '../components/About';
 import Contact from '../components/Contact';
-import Projects from '../components/Projects';
 import Services from '../components/Services';
-import TeckStacks from '../components/TechStacks';
+import TechStacks from '../components/TechStacks';
 import Experience from '../components/Experience';
 import BentoGrid from '../components/BentoGrid';
 import CaseStudyCarousel from '../components/CaseStudyGrid';
@@ -23,13 +22,12 @@ function Home({ caseStudies }: HomeProps) {
         <title>Daniel Mesfin</title>
       </Head>
       <Banner />
-      <About />
-      <Experience />
-      {/* <Projects caseStudies={caseStudies} /> */}
+      {/* <About /> */}
       <BentoGrid />
       <CaseStudyCarousel />
+      <Experience />
       <Services />
-      <TeckStacks />
+      <TechStacks />
       <Contact />
     </div>
   );

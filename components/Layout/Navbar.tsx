@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Navitem from '../Navitem';
 import ThemeChanger from '../Button';
+import { SiFacebook, SiGithub, SiInstagram, SiLinkedin } from 'react-icons/si';
 
 function Navbar() {
   const [mounted, setMounted] = useState(false);
@@ -38,16 +39,50 @@ function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 z-[99] px-2 py-3 md:px-10">
-      <div className="bg-paper-white/95 backdrop-blur-sm shadow-paper rounded-2xl mx-2 md:mx-4 px-4 py-3 border border-paper-border">
+    <header className="top-0 z-[99] px-2 py-3 md:px-10">
+      <div className="bg-paper-white/95 backdrop-blur-sm rounded-2xl mx-2 md:mx-4 px-4 py-3">
         <div className="flex flex-wrap justify-between items-center mx-auto">
         <Link href="/">
           <div className="cursor-pointer flex justify-center text-xl font-display whitespace-nowrap text-paper-text hover:text-accent-coral transition-colors duration-200">
             <p className="my-auto text-3xl font-bold">
-              D<span className="text-accent-coral">M</span>
+              D<span className="">M</span>
             </p>
           </div>
         </Link>
+              <div className="flex mx-auto">
+        <Link
+          className="mx-3 hover:bg-gray-400 dark:hover:bg-gray-500 rounded-full"
+          href="http://github.com/danmesfin"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <SiGithub className="h-6 w-6" />
+        </Link>
+        <Link
+          className="mx-3 hover:bg-gray-400 dark:hover:bg-gray-500 rounded-full"
+          href="http://linkedin.com/in/danielmesfin"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <SiLinkedin className="h-6 w-6" />
+        </Link>
+        <Link
+          className="mx-3 hover:bg-gray-400 dark:hover:bg-gray-500 rounded-full"
+          href="http://instagram.com/danmesfinn"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <SiInstagram className="h-6 w-6" />
+        </Link>
+        <Link
+          className="mx-3 hover:bg-gray-400 dark:hover:bg-gray-500 rounded-full"
+          href="http://facebook.com/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <SiFacebook className="h-6 w-6" />
+        </Link>
+      </div>
 
         <div className="flex md:hidden">
           <button

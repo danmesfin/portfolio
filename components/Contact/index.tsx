@@ -46,7 +46,7 @@ const Contact: React.FC = () => {
   return (
     <div className="w-full px-2 md:px-4">
       <section
-        className="max-w-7xl mx-auto py-12 md:py-20 bg-paper-text dark:bg-zinc-900 rounded-3xl my-8"
+        className="max-w-7xl mx-auto py-12 md:py-20 bg-paper-text rounded-3xl my-8"
         id="contact"
       >
       <div className="max-w-4xl mx-auto px-4 md:px-6 text-center">
