@@ -4,7 +4,6 @@ import {
   FaDatabase,
   FaFire,
   FaRobot,
-  FaNodeJs,
   FaHtml5,
   FaCss3,
   FaAngular,
@@ -61,7 +60,7 @@ const TechTag: React.FC<{ tech: TechTag }> = ({ tech }) => {
   const { icon: Icon, name, color } = tech;
   
   return (
-    <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border ${color} hover:shadow-md transition-all duration-200 cursor-pointer hover:scale-105`}>
+    <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border`}>
       <Icon size={20} className="flex-shrink-0" />
       <span className="font-medium text-sm whitespace-nowrap">{name}</span>
     </div>
@@ -71,7 +70,7 @@ const TechTag: React.FC<{ tech: TechTag }> = ({ tech }) => {
 const TechStack: React.FC = () => (
   <div
     id="TechStack"
-    className="py-16 w-full bg-paper-cream dark:bg-zinc-800"
+    className="py-16 w-full"
   >
     <div className="max-w-6xl mx-auto px-4">
       <div className="text-center mb-12">

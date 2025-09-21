@@ -30,26 +30,26 @@ const projects: BentoProject[] = [
   },
   {
     id: '2',
-    title: 'The carbon games',
-    description: 'Ride sharing app on blockchain maintaining sustainability. Meetups for Carpooling.',
-    image: '/images/thecarbongames-eventcarpooling.png',
-    technologies: [SiNextdotjs, FaReact],
-    liveUrl: 'https://thecarbongames.com',
-    size: 'medium',
-    color: 'bg-green-100',
-    textColor: 'text-gray-900'
-  },
-  {
-    id: '3',
     title: 'Sebl: AI Farm Assist',
     description: 'Farm Assistant App with AI-powered plant disease detection and crop yield prediction',
     image: '/images/sebl-mobile-01.webp',
     technologies: [FaReact, SiTypescript],
     githubUrl: 'https://github.com/danmesfin/sebl-mobile',
-    size: 'medium',
+    size: 'small',
     color: 'bg-purple-100',
     textColor: 'text-gray-900'
   },
+  // {
+  //   id: '3',
+  //   title: 'Shopx Mobile',
+  //   description: 'E-commerce mobile app with cart functionality and category browsing',
+  //   image: '/images/shopx-mobile-01.webp',
+  //   technologies: [FaReact, SiTypescript],
+  //   githubUrl: 'https://github.com/danmesfin/shopx-mobile',
+  //   size: 'medium',
+  //   color: 'bg-yellow-100',
+  //   textColor: 'text-gray-900'
+  // },
   {
     id: '4',
     title: 'Covid-19 Tracker',
@@ -61,28 +61,29 @@ const projects: BentoProject[] = [
     color: 'bg-orange-100',
     textColor: 'text-gray-900'
   },
-  {
-    id: '5',
-    title: 'Shopx - E-commerce',
-    description: 'Innovative e-commerce platform with seamless shopping experience',
-    image: '/images/shopx.webp',
-    technologies: [FaReact, SiNextdotjs, SiTailwindcss],
-    liveUrl: 'http://shopx.vercel.app',
-    size: 'small',
-    color: 'bg-cyan-100',
-    textColor: 'text-red-900'
-  },
-  {
+  // {
+  //   id: '5',
+  //   title: 'Shopx - E-commerce',
+  //   description: 'Innovative e-commerce platform with seamless shopping experience',
+  //   image: '/images/shopx.webp',
+  //   technologies: [FaReact, SiNextdotjs, SiTailwindcss],
+  //   liveUrl: 'http://shopx.vercel.app',
+  //   size: 'small',
+  //   color: 'bg-cyan-100',
+  //   textColor: 'text-red-900'
+  // },
+   {
     id: '6',
-    title: 'Shopx Mobile',
-    description: 'E-commerce mobile app with cart functionality and category browsing',
-    image: '/images/shopx-mobile-01.webp',
-    technologies: [FaReact, SiTypescript],
-    githubUrl: 'https://github.com/danmesfin/shopx-mobile',
-    size: 'small',
-    color: 'bg-yellow-100',
+    title: 'The carbon games',
+    description: 'Ride sharing app on blockchain maintaining sustainability. Meetups for Carpooling.',
+    image: '/images/thecarbongames-eventcarpooling.png',
+    technologies: [SiNextdotjs, FaReact],
+    liveUrl: 'https://thecarbongames.com',
+    size: 'large',
+    color: 'bg-green-100',
     textColor: 'text-gray-900'
   }
+
 ];
 
 const BentoCard: React.FC<{ project: BentoProject }> = ({ project }) => {
@@ -144,12 +145,12 @@ const BentoCard: React.FC<{ project: BentoProject }> = ({ project }) => {
     <div className={`${sizeClasses[project.size]} ${project.color} rounded-2xl p-3 sm:p-4 md:p-6 cursor-pointer border border-black flex flex-col gap-3 sm:gap-4`}>
       {/* Project Image Frame */}
       {project.image && (
-        <div className={`relative w-full ${getImageHeight()} rounded-xl overflow-hidden border-2 border-gray-300 bg-white flex-shrink-0`}>
+        <div className={`relative w-full aspect-video rounded-xl overflow-hidden border-2 border-gray-300 bg-white flex-shrink-0`}>
           <Image
             src={project.image}
             alt={project.title}
             fill
-            className="object-cover"
+            className="object-contain"
           />
         </div>
       )}
@@ -215,14 +216,14 @@ const BentoCard: React.FC<{ project: BentoProject }> = ({ project }) => {
 
 const BentoGrid: React.FC = () => {
   return (
-    <section className="py-12 sm:py-16 lg:py-20 bg-paper-cream dark:bg-zinc-800" id="projects">
+    <section className="py-12 sm:py-16 lg:py-20" id="projects">
       <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
         <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-3 sm:mb-4 lg:mb-6 text-paper-text dark:text-white font-display leading-tight">
+          {/* <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-3 sm:mb-4 lg:mb-6 text-paper-text dark:text-white font-display leading-tight">
             Featured Projects
-          </h2>
-          <p className="text-md sm:text-lg lg:text-xl text-paper-muted dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
-            A collection of projects showcasing different technologies and design approaches
+          </h2> */}
+          <p className="font-hand text-2xl sm:text-2xl lg:text-2xl text-paper-text dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
+            A collection of projects I worked on showcasing different technologies and design approaches
           </p>
         </div>
         
