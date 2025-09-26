@@ -20,37 +20,31 @@ export default function Index() {
         <div className="h-4/5 mx-auto flex flex-wrap-reverse md:flex-row md:flex-nowrap">
           <div className="w-full md:w-1/2 flex flex-col px-5 md:pl-40 justify-start md:justify-center py-5">
             <div
-              className="flex flex-col mt-4 p-1 font-display text-paper-text dark:text-primary
+              className="flex flex-col mt-4 p-1 font-display text-paper-text dark:text-white
                text-center md:text-left text-4xl md:text-5xl"
             >
               <span>HI, I&apos;M DANIEL.</span>
               <span>A FULLSTACK DEVELOPER</span>
               <span>BASED IN ADDIS</span>
             </div>
-            <span className="text-paper-text text-center md:text-start text-3xl font-hand font-bold md:text-4xl mt-4 p-1 dark:text-primary">
+            <span className="text-paper-text dark:text-gray-300 text-center md:text-start text-3xl font-hand font-bold md:text-4xl mt-4 p-1">
               DESIGN - DEVELOP - DEPLOY
             </span>
-            <div className="flex mt-4 p-1 mx-auto md:ml-0 text-paper-text">
+            <div className="flex mt-4 p-1 mx-auto md:ml-0">
               <a href="#contact">
                 <span
-                  className="py-3 px-4 text-lg rounded-lg transform delay-75 duration-100 border border-black dark:border-primary hover:border-black
-                dark:text-primary dark:hover:text-black dark:hover:border-orange-300 hover:border-black hover:text-black"
+                  className="py-3 px-4 text-lg rounded-lg transform delay-75 duration-100 border border-black dark:border-gray-600 hover:border-black
+                text-paper-text dark:text-gray-300 dark:hover:text-white dark:hover:border-accent-coral hover:border-black hover:text-black dark:hover:bg-gray-800 transition-all"
                 >
                   Got a project?
                 </span>
                 <span
                   className="py-3 ml-4 px-4 text-lg rounded-lg transform delay-75
-                   duration-100 border border-black dark:border-primary hover:border-black dark:hover:text-black dark:hover:border-orange-300 hover:border-black hover:text-black"
+                   duration-100 border border-black dark:border-gray-600 hover:border-black text-paper-text dark:text-gray-300 dark:hover:text-white dark:hover:border-accent-coral hover:border-black hover:text-black dark:hover:bg-gray-800 transition-all"
                 >
                   Let&apos;s talk
                 </span>
               </a>
-              <style jsx>{`
-                a:hover .btn-primary-bg,
-                a:hover .btn-secondary-shadow {
-                  border: 1px solid;
-                }
-              `}</style>
             </div>
           </div>
           <div
