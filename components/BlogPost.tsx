@@ -32,7 +32,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ frontmatter, markdownBody }) => {
         />
         <link rel="canonical" href="https://danielmesfin.com/blogs" />
       </Head>
-      
+
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
         {/* Back Button */}
         <div className="mb-8">
@@ -40,8 +40,18 @@ const BlogPost: React.FC<BlogPostProps> = ({ frontmatter, markdownBody }) => {
             href="/blogs"
             className="flex items-center space-x-2 bg-white border border-black px-4 py-2 rounded-xl hover:bg-gray-50 transition-colors w-fit"
           >
-            <svg className="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            <svg
+              className="w-5 h-5 text-gray-900"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 19l-7-7 7-7"
+              />
             </svg>
             <span className="text-gray-900 font-medium">Back to Blog</span>
           </Link>
@@ -85,8 +95,18 @@ const BlogPost: React.FC<BlogPostProps> = ({ frontmatter, markdownBody }) => {
             className="bg-gray-900 text-white hover:bg-gray-800 px-8 py-4 rounded-xl font-semibold text-lg transition-colors inline-flex items-center space-x-2"
           >
             <span>See All Posts</span>
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
             </svg>
           </Link>
         </div>

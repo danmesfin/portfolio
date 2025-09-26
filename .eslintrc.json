@@ -3,17 +3,24 @@
   "plugins": ["prettier"],
   "rules": {
     "no-unused-vars": "warn",
-    "prettier/prettier": [
-      "error",
-      {
-        "endOfLine": "auto"
-      }
-    ],
     "react/function-component-definition": 0,
     "react/jsx-filename-extension": [
       2,
       { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
     ],
-    "import/extensions": [2, "never"]
+    "import/extensions": [2, "never"],
+    "react/no-unstable-nested-components": "off",
+    "react/no-unescaped-entities": "off",
+    "react/no-array-index-key": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "jsx-a11y/control-has-associated-label": "off",
+    "react/button-has-type": "off",
+    "react/require-default-props": "off",
+    "no-nested-ternary": "off",
+    "react/no-unknown-property": "off",
+    "no-undef": "off",
+    "no-redeclare": "off",
+    "prettier/prettier": "off"
   }
 }

@@ -8,7 +8,11 @@ interface CaseStudyCardProps {
   isActive?: boolean;
 }
 
-export default function CaseStudyCard({ caseStudy, onClick, isActive = false }: CaseStudyCardProps) {
+export default function CaseStudyCard({
+  caseStudy,
+  onClick,
+  isActive = false,
+}: CaseStudyCardProps) {
   const mainImage = caseStudy.images[0] || '/images/placeholder-project.png';
 
   return (
@@ -70,22 +74,22 @@ export default function CaseStudyCard({ caseStudy, onClick, isActive = false }: 
           {/* CTA Button */}
           <div className="flex items-center justify-between">
             <div className="btn-secondary group/btn">
-              <div className="btn-secondary-shadow"></div>
+              <div className="btn-secondary-shadow" />
               <button className="btn-secondary-content flex items-center space-x-2 font-semibold">
-              <span>View Case Study</span>
-              <svg
-                className="w-4 h-4 transition-transform group-hover/btn:translate-x-1"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
+                <span>View Case Study</span>
+                <svg
+                  className="w-4 h-4 transition-transform group-hover/btn:translate-x-1"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
               </button>
             </div>
 
@@ -98,7 +102,12 @@ export default function CaseStudyCard({ caseStudy, onClick, isActive = false }: 
                 className="flex items-center space-x-1 text-paper-white/80 hover:text-paper-white transition-colors"
                 onClick={(e) => e.stopPropagation()}
               >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"

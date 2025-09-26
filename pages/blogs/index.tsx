@@ -18,7 +18,8 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ blogs }) => (
           Blogs
         </h1>
         <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
-          Insights, tutorials, and thoughts on web development, design, and technology
+          Insights, tutorials, and thoughts on web development, design, and
+          technology
         </p>
       </div>
 
@@ -28,14 +29,14 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ blogs }) => (
           // Define color variations for the top section
           const colors = [
             'bg-blue-300',
-            'bg-purple-300', 
+            'bg-purple-300',
             'bg-green-300',
             'bg-yellow-300',
             'bg-pink-300',
-            'bg-orange-300'
+            'bg-orange-300',
           ];
           const cardColor = colors[index % colors.length];
-          
+
           return (
             <Link key={blog.slug} href={`/blogs/${blog.slug}`}>
               <div className="rounded-lg border border-black overflow-hidden hover:shadow-lg transition-all duration-300 group hover:-translate-y-1">

@@ -88,14 +88,15 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             <h3 className="text-2xl font-display font-bold mb-2">
               {project.title}
             </h3>
-            <p className="text-lg text-paper-muted font-hand">
-              {project.role}
-            </p>
+            <p className="text-lg text-paper-muted font-hand">{project.role}</p>
           </div>
           <div className="mt-4">
-            <div className="btn-primary inline-block" onClick={(e) => e.stopPropagation()}>
-              <div className="btn-primary-bg"></div>
-              <div className="btn-primary-shadow"></div>
+            <div
+              className="btn-primary inline-block"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="btn-primary-bg" />
+              <div className="btn-primary-shadow" />
               <a
                 href={project.projecturl}
                 target="_blank"

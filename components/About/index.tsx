@@ -3,10 +3,7 @@ import Image from 'next/image';
 
 function About() {
   return (
-    <section
-      className="relative pb-[40rem] md:pb-[5rem]"
-      id="about"
-    >
+    <section className="relative pb-[40rem] md:pb-[5rem]" id="about">
       {/* <svg
         className="w-full block-edge absolute top-[0rem] z-10 dark:text-black text-orangish"
         xmlns="http://www.w3.org/2000/svg"

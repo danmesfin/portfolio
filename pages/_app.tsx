@@ -21,11 +21,20 @@ function MyApp({ Component, pageProps }: AppProps) {
             focusable="false"
             width="0"
             height="0"
-            style={{ position: 'absolute', width: 0, height: 0, overflow: 'hidden' }}
+            style={{
+              position: 'absolute',
+              width: 0,
+              height: 0,
+              overflow: 'hidden',
+            }}
           >
             <defs>
               <filter id="grain">
-                <feTurbulence type="turbulence" baseFrequency="0.69" numOctaves="2" />
+                <feTurbulence
+                  type="turbulence"
+                  baseFrequency="0.69"
+                  numOctaves="2"
+                />
               </filter>
             </defs>
           </svg>

@@ -21,13 +21,13 @@ const PaperButton: React.FC<PaperButtonProps> = ({
     <div className={`btn-${variant} ${className}`}>
       {variant === 'primary' ? (
         <>
-          <div className="btn-primary-bg"></div>
-          <div className="btn-primary-shadow"></div>
+          <div className="btn-primary-bg" />
+          <div className="btn-primary-shadow" />
           <div className="btn-primary-content">{children}</div>
         </>
       ) : (
         <>
-          <div className="btn-secondary-shadow"></div>
+          <div className="btn-secondary-shadow" />
           <div className="btn-secondary-content">{children}</div>
         </>
       )}
