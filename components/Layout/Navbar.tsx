@@ -47,10 +47,10 @@ function Navbar() {
 
   return (
     <header className="top-0 z-[99] px-2 py-3 md:px-10">
-      <div className="bg-paper-white/95 backdrop-blur-sm rounded-2xl mx-2 md:mx-4 px-4 py-3">
+      <div className="bg-paper-white/95 dark:bg-gray-900/95 backdrop-blur-sm rounded-2xl mx-2 md:mx-4 px-4 py-3 border border-paper-border dark:border-gray-700">
         <div className="flex flex-wrap justify-between items-center mx-auto">
           <Link href="/">
-            <div className="cursor-pointer flex justify-center text-xl font-display whitespace-nowrap text-paper-text hover:text-accent-coral transition-colors duration-200">
+            <div className="cursor-pointer flex justify-center text-xl font-display whitespace-nowrap text-paper-text dark:text-white hover:text-accent-coral dark:hover:text-accent-coral transition-colors duration-200">
               <p className="my-auto text-3xl font-bold">
                 D<span className="">M</span>
               </p>
@@ -58,7 +58,7 @@ function Navbar() {
           </Link>
           <div className="flex mx-auto">
             <Link
-              className="mx-3 hover:bg-gray-400 dark:hover:bg-gray-500 rounded-full"
+              className="mx-3 p-2 text-paper-text dark:text-gray-300 hover:text-accent-coral dark:hover:text-accent-coral hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-all duration-200"
               href="http://github.com/danmesfin"
               target="_blank"
               rel="noreferrer"
@@ -66,7 +66,7 @@ function Navbar() {
               <SiGithub className="h-6 w-6" />
             </Link>
             <Link
-              className="mx-3 hover:bg-gray-400 dark:hover:bg-gray-500 rounded-full"
+              className="mx-3 p-2 text-paper-text dark:text-gray-300 hover:text-accent-coral dark:hover:text-accent-coral hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-all duration-200"
               href="http://linkedin.com/in/danielmesfin"
               target="_blank"
               rel="noreferrer"
@@ -74,7 +74,7 @@ function Navbar() {
               <SiLinkedin className="h-6 w-6" />
             </Link>
             <Link
-              className="mx-3 hover:bg-gray-400 dark:hover:bg-gray-500 rounded-full"
+              className="mx-3 p-2 text-paper-text dark:text-gray-300 hover:text-accent-coral dark:hover:text-accent-coral hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-all duration-200"
               href="http://instagram.com/danmesfinn"
               target="_blank"
               rel="noreferrer"
@@ -82,7 +82,7 @@ function Navbar() {
               <SiInstagram className="h-6 w-6" />
             </Link>
             <Link
-              className="mx-3 hover:bg-gray-400 dark:hover:bg-gray-500 rounded-full"
+              className="mx-3 p-2 text-paper-text dark:text-gray-300 hover:text-accent-coral dark:hover:text-accent-coral hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-all duration-200"
               href="mailto:danielmsfn@gmail.com"
               target="_blank"
               rel="noreferrer"
@@ -90,7 +90,7 @@ function Navbar() {
               <SiGmail className="h-6 w-6" />
             </Link>
             <Link
-              className="mx-3 hover:bg-gray-400 dark:hover:bg-gray-500 rounded-full"
+              className="mx-3 p-2 text-paper-text dark:text-gray-300 hover:text-accent-coral dark:hover:text-accent-coral hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-all duration-200"
               href="https://wa.me/251945640369"
               target="_blank"
               rel="noreferrer"
@@ -103,7 +103,7 @@ function Navbar() {
             <button
               onClick={() => setNavActive(!navActive)}
               type="button"
-              className="inline-flex items-center p-2 ml-3 text-sm text-paper-muted rounded-xl hover:bg-paper-light hover:shadow-paper-hover focus:outline-none focus:ring-2 focus:ring-accent-coral/20 transition-all duration-200"
+              className="inline-flex items-center p-2 ml-3 text-sm text-paper-muted dark:text-gray-300 rounded-xl hover:bg-paper-light dark:hover:bg-gray-800 hover:shadow-paper-hover focus:outline-none focus:ring-2 focus:ring-accent-coral/20 transition-all duration-200"
             >
               <span className="sr-only">Open main menu</span>
               <svg
@@ -123,7 +123,7 @@ function Navbar() {
           </div>
 
           <div
-            className={`w-full bg-paper-white/95 backdrop-blur-sm shadow-paper rounded-2xl border border-paper-border md:block md:w-auto md:bg-transparent md:shadow-none md:border-0 ${
+            className={`w-full bg-paper-white/95 dark:bg-gray-900/95 backdrop-blur-sm shadow-paper dark:shadow-gray-800/20 rounded-2xl border border-paper-border dark:border-gray-700 md:block md:w-auto md:bg-transparent md:dark:bg-transparent md:shadow-none md:border-0 ${
               navActive ? 'mt-4' : 'hidden'
             }`}
           >
@@ -139,7 +139,7 @@ function Navbar() {
                 />
               ))}
 
-              <div className="flex justify-center items-center w-8 h-8 mx-2 my-1 hover:bg-paper-light hover:shadow-paper rounded-full transition-all duration-200">
+              <div className="flex justify-center items-center w-8 h-8 mx-2 my-1 hover:bg-paper-light dark:hover:bg-gray-800 hover:shadow-paper rounded-full transition-all duration-200">
                 {renderThemechanger()}
               </div>
               <a
