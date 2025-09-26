@@ -9,7 +9,9 @@ interface CaseStudyCarouselProps {
   caseStudies: CaseStudy[];
 }
 
-export default function CaseStudyCarousel({ caseStudies }: CaseStudyCarouselProps) {
+export default function CaseStudyCarousel({
+  caseStudies,
+}: CaseStudyCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [isPaused, setIsPaused] = useState(false);
@@ -20,7 +22,7 @@ export default function CaseStudyCarousel({ caseStudies }: CaseStudyCarouselProp
   useEffect(() => {
     if (isAutoPlaying && !isPaused && caseStudies.length > 1) {
       intervalRef.current = setInterval(() => {
-        setCurrentIndex((prevIndex) => 
+        setCurrentIndex((prevIndex) =>
           prevIndex === caseStudies.length - 1 ? 0 : prevIndex + 1
         );
       }, 3000); // Change slide every 3 seconds
@@ -40,12 +42,14 @@ export default function CaseStudyCarousel({ caseStudies }: CaseStudyCarouselProp
   };
 
   const goToPrevious = () => {
-    const newIndex = currentIndex === 0 ? caseStudies.length - 1 : currentIndex - 1;
+    const newIndex =
+      currentIndex === 0 ? caseStudies.length - 1 : currentIndex - 1;
     goToSlide(newIndex);
   };
 
   const goToNext = () => {
-    const newIndex = currentIndex === caseStudies.length - 1 ? 0 : currentIndex + 1;
+    const newIndex =
+      currentIndex === caseStudies.length - 1 ? 0 : currentIndex + 1;
     goToSlide(newIndex);
   };
 
@@ -64,7 +68,7 @@ export default function CaseStudyCarousel({ caseStudies }: CaseStudyCarouselProp
   }
 
   return (
-    <div 
+    <div
       className="relative w-full"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
@@ -72,17 +76,14 @@ export default function CaseStudyCarousel({ caseStudies }: CaseStudyCarouselProp
       {/* Main Carousel Container */}
       <div className="relative overflow-hidden">
         {/* Carousel Track */}
-        <div 
+        <div
           className="flex transition-transform duration-700 ease-out"
-          style={{ 
-            transform: `translateX(-${currentIndex * 100}%)`
+          style={{
+            transform: `translateX(-${currentIndex * 100}%)`,
           }}
         >
           {caseStudies.map((caseStudy, index) => (
-            <div 
-              key={caseStudy.slug}
-              className="w-full flex-shrink-0 px-4"
-            >
+            <div key={caseStudy.slug} className="w-full flex-shrink-0 px-4">
               <div className="max-w-4xl mx-auto">
                 <CaseStudyCard
                   caseStudy={caseStudy}
@@ -104,8 +105,18 @@ export default function CaseStudyCarousel({ caseStudies }: CaseStudyCarouselProp
             className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full backdrop-blur-sm transition-all duration-300 hover:scale-110"
             aria-label="Previous case study"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 19l-7-7 7-7"
+              />
             </svg>
           </button>
 
@@ -114,8 +125,18 @@ export default function CaseStudyCarousel({ caseStudies }: CaseStudyCarouselProp
             className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full backdrop-blur-sm transition-all duration-300 hover:scale-110"
             aria-label="Next case study"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9 5l7 7-7 7"
+              />
             </svg>
           </button>
 
@@ -143,14 +164,28 @@ export default function CaseStudyCarousel({ caseStudies }: CaseStudyCarouselProp
             >
               {isAutoPlaying ? (
                 <>
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 9v6m4-6v6" />
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M10 9v6m4-6v6"
+                    />
                   </svg>
                   <span className="text-sm">Pause</span>
                 </>
               ) : (
                 <>
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <svg
+                    className="w-4 h-4"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
                     <path d="M8 5v14l11-7z" />
                   </svg>
                   <span className="text-sm">Play</span>
@@ -164,11 +199,11 @@ export default function CaseStudyCarousel({ caseStudies }: CaseStudyCarouselProp
       {/* Progress Bar */}
       {isAutoPlaying && !isPaused && caseStudies.length > 1 && (
         <div className="absolute bottom-0 left-0 right-0 h-1 bg-zinc-200 dark:bg-zinc-700">
-          <div 
+          <div
             className="h-full bg-orange-500 transition-all duration-100 ease-linear"
             style={{
               width: '100%',
-              animation: 'progress 3s linear infinite'
+              animation: 'progress 3s linear infinite',
             }}
           />
         </div>
@@ -176,8 +211,12 @@ export default function CaseStudyCarousel({ caseStudies }: CaseStudyCarouselProp
 
       <style jsx>{`
         @keyframes progress {
-          from { width: 0%; }
-          to { width: 100%; }
+          from {
+            width: 0%;
+          }
+          to {
+            width: 100%;
+          }
         }
       `}</style>
     </div>

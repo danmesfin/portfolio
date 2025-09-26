@@ -4,7 +4,11 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
-import { getCaseStudies, getCaseStudy, CaseStudy } from '../../utils/getCaseStudies';
+import {
+  getCaseStudies,
+  getCaseStudy,
+  CaseStudy,
+} from '../../utils/getCaseStudies';
 
 interface CaseStudyPageProps {
   caseStudy: CaseStudy;
@@ -31,10 +35,22 @@ export default function CaseStudyPage({ caseStudy }: CaseStudyPageProps) {
               href="/#projects"
               className="flex items-center space-x-2 bg-white border border-black px-4 py-2 rounded-xl hover:bg-gray-50 transition-colors"
             >
-              <svg className="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              <svg
+                className="w-5 h-5 text-gray-900"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 19l-7-7 7-7"
+                />
               </svg>
-              <span className="text-gray-900 font-medium">Back to Projects</span>
+              <span className="text-gray-900 font-medium">
+                Back to Projects
+              </span>
             </Link>
           </div>
 
@@ -79,18 +95,42 @@ export default function CaseStudyPage({ caseStudy }: CaseStudyPageProps) {
                       className="flex items-center justify-center space-x-2 bg-gray-900 text-white hover:bg-gray-800 px-8 py-4 rounded-xl font-semibold text-lg transition-colors"
                     >
                       <span>View Live Project</span>
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        />
                       </svg>
                     </a>
                   )}
                   <button
-                    onClick={() => document.getElementById('case-study-content')?.scrollIntoView({ behavior: 'smooth' })}
+                    onClick={() =>
+                      document
+                        .getElementById('case-study-content')
+                        ?.scrollIntoView({ behavior: 'smooth' })
+                    }
                     className="flex items-center justify-center space-x-2 bg-white border border-black hover:bg-gray-50 px-8 py-4 rounded-xl font-semibold text-lg transition-colors text-gray-900"
                   >
                     <span>Read Case Study</span>
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                      />
                     </svg>
                   </button>
                 </div>
@@ -115,7 +155,10 @@ export default function CaseStudyPage({ caseStudy }: CaseStudyPageProps) {
         </div>
 
         {/* Case Study Content */}
-        <div id="case-study-content" className="py-20 bg-paper-cream dark:bg-zinc-900">
+        <div
+          id="case-study-content"
+          className="py-20 bg-paper-cream dark:bg-zinc-900"
+        >
           <div className="max-w-4xl mx-auto px-4">
             {/* Project Images Gallery */}
             {caseStudy.images.length > 1 && (
@@ -125,7 +168,10 @@ export default function CaseStudyPage({ caseStudy }: CaseStudyPageProps) {
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {caseStudy.images.slice(1).map((image, index) => (
-                    <div key={index} className="relative aspect-video rounded-2xl overflow-hidden border-2 border-black bg-white">
+                    <div
+                      key={index}
+                      className="relative aspect-video rounded-2xl overflow-hidden border-2 border-black bg-white"
+                    >
                       <Image
                         src={image}
                         alt={`${caseStudy.title} screenshot ${index + 2}`}
@@ -203,10 +249,12 @@ export default function CaseStudyPage({ caseStudy }: CaseStudyPageProps) {
         {/* Footer CTA */}
         <div className="py-20 border-t-2 border-black text-center">
           <div className="max-w-4xl mx-auto px-4">
-            <h2 className="text-4xl font-bold mb-6 text-gray-900">Ready to work together?</h2>
+            <h2 className="text-4xl font-bold mb-6 text-gray-900">
+              Ready to work together?
+            </h2>
             <p className="text-xl text-gray-700 mb-8 leading-relaxed">
-              Let's create something amazing. I'm always excited to take on new challenges
-              and bring innovative ideas to life.
+              Let's create something amazing. I'm always excited to take on new
+              challenges and bring innovative ideas to life.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link

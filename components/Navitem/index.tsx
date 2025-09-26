@@ -17,7 +17,12 @@ function Navitem({ active, link, menu, description, onClick }: NavitemProps) {
       }`}
       aria-current="page"
     >
-      <Link onClick={onClick} href={link} title={description} className="block w-full h-full">
+      <Link
+        onClick={onClick}
+        href={link}
+        title={description}
+        className="block w-full h-full"
+      >
         {menu}
       </Link>
     </li>
