@@ -1,6 +1,5 @@
 {
-  "extends": ["next/core-web-vitals", "airbnb", "prettier"],
-  "plugins": ["prettier"],
+  "extends": ["next/core-web-vitals"],
   "rules": {
     "no-unused-vars": "warn",
     "react/function-component-definition": 0,
