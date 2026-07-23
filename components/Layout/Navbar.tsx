@@ -11,6 +11,7 @@ import {
 } from 'react-icons/si';
 import Navitem from '../Navitem';
 import ThemeChanger from '../Button';
+import { socials } from '../../utils/siteConfig';
 
 const MENU = [
   { title: 'Home', link: '/#banner', description: 'Go to the Home section' },
@@ -24,26 +25,18 @@ const MENU = [
   { title: 'Contact', link: '/#contact', description: 'Get in touch with me' },
 ];
 
-const SOCIALS = [
-  { label: 'GitHub', href: 'https://github.com/danmesfin', Icon: SiGithub },
-  {
-    label: 'LinkedIn',
-    href: 'https://linkedin.com/in/danielmesfin',
-    Icon: SiLinkedin,
-  },
-  {
-    label: 'Upwork',
-    href: 'https://www.upwork.com/freelancers/~01443f33bae62cb58e',
-    Icon: SiUpwork,
-  },
-  {
-    label: 'Instagram',
-    href: 'https://instagram.com/danmesfinn',
-    Icon: SiInstagram,
-  },
-  { label: 'Email', href: 'mailto:danielmsfn@gmail.com', Icon: SiGmail },
-  { label: 'WhatsApp', href: 'https://wa.me/251945640369', Icon: SiWhatsapp },
-];
+/** URLs live in siteConfig; the icon is the only presentational bit here. */
+export const SOCIAL_ICONS: Record<string, typeof SiGithub> = {
+  GitHub: SiGithub,
+  LinkedIn: SiLinkedin,
+  Upwork: SiUpwork,
+  Instagram: SiInstagram,
+  Email: SiGmail,
+  WhatsApp: SiWhatsapp,
+};
+
+/** `inert` is not in React 18's JSX types yet, so it is spread in. */
+const INERT = { inert: '' };
 
 const socialLinkClass =
   'p-2 text-paper-text dark:text-gray-300 hover:text-accent-coral dark:hover:text-accent-coral hover:bg-paper-light dark:hover:bg-gray-800 rounded-full transition-all duration-200';
@@ -84,18 +77,21 @@ function Navbar() {
 
   const closeNav = () => setNavActive(false);
 
-  const socialLinks = SOCIALS.map(({ label, href, Icon }) => (
-    <a
-      key={label}
-      className={socialLinkClass}
-      href={href}
-      target="_blank"
-      rel="noreferrer noopener"
-      aria-label={label}
-    >
-      <Icon className="h-5 w-5" aria-hidden="true" />
-    </a>
-  ));
+  const socialLinks = socials.map(({ label, href }) => {
+    const Icon = SOCIAL_ICONS[label];
+    return (
+      <a
+        key={label}
+        className={socialLinkClass}
+        href={href}
+        target="_blank"
+        rel="noreferrer noopener"
+        aria-label={label}
+      >
+        <Icon className="h-5 w-5" aria-hidden="true" />
+      </a>
+    );
+  });
 
   const resumeButton = (
     <a
@@ -200,6 +196,11 @@ function Navbar() {
               ? 'max-h-[70vh] overflow-y-auto'
               : 'max-h-0 overflow-hidden'
           }`}
+          // max-height:0 only clips the panel — its links stay focusable and
+          // in the accessibility tree without this.
+          aria-hidden={!navActive}
+          // eslint-disable-next-line react/jsx-props-no-spreading
+          {...(navActive ? {} : (INERT as Record<string, string>))}
         >
           <nav
             aria-label="Mobile"

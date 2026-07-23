@@ -9,7 +9,7 @@ import BentoGrid from '../components/BentoGrid';
 import CaseStudyCarousel from '../components/CaseStudyGrid';
 import Seo from '../components/Seo';
 import { getFeaturedCaseStudies, CaseStudy } from '../utils/getCaseStudies';
-import { siteConfig, absoluteUrl } from '../utils/siteConfig';
+import { siteConfig, absoluteUrl, profileUrls } from '../utils/siteConfig';
 
 interface HomeProps {
   caseStudies: CaseStudy[];
@@ -28,12 +28,7 @@ const personSchema = {
     addressLocality: 'Addis Ababa',
     addressCountry: 'ET',
   },
-  sameAs: [
-    'https://github.com/danmesfin',
-    'https://linkedin.com/in/danielmesfin',
-    'https://www.upwork.com/freelancers/~01443f33bae62cb58e',
-    'https://instagram.com/danmesfinn',
-  ],
+  sameAs: profileUrls,
 };
 
 function Home({ caseStudies }: HomeProps) {

@@ -19,7 +19,7 @@ import {
   SiVercel,
 } from 'react-icons/si';
 
-interface BentoProject {
+export interface BentoProject {
   id: string;
   title: string;
   description: string;
@@ -30,7 +30,7 @@ interface BentoProject {
 }
 
 // Ordered by impact — the first card is the strongest piece of work.
-const projects: BentoProject[] = [
+export const projects: BentoProject[] = [
   {
     id: 'creativeaward',
     title: 'AI Creative Award',

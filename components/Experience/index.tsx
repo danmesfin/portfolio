@@ -2,7 +2,7 @@
 import React from 'react';
 import ExperienceItem from './ExperienceItem';
 
-const experienceData = [
+export const experienceData = [
   {
     title: 'Senior Data Engineer',
     company: 'Lexis Solutions',
