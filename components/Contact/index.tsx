@@ -7,13 +7,19 @@ const EMAIL_SERVICE_ID = process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID;
 const EMAIL_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID;
 const EMAIL_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY;
 
+const fieldClass =
+  'w-full px-4 py-3 bg-paper-white/10 border border-paper-white/20 rounded-xl text-paper-white placeholder-paper-white/50 focus:outline-none focus:ring-2 focus:ring-accent-yellow focus:border-accent-yellow focus:bg-paper-white/20 transition-all duration-200';
+
+const labelClass =
+  'block text-left text-sm font-medium text-paper-white/80 mb-2';
+
 const Contact: React.FC = () => {
   const form = useRef<HTMLFormElement | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
   const sendEmail = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formElement = e.currentTarget; // Store form reference
+    const formElement = e.currentTarget;
     setLoading(true);
 
     try {
@@ -36,7 +42,6 @@ const Contact: React.FC = () => {
       toast.success('Message sent successfully! I will get back to you soon.');
       formElement.reset();
     } catch (error) {
-      // console.error('Email send error:', error);
       toast.error('Failed to send message. Please try again later.');
     } finally {
       setLoading(false);
@@ -58,30 +63,13 @@ const Contact: React.FC = () => {
             className="mb-12"
           >
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-paper-white mb-6 font-display leading-tight">
-              Let's work together to bring
+              Let&apos;s work together to bring
               <br />
               your ideas to life
             </h2>
-            <p className="text-lg md:text-xl text-paper-white/80 mb-8 max-w-2xl mx-auto">
-              Ready to start your next project? Get in touch and let's create
-              something amazing together.
-            </p>
-
-            <div className="btn-secondary inline-block">
-              <div className="btn-secondary-shadow" />
-              <button
-                onClick={() => {
-                  const formSection = document.getElementById('contact-form');
-                  formSection?.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="btn-secondary-content rounded-lg text-paper-text hover:bg- px-8 py-4 text-lg font-semibold"
-              >
-                Get started for free →
-              </button>
-            </div>
-
-            <p className="text-paper-white/60 text-sm mt-4">
-              No commitment required. Free consultation.
+            <p className="text-lg md:text-xl text-paper-white/80 max-w-2xl mx-auto">
+              Have a project in mind, or just want to say hello? Send me a
+              message and I&apos;ll get back to you within a couple of days.
             </p>
           </motion.div>
 
@@ -92,35 +80,56 @@ const Contact: React.FC = () => {
           >
             <form className="max-w-2xl mx-auto" ref={form} onSubmit={sendEmail}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <input
-                  type="text"
-                  name="name"
-                  required
-                  placeholder="Your Name*"
-                  className="w-full px-4 py-3 bg-paper-white/10 border border-paper-white/20 rounded-xl text-paper-white placeholder-paper-white/60 focus:outline-none focus:border-accent-yellow focus:bg-paper-white/20 transition-all duration-200"
-                />
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  placeholder="Your Email*"
-                  className="w-full px-4 py-3 bg-paper-white/10 border border-paper-white/20 rounded-xl text-paper-white placeholder-paper-white/60 focus:outline-none focus:border-accent-yellow focus:bg-paper-white/20 transition-all duration-200"
-                />
+                <label htmlFor="contact-name" className="block">
+                  <span className={labelClass}>Your name</span>
+                  <input
+                    id="contact-name"
+                    type="text"
+                    name="name"
+                    required
+                    autoComplete="name"
+                    placeholder="Jane Doe"
+                    className={fieldClass}
+                  />
+                </label>
+                <label htmlFor="contact-email" className="block">
+                  <span className={labelClass}>Your email</span>
+                  <input
+                    id="contact-email"
+                    type="email"
+                    name="email"
+                    required
+                    autoComplete="email"
+                    placeholder="jane@example.com"
+                    className={fieldClass}
+                  />
+                </label>
               </div>
-              <input
-                type="text"
-                name="subject"
-                required
-                placeholder="Project Subject*"
-                className="w-full px-4 py-3 mb-6 bg-paper-white/10 border border-paper-white/20 rounded-xl text-paper-white placeholder-paper-white/60 focus:outline-none focus:border-accent-yellow focus:bg-paper-white/20 transition-all duration-200"
-              />
-              <textarea
-                name="message"
-                required
-                rows={6}
-                placeholder="Tell me about your project...*"
-                className="w-full px-4 py-3 mb-6 bg-paper-white/10 border border-paper-white/20 rounded-xl text-paper-white placeholder-paper-white/60 focus:outline-none focus:border-accent-yellow focus:bg-paper-white/20 transition-all duration-200 resize-none"
-              />
+
+              <label htmlFor="contact-subject" className="block mb-6">
+                <span className={labelClass}>Subject</span>
+                <input
+                  id="contact-subject"
+                  type="text"
+                  name="subject"
+                  required
+                  placeholder="What is this about?"
+                  className={fieldClass}
+                />
+              </label>
+
+              <label htmlFor="contact-message" className="block mb-6">
+                <span className={labelClass}>Message</span>
+                <textarea
+                  id="contact-message"
+                  name="message"
+                  required
+                  rows={6}
+                  placeholder="Tell me about your project..."
+                  className={`${fieldClass} resize-none`}
+                />
+              </label>
+
               <div className="btn-primary inline-block">
                 <div className="btn-primary-bg" />
                 <div className="btn-primary-shadow" />

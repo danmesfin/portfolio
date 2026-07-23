@@ -19,7 +19,7 @@ function About() {
         <div className="relative w-full md:w-1/2 flex justify-center md:justify-end">
           <div className="absolute w-52 h-48 md:w-80 md:h-80 mx-auto z-10">
             <Image
-              src="/images/mobile.png"
+              src="/images/mobile.webp"
               alt="mobile app image"
               priority
               fill

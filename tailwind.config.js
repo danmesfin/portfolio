@@ -1,3 +1,6 @@
+// eslint-disable-next-line import/no-extraneous-dependencies -- build-time config
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -6,22 +9,20 @@ module.exports = {
   ],
   darkMode: 'class',
   theme: {
-    fontFamily: {
-      sans: ['Graphik', 'sans-serif'],
-      serif: ['Merriweather', 'serif'],
-      neon: '',
-    },
-
     extend: {
       fontFamily: {
-        display: ['peachy-keen-jf', 'sans-serif!important'],
-        hand: ['Nanum Pen Script', 'sans!important'],
+        // --font-sans and --font-hand are provided by next/font in _app.tsx.
+        sans: ['var(--font-sans)', ...defaultTheme.fontFamily.sans],
+        display: ['peachy-keen-jf', ...defaultTheme.fontFamily.sans],
+        hand: ['var(--font-hand)', 'cursive'],
       },
       boxShadow: {
         allSide: '0 0 10px 5px',
         paper: '0 2px 8px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.06)',
-        'paper-hover': '0 4px 12px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.08)',
-        'paper-layered': '0 4px 6px rgba(0, 0, 0, 0.07), 0 1px 3px rgba(0, 0, 0, 0.06), inset 0 0 0 1px rgba(255, 255, 255, 0.05)',
+        'paper-hover':
+          '0 4px 12px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.08)',
+        'paper-layered':
+          '0 4px 6px rgba(0, 0, 0, 0.07), 0 1px 3px rgba(0, 0, 0, 0.06), inset 0 0 0 1px rgba(255, 255, 255, 0.05)',
       },
       colors: {
         primary: '#fdba74',
@@ -36,7 +37,9 @@ module.exports = {
           cream: '#faf9f7',
           light: '#f8f6f3',
           shadow: 'rgba(0, 0, 0, 0.08)',
-          border: 'rgba(0, 0, 0, 0.06)',
+          // At 6% this was invisible against paper-white on the base
+          // background — the edge has to actually read as an edge.
+          border: 'rgba(0, 0, 0, 0.14)',
           text: '#2d3748',
           muted: '#718096',
         },

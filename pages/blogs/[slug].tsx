@@ -8,8 +8,14 @@ import BlogPost from '../../components/BlogPost';
 import { getAllBlogs, getBlogBySlug } from '../../utils/getBlogs';
 
 interface BlogProps {
-  frontmatter: any;
+  frontmatter: {
+    title: string;
+    date: string;
+    preview: string;
+    description?: string;
+  };
   markdownBody: string;
+  slug: string;
 }
 
 const markdownToHtml = async (markdown: string): Promise<string> => {
@@ -43,12 +49,13 @@ export const getStaticProps: GetStaticProps<BlogProps> = async ({ params }) => {
     props: {
       frontmatter: blog.frontmatter,
       markdownBody,
+      slug: slug ?? '',
     },
   };
 };
 
-const Blog: React.FC<BlogProps> = ({ frontmatter, markdownBody }) => (
-  <BlogPost frontmatter={frontmatter} markdownBody={markdownBody} />
+const Blog: React.FC<BlogProps> = ({ frontmatter, markdownBody, slug }) => (
+  <BlogPost frontmatter={frontmatter} markdownBody={markdownBody} slug={slug} />
 );
 
 export default Blog;

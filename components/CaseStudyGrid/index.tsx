@@ -7,244 +7,163 @@ import {
   FaChevronLeft,
   FaChevronRight,
 } from 'react-icons/fa';
-import {
-  SiLaravel,
-  SiReact,
-  SiNextdotjs,
-  SiTypescript,
-  SiTailwindcss,
-  SiNodedotjs,
-  SiAmazonaws,
-  SiFlask,
-  SiPython,
-  SiPostgresql,
-  SiMysql,
-  SiVite,
-  SiSupabase,
-  SiRedis,
-} from 'react-icons/si';
-import { TbBrandReactNative } from 'react-icons/tb';
+import { CaseStudy } from '../../utils/getCaseStudies';
+import { getTechIcons } from '../../utils/techIcons';
 
-interface CaseStudyProject {
-  id: string;
-  title: string;
-  subtitle: string;
-  description: string;
-  image: string;
-  technologies: React.ComponentType<{ size?: number; className?: string }>[];
-  liveUrl?: string;
-  caseStudyUrl: string;
-  category: string;
-  size: 'small' | 'medium' | 'large';
-  color: string;
-  textColor: string;
-}
+/**
+ * The category label for each study. Everything else (title, copy, tech,
+ * images, links) comes from the markdown in content/projects-case-study.
+ * Cards deliberately share one neutral surface — see .paper-card.
+ */
+const CATEGORIES: Record<string, string> = {
+  ehudai: 'AI & Machine Learning',
+  miranapm: 'SaaS Platform',
+  reveshare: 'E-commerce',
+  bridgeofhope: 'Nonprofit Platform',
+  aicreativeaward: 'Scale & Anti-Abuse',
+};
 
-const caseStudies: CaseStudyProject[] = [
-  {
-    id: '1',
-    title: 'EhudAI',
-    subtitle: 'AI Content Studio',
-    description:
-      'Comprehensive AI-powered content creation platform integrating 15+ AI services for story generation, character development, and video production.',
-    image: '/images/projects/ehudai/1_ehudai-cover.png',
-    technologies: [
-      SiNextdotjs,
-      SiTypescript,
-      SiNodedotjs,
-      SiAmazonaws,
-      SiFlask,
-      SiPython,
-    ],
-    liveUrl: 'https://ehudai.com',
-    caseStudyUrl: '/case-studies/ehudai',
-    category: 'AI & Machine Learning',
-    size: 'medium',
-    color: 'bg-purple-50',
-    textColor: 'text-gray-900',
-  },
-  {
-    id: '2',
-    title: 'MiranAPM',
-    subtitle: 'Property Management',
-    description:
-      'Multi-tenant property management platform streamlining rental operations with automated billing, maintenance tracking, and comprehensive financial reporting.',
-    image: '/images/projects/miranapm/1_miranapm-cover.png',
-    technologies: [
-      SiLaravel,
-      TbBrandReactNative,
-      SiReact,
-      SiNodedotjs,
-      SiMysql,
-      SiAmazonaws,
-    ],
-    liveUrl: 'https://miranapm.com',
-    caseStudyUrl: '/case-studies/miranapm',
-    category: 'SaaS Platform',
-    size: 'medium',
-    color: 'bg-green-50',
-    textColor: 'text-gray-900',
-  },
-  {
-    id: '3',
-    title: 'ReveShare',
-    subtitle: 'Affiliate Platform',
-    description:
-      'Mobile-first affiliate management platform with commission tracking, listed on Shopify App Store, serving brands and affiliates through dedicated dashboards.',
-    image: '/images/projects/reveshare/1_reveshare-cover.png',
-    technologies: [
-      SiVite,
-      SiReact,
-      SiTailwindcss,
-      SiRedis,
-      SiNodedotjs,
-      SiPostgresql,
-      SiSupabase,
-    ],
-    liveUrl: 'https://reveshare.com',
-    caseStudyUrl: '/case-studies/reveshare',
-    category: 'E-commerce',
-    size: 'small',
-    color: 'bg-orange-50',
-    textColor: 'text-gray-900',
-  },
-  {
-    id: '4',
-    title: 'Bridge of Hope Ethiopia',
-    subtitle: 'Nonprofit Platform',
-    description:
-      'Nonprofit platform with dual-payment integration (PayPal & Chapa) enabling both international and Ethiopian donors to support vulnerable children.',
-    image: '/images/projects/bridgeofhope/1_bohet-cover.png',
-    technologies: [
-      SiLaravel,
-      SiVite,
-      SiReact,
-      SiTailwindcss,
-      SiNodedotjs,
-      SiPostgresql,
-      SiAmazonaws,
-    ],
-    liveUrl: 'https://boh-et.org',
-    caseStudyUrl: '/case-studies/bridgeofhope',
-    category: 'Full-Stack Development',
-    size: 'large',
-    color: 'bg-blue-50',
-    textColor: 'text-gray-900',
-  },
-];
+const DEFAULT_CATEGORY = 'Full-Stack Development';
 
-const CaseStudyCard: React.FC<{ project: CaseStudyProject }> = ({
-  project,
-}) => (
-  <div
-    className={`w-full max-w-5xl mx-auto ${project.color} rounded-2xl p-6 sm:p-8 border border-black group hover:shadow-lg transition-shadow duration-300`}
-  >
-    <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 h-full">
-      {/* Content - Left Side */}
-      <div
-        className={`flex-1 flex flex-col justify-between ${project.textColor} min-h-0`}
-      >
-        <div className="flex-1 space-y-4 lg:space-y-6">
-          {/* Category Badge */}
-          <div className="inline-block">
-            <span className="text-sm bg-white/80 px-3 py-1 rounded-full border border-gray-300 font-medium">
-              {project.category}
-            </span>
-          </div>
+const MAX_TECH_ICONS = 5;
 
-          {/* Title and Subtitle */}
-          <div className="space-y-2 lg:space-y-3">
-            <h3 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold font-display line-clamp-2 leading-tight">
-              {project.title}
-            </h3>
-            <p className="text-lg sm:text-xl lg:text-2xl font-semibold text-gray-600 line-clamp-1">
-              {project.subtitle}
+const INERT = { inert: '' };
+
+const pillClass = 'paper-pill';
+
+const CaseStudyCard: React.FC<{ project: CaseStudy }> = ({ project }) => {
+  const category = CATEGORIES[project.slug] ?? DEFAULT_CATEGORY;
+  const techIcons = getTechIcons(project.technologies);
+  const hiddenTechCount = project.technologies.length - techIcons.length;
+
+  return (
+    <div className="paper-card w-full max-w-5xl mx-auto rounded-2xl p-6 sm:p-8 group hover:shadow-paper-hover transition-shadow duration-300">
+      <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 h-full">
+        {/* Content - Left Side */}
+        <div className="flex-1 flex flex-col justify-between text-paper-text dark:text-gray-100 min-h-0">
+          <div className="flex-1 space-y-4 lg:space-y-6">
+            {/* Category Badge */}
+            <div className="inline-block">
+              <span
+                className={`text-sm ${pillClass} px-3 py-1 rounded-full font-medium`}
+              >
+                {category}
+              </span>
+            </div>
+
+            {/* Title and Subtitle */}
+            <div className="space-y-2 lg:space-y-3">
+              <h3 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold font-display line-clamp-2 leading-tight">
+                {project.name}
+              </h3>
+              {project.subtitle && (
+                <p className="text-lg sm:text-xl lg:text-2xl font-semibold text-paper-muted dark:text-gray-300 line-clamp-2">
+                  {project.subtitle}
+                </p>
+              )}
+            </div>
+
+            {/* Description */}
+            <p className="text-md sm:text-lg lg:text-xl line-clamp-4 lg:line-clamp-6 leading-relaxed text-paper-muted dark:text-gray-300">
+              {project.description}
             </p>
           </div>
 
-          {/* Description */}
-          <p className="text-md sm:text-lg lg:text-xl line-clamp-4 lg:line-clamp-6 leading-relaxed text-gray-700">
-            {project.description}
-          </p>
-        </div>
+          <div className="space-y-5 lg:space-y-6 mt-auto pt-6">
+            {/* Technologies */}
+            <ul className="flex flex-wrap gap-3" aria-label="Technologies used">
+              {techIcons.slice(0, MAX_TECH_ICONS).map(({ name, Icon }) => (
+                <li
+                  key={name}
+                  className={`${pillClass} rounded-full p-2.5 lg:p-3`}
+                  title={name}
+                >
+                  <Icon size={20} aria-hidden="true" />
+                  <span className="sr-only">{name}</span>
+                </li>
+              ))}
+              {techIcons.length + hiddenTechCount > MAX_TECH_ICONS && (
+                <li className={`${pillClass} rounded-full px-3 py-2`}>
+                  <span className="text-sm">
+                    +
+                    {project.technologies.length -
+                      Math.min(techIcons.length, MAX_TECH_ICONS)}
+                  </span>
+                </li>
+              )}
+            </ul>
 
-        <div className="space-y-5 lg:space-y-6 mt-auto pt-6">
-          {/* Technologies */}
-          <div className="flex flex-wrap gap-3">
-            {project.technologies.slice(0, 5).map((Tech, techIndex) => (
-              <div
-                key={`tech-${project.id}-${techIndex}`}
-                className="bg-white/80 rounded-full p-2.5 lg:p-3 border border-gray-300"
+            {/* Action Buttons */}
+            <div className="flex gap-4">
+              <Link
+                href={`/case-studies/${project.slug}`}
+                className="flex-1 lg:flex-none lg:px-8 bg-paper-text dark:bg-paper-white text-paper-white dark:text-paper-text rounded-xl px-4 py-3 lg:py-4 font-semibold hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
               >
-                <Tech size={20} className="text-gray-700" />
-              </div>
-            ))}
-            {project.technologies.length > 5 && (
-              <div className="bg-white/80 rounded-full px-3 py-2 border border-gray-300">
-                <span className="text-sm text-gray-700">
-                  +{project.technologies.length - 5}
+                <span className="text-sm lg:text-base">
+                  View Case Study
+                  <span className="sr-only"> — {project.name}</span>
                 </span>
-              </div>
-            )}
-          </div>
+                <FaArrowRight size={16} aria-hidden="true" />
+              </Link>
 
-          {/* Action Buttons */}
-          <div className="flex gap-4">
-            <Link
-              href={project.caseStudyUrl}
-              className="flex-1 lg:flex-none lg:px-8 bg-gray-900 text-white rounded-xl px-4 py-3 lg:py-4 font-semibold hover:bg-gray-800 transition-colors flex items-center justify-center gap-2"
-            >
-              <span className="text-sm lg:text-base">View Case Study</span>
-              <FaArrowRight size={16} />
-            </Link>
-
-            {project.liveUrl && (
-              <a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-white/80 rounded-xl p-3 lg:p-4 border border-gray-300 hover:bg-white transition-colors flex items-center justify-center"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <FaExternalLinkAlt size={18} className="text-gray-700" />
-              </a>
-            )}
+              {project.liveUrl && (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${pillClass} rounded-xl p-3 lg:p-4 hover:border-accent-coral hover:text-accent-coral transition-colors flex items-center justify-center`}
+                  aria-label={`Visit ${project.name} live site`}
+                >
+                  <FaExternalLinkAlt size={18} aria-hidden="true" />
+                </a>
+              )}
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Project Image Frame - Right Side */}
-      <div className="lg:w-1/2 xl:w-2/5 flex-shrink-0">
-        <div className="relative w-full aspect-video rounded-xl overflow-hidden border-2 border-gray-300 bg-white">
-          <Image
-            src={project.image}
-            alt={project.title}
-            fill
-            className="object-contain group-hover:scale-105 transition-transform duration-300"
-          />
-        </div>
+        {/* Project Image Frame - Right Side */}
+        {project.images[0] && (
+          <div className="lg:w-1/2 xl:w-2/5 flex-shrink-0">
+            <div className="relative w-full aspect-video rounded-xl overflow-hidden paper-inset">
+              <Image
+                src={project.images[0]}
+                alt={`${project.name} interface`}
+                fill
+                sizes="(max-width: 1024px) 90vw, 40vw"
+                className="object-contain group-hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+          </div>
+        )}
       </div>
     </div>
-  </div>
-);
+  );
+};
 
-const CaseStudyCarousel: React.FC = () => {
+interface CaseStudyCarouselProps {
+  caseStudies: CaseStudy[];
+}
+
+const CaseStudyCarousel: React.FC<CaseStudyCarouselProps> = ({
+  caseStudies,
+}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === caseStudies.length - 1 ? 0 : prevIndex + 1
-    );
+  if (caseStudies.length === 0) return null;
+
+  const goTo = (index: number) => {
+    const count = caseStudies.length;
+    setCurrentIndex(((index % count) + count) % count);
   };
 
-  const prevSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? caseStudies.length - 1 : prevIndex - 1
-    );
-  };
-
-  const goToSlide = (index: number) => {
-    setCurrentIndex(index);
+  const onKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === 'ArrowLeft') {
+      event.preventDefault();
+      goTo(currentIndex - 1);
+    } else if (event.key === 'ArrowRight') {
+      event.preventDefault();
+      goTo(currentIndex + 1);
+    }
   };
 
   return (
@@ -261,56 +180,78 @@ const CaseStudyCarousel: React.FC = () => {
         </div>
 
         {/* Carousel Container */}
-        <div className="relative">
+        {/* Arrow-key handling belongs on the carousel container itself; the
+            rule below assumes a container listener is always a mistake. */}
+        {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
+        <div
+          className="relative"
+          role="group"
+          aria-roledescription="carousel"
+          aria-label="Case studies"
+          onKeyDown={onKeyDown}
+        >
           {/* Navigation Buttons */}
           <button
             type="button"
-            onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white border border-black rounded-full p-3 hover:bg-gray-50 transition-colors shadow-lg"
+            onClick={() => goTo(currentIndex - 1)}
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 paper-card rounded-full p-3 hover:border-accent-coral focus:outline-none focus:ring-2 focus:ring-accent-coral transition-colors shadow-paper"
             aria-label="Previous case study"
           >
-            <FaChevronLeft size={20} className="text-gray-900" />
+            <FaChevronLeft size={20} className="" aria-hidden="true" />
           </button>
 
           <button
             type="button"
-            onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white border border-black rounded-full p-3 hover:bg-gray-50 transition-colors shadow-lg"
+            onClick={() => goTo(currentIndex + 1)}
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 paper-card rounded-full p-3 hover:border-accent-coral focus:outline-none focus:ring-2 focus:ring-accent-coral transition-colors shadow-paper"
             aria-label="Next case study"
           >
-            <FaChevronRight size={20} className="text-gray-900" />
+            <FaChevronRight size={20} className="" aria-hidden="true" />
           </button>
 
           {/* Carousel Content */}
           <div className="overflow-hidden mx-12 sm:mx-16">
             <div
-              className="flex transition-transform duration-500 ease-in-out"
+              className="flex transition-transform duration-500 ease-in-out motion-reduce:transition-none"
               style={{ transform: `translateX(-${currentIndex * 100}%)` }}
             >
-              {caseStudies.map((project) => (
-                <div
-                  key={project.id}
-                  className="w-full flex-shrink-0 px-4 sm:px-6"
-                >
-                  <CaseStudyCard project={project} />
-                </div>
-              ))}
+              {caseStudies.map((project, index) => {
+                const isCurrent = index === currentIndex;
+                return (
+                  <div
+                    key={project.slug}
+                    className="w-full flex-shrink-0 px-4 sm:px-6"
+                    role="group"
+                    aria-roledescription="slide"
+                    aria-label={`${index + 1} of ${caseStudies.length}`}
+                    // Off-screen slides must not be announced by screen readers
+                    // or reachable by keyboard. `inert` is not in React 18's JSX
+                    // types yet, so it is spread in as a plain attribute.
+                    aria-hidden={!isCurrent}
+                    // eslint-disable-next-line react/jsx-props-no-spreading
+                    {...(isCurrent ? {} : (INERT as Record<string, string>))}
+                  >
+                    <CaseStudyCard project={project} />
+                  </div>
+                );
+              })}
             </div>
           </div>
 
           {/* Dots Indicator */}
           <div className="flex justify-center mt-8 space-x-2">
-            {caseStudies.map((_, index) => (
+            {caseStudies.map((project, index) => (
               <button
-                key={`dot-${index}`}
+                key={project.slug}
                 type="button"
-                onClick={() => goToSlide(index)}
-                className={`w-3 h-3 rounded-full border border-black transition-colors ${
+                onClick={() => goTo(index)}
+                aria-current={index === currentIndex}
+                className={`w-3 h-3 rounded-full border border-paper-border dark:border-white/40 focus:outline-none focus:ring-2 focus:ring-accent-coral transition-colors ${
                   index === currentIndex
-                    ? 'bg-gray-900'
-                    : 'bg-white hover:bg-gray-200'
+                    ? 'bg-paper-text dark:bg-paper-white'
+                    : 'bg-paper-cream dark:bg-zinc-700 hover:bg-paper-light dark:hover:bg-zinc-600'
                 }`}
-                aria-label={`Go to case study ${index + 1}`}
+                aria-label={`Show case study ${index + 1}: ${project.name}`}
               />
             ))}
           </div>

@@ -1,57 +1,42 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaPalette, FaCode, FaMobileAlt } from 'react-icons/fa';
+import { FaCode, FaRobot, FaDatabase } from 'react-icons/fa';
 
 const Services = () => {
   const serviceCategories = [
     {
-      category: 'UI/UX Design',
-      icon: <FaPalette />,
-      services: [
-        'Creating cool and stylish designs',
-        'Landing Pages for Organizations',
-        'Portfolio or Personal Websites',
-        'Product Landing Pages',
-        'Other customized design solutions based on client needs',
-      ],
-    },
-    {
-      category: 'Web Application Development',
+      category: 'Full-Stack Development',
       icon: <FaCode />,
       services: [
-        'Building scalable and responsive web applications',
-        'Booking systems',
-        'Reservation systems',
-        'Content Management Systems (CMS)',
-        'Other customized web application solutions',
+        'Scalable web applications and SaaS platforms',
+        'REST APIs and backend services',
+        'Admin dashboards and internal tools',
+        'E-commerce and payment integrations',
+        'Multi-tenant and role-based systems',
       ],
     },
     {
-      category: 'Mobile Application Development',
-      icon: <FaMobileAlt />,
+      category: 'AI Agents & Automation',
+      icon: <FaRobot />,
       services: [
-        'Crafting mobile applications for iOS and Android platforms',
-        'Other customized mobile application solutions',
+        'Custom AI-powered tools and workflows',
+        'LLM integrations and agentic systems',
+        'Intelligent content generation pipelines',
+        'Chatbots and conversational interfaces',
+        'AI service orchestration across providers',
       ],
     },
-    // {
-    //   category: 'Branding and Digital Marketing',
-    //   icon: <FaBullhorn />,
-    //   services: [
-    //     'Developing brand identity and strategy',
-    //     'Executing digital marketing campaigns to enhance online presence',
-    //   ],
-    // },
-    // {
-    //   category: 'Technical Consultation and Training',
-    //   icon: <FaChalkboardTeacher />,
-    //   services: [
-    //     'Providing expert advice on software architecture',
-    //     'Guidance on selecting the right technology stack',
-    //     'Assistance with project planning',
-    //     'Offering training sessions to empower clients with technical skills',
-    //   ],
-    // },
+    {
+      category: 'Web Scraping & Data Engineering',
+      icon: <FaDatabase />,
+      services: [
+        'Large-scale web scraping and data extraction',
+        'Automated data collection pipelines',
+        'Data transformation and cleaning workflows',
+        'Scheduled scraping with monitoring',
+        'Custom crawlers and API integrations',
+      ],
+    },
   ];
 
   const containerVariants = {
@@ -77,46 +62,47 @@ const Services = () => {
   };
 
   return (
-    <section className="py-16">
-      <div className="container mx-auto">
+    <section className="py-16" id="services">
+      <div className="max-w-7xl mx-auto px-4">
         <motion.h2
           initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-4xl md:text-5xl font-display font-bold text-center mb-16 dark:text-white underline decoration-wavy text-orange-900"
+          className="text-4xl md:text-5xl font-display font-bold text-center mb-16 text-paper-text dark:text-white"
         >
           What can I help you with?
         </motion.h2>
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 md:px-24"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
           variants={containerVariants}
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          viewport={{ once: true }}
         >
           {serviceCategories.map((category) => (
             <motion.div
               key={category.category}
-              className="dark:bg-zinc-700 p-6 border border-zinc-600 rounded-lg flex flex-col items-center"
+              className="bg-paper-white dark:bg-zinc-900 p-8 border border-paper-border dark:border-gray-700 rounded-2xl shadow-paper hover:shadow-paper-hover transition-shadow duration-200 flex flex-col items-center"
               variants={itemVariants}
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ y: -4 }}
             >
-              <motion.span
-                className="text-6xl text-primary mb-4"
-                whileHover={{ rotate: 360 }}
-                transition={{ duration: 0.5 }}
-              >
+              <span className="text-5xl text-accent-coral mb-5" aria-hidden>
                 {category.icon}
-              </motion.span>
-              <h3 className="text-2xl text-center font-display font-semibold text-orange-900 dark:text-orange-400 mb-4">
+              </span>
+              <h3 className="text-2xl text-center font-display font-semibold text-paper-text dark:text-white mb-5">
                 {category.category}
               </h3>
-              <ul className="list-disc pl-6">
-                {category.services.map((service, index) => (
+              <ul className="space-y-2.5 self-stretch">
+                {category.services.map((service) => (
                   <li
-                    // eslint-disable-next-line react/no-array-index-key
-                    key={index}
-                    className="text-gray-600 dark:text-fuchsia-200 mb-2"
+                    key={service}
+                    className="flex gap-2.5 text-paper-muted dark:text-gray-300 leading-relaxed"
                   >
+                    <span
+                      className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent-coral"
+                      aria-hidden
+                    />
                     {service}
                   </li>
                 ))}

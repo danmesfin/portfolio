@@ -5,17 +5,11 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <meta name="description" content="Daniel Mesfin" />
-        <meta
-          name="description"
-          content="Daniel is a fullstack web and mobile developer. github.com/danmesfin"
-        />
-        <meta name="description" content="Fullstack developer" />
         <link rel="icon" href="/Icon/favicon.ico" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&amp;display=swap"
-          rel="stylesheet"
-        />
+        {/* Adobe Fonts serves the display face (peachy-keen-jf). Preconnect so
+            the stylesheet request does not wait on DNS + TLS. */}
+        <link rel="preconnect" href="https://use.typekit.net" crossOrigin="" />
+        <link rel="preconnect" href="https://p.typekit.net" crossOrigin="" />
         <link rel="stylesheet" href="https://use.typekit.net/vja6aok.css" />
       </Head>
       <body>

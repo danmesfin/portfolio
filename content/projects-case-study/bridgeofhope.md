@@ -1,65 +1,51 @@
 # Bridge of Hope Ethiopia: Nonprofit Platform with Multi-Payment Integration
 
-## Introduction
+## Project Overview
 
-Bridge of Hope Ethiopia has been transforming lives of vulnerable children and orphans since 2001. When I joined as the lead developer, the organization needed a digital platform that could effectively communicate their mission while managing the complex operations of a growing nonprofit. The challenge was creating something that felt personal and trustworthy to potential donors while providing administrators with powerful tools to manage content, donations, and user relationships.
+**Bridge of Hope Ethiopia** is a digital platform for a nonprofit organization that has been supporting vulnerable children and orphans since 2001. The platform handles content management, donation processing, and program operations through a dual-payment system serving both international and local Ethiopian donors.
 
-This project became particularly meaningful to me because it combined technical problem-solving with real social impact. Every feature I built had a direct connection to helping children in Ethiopia access education, healthcare, and opportunities for a better future.
+**Role**: Lead Developer
+**Development Timeline**: 6 months
+**Technology Stack**: Laravel, Blade Templates, TailwindCSS, MySQL, PayPal API, Chapa API
 
-## Problem Statement
+---
 
-When I first met with the Bridge of Hope team, they were struggling with a fragmented digital presence. Their existing website was static, making it difficult to share updates about their programs or showcase the impact of donations. More critically, they were losing potential donors because their payment system only supported international gateways like PayPal, which many Ethiopian donors couldn't access.
+## The Challenge
 
-The organization had grown to manage multiple programs across childcare, community development, and business enterprises, but their content management was entirely manual. Staff members had to email website updates to a single person who would manually edit HTML files. This created bottlenecks and meant that urgent updates about children's needs or program milestones often went unshared for weeks.
+The organization had outgrown its static website. Staff had to email content updates to a single person who manually edited HTML files, meaning urgent updates about children's needs often went unshared for weeks. More critically, the donation system only supported PayPal — cutting off Ethiopian donors who rely on mobile money and local banking. With programs spanning childcare, community development, and business enterprises, they needed a platform that non-technical staff could manage independently.
 
-Additionally, they needed a way to manage different types of users - from content creators who could publish news articles to program coordinators who needed to update project milestones, all while maintaining security and ensuring that sensitive information remained protected.
+---
 
-## Technical Approach
+## What I Built
 
-I chose Laravel as the foundation because of its robust ecosystem and the fact that it would allow the organization to find local developers for future maintenance. The framework's built-in authentication system was perfect for creating the role-based access they needed, and Eloquent ORM made it straightforward to model the relationships between users, content, donations, and programs.
+### Dual Payment Gateway
 
-For the payment integration, I implemented a dual-gateway approach. PayPal handled international donations, while Chapa - a popular Ethiopian payment processor - enabled local donors to contribute using mobile money and local banking systems. This was crucial because many Ethiopian supporters preferred to donate in local currency using familiar payment methods.
+The most impactful feature was integrating both PayPal for international donors and Chapa — a popular Ethiopian payment processor — for local contributions via mobile money and local banks. This opened an entirely new revenue stream. The unified tracking system reconciles donations from both gateways into a single financial view, handling currency differences and different donation patterns (international donors tend toward larger one-time gifts, while local donors prefer smaller recurring amounts).
 
-The frontend needed to feel warm and personal while remaining professional. I used TailwindCSS to create a design system that could showcase the organization's impact through compelling imagery and storytelling, while ensuring the donation process was as frictionless as possible. Every page was designed mobile-first, knowing that many visitors would be accessing the site from their phones.
+### Content Management System
 
-## Development Process
+The CMS was designed for non-technical staff. A rich text editor with a draft-to-publish workflow lets content creators prepare stories about the children and programs, have them reviewed, and publish — all without developer involvement. The team went from publishing updates once or twice a month to sharing stories weekly.
 
-The project started with extensive conversations with the Bridge of Hope team to understand their daily workflows. I spent time shadowing content creators and program coordinators to see how they currently managed information. This research phase was invaluable - it revealed that the biggest pain point wasn't just the technical limitations, but the communication gaps between different team members.
+### Role-Based Access
 
-I built the content management system with a focus on simplicity. The rich text editor needed to be intuitive enough for non-technical staff to use confidently, while still providing the flexibility to create compelling stories about the children and programs they serve. I implemented a draft-to-publish workflow that allowed content creators to prepare articles and have them reviewed before going live.
+Different staff members get different levels of access — content creators publish news articles, program coordinators update project milestones, and admins manage donations and user accounts. Sensitive information stays protected while giving each team member the tools they need.
 
-The payment integration required careful testing with both gateways. PayPal's webhook system needed to handle various edge cases - failed payments, partial refunds, and currency conversions. For Chapa, I had to work closely with their technical team to ensure proper integration with Ethiopian banking systems. The most challenging part was creating a unified donation tracking system that could handle both payment methods seamlessly.
+### Donor Engagement
 
-One feature I'm particularly proud of is the automated receipt system. Donors receive personalized thank-you emails with tax-deductible receipts, but more importantly, they get updates about how their specific donations are being used. This created a much stronger connection between donors and the organization's mission.
+An automated receipt system sends personalized thank-you emails with tax-deductible receipts, along with updates about how specific donations are being used. This created a stronger connection between donors and the organization's mission.
 
-## Technical Challenges and Solutions
+---
 
-One of the biggest hurdles was handling the cultural and technical differences between international and local payment systems. Ethiopian donors often prefer to donate in smaller, recurring amounts using mobile money, while international donors typically make larger one-time contributions via credit cards. I had to design a system flexible enough to handle both patterns while maintaining accurate financial reporting.
+## Technical Highlights
 
-The media management system also presented interesting challenges. The organization wanted to share high-quality photos of their programs, but many of their website visitors had limited internet connectivity. I implemented an automatic image optimization system that creates multiple sizes of each uploaded image, serving appropriate versions based on the user's device and connection speed.
+The image optimization system was essential given that many visitors have limited internet connectivity. Uploaded images are automatically processed into multiple sizes, with the appropriate version served based on device and connection speed. The platform includes comprehensive logging and role-based access controls to protect sensitive donor information and financial data.
 
-Security was another critical consideration. The platform handles sensitive donor information and financial transactions, so I implemented comprehensive logging, regular security audits, and role-based access controls that ensure staff members can only access the information they need for their specific responsibilities.
+---
 
-## Results and Impact
+## Impact
 
-The new platform launched six months after development began, and the results exceeded everyone's expectations. Within the first three months, the organization saw a 60% increase in online donations, with the local payment integration accounting for 40% of total contributions - a completely new revenue stream that hadn't existed before.
+Within three months of launch, online donations increased by 60%. The local payment integration through Chapa accounted for 40% of total contributions — revenue that simply didn't exist before. The platform now serves over 1,000 active users including donors, volunteers, and staff, with automated systems handling donation processing and receipt generation so staff can focus on their core mission.
 
-More importantly, the content management system transformed how the team communicated their impact. They went from publishing updates once or twice a month to sharing stories, program updates, and urgent needs on a weekly basis. This increased engagement led to stronger relationships with existing donors and attracted new supporters who could see the real-time impact of their contributions.
-
-The platform now serves over 1,000 active users, including donors, volunteers, and staff members. The automated systems handle everything from donation processing to receipt generation, freeing up staff time to focus on their core mission of supporting vulnerable children.
-
-## Key Takeaways
-
-This project taught me the importance of deeply understanding the users and context before diving into technical solutions. The dual payment gateway approach, which became one of the platform's most successful features, only emerged after spending time with the Ethiopian community and understanding their preferred payment methods.
-
-Working with a nonprofit also highlighted how technology can amplify social impact. Every technical decision - from the content management workflow to the donation process - had direct implications for the organization's ability to serve vulnerable children. This added a layer of responsibility that made the development process more meaningful and focused.
-
-The project also reinforced the value of building with maintainability in mind. By choosing familiar technologies and creating comprehensive documentation, I ensured that local developers could continue enhancing the platform long after my involvement ended.
-
-## Future Considerations
-
-The platform continues to evolve based on user feedback and changing needs. Recent discussions have focused on adding volunteer management features and integrating with social media platforms to expand reach. The foundation we built has proven flexible enough to accommodate these new requirements while maintaining the security and reliability that a financial platform requires.
-
-**Built with**: Laravel, Blade Templates, TailwindCSS, MySQL, Prisma ORM, PayPal API, Chapa API
+**Technologies Used**: Laravel, Blade Templates, TailwindCSS, MySQL, PayPal API, Chapa API
 
 **Visit the platform**: [boh-eth.org](https://boh-eth.org)

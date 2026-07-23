@@ -1,10 +1,11 @@
-/* eslint-disable react/no-array-index-key */
 // components/ExperienceItem.tsx
 import React from 'react';
 
 interface ExperienceItemProps {
   title: string;
   company: string;
+  /** Optional link to the company site. */
+  companyUrl?: string;
   location: string;
   duration: {
     start: string;
@@ -16,6 +17,7 @@ interface ExperienceItemProps {
 const ExperienceItem: React.FC<ExperienceItemProps> = ({
   title,
   company,
+  companyUrl,
   location,
   duration,
   description,
@@ -31,14 +33,25 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({
         {title}
       </h3>
       <p className="text-lg font-semibold text-gray-600 dark:text-gray-300">
-        {company}
+        {companyUrl ? (
+          <a
+            href={companyUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-accent-coral dark:hover:text-accent-coral underline decoration-transparent hover:decoration-inherit transition-colors"
+          >
+            {company}
+          </a>
+        ) : (
+          company
+        )}
       </p>
       <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
         {location}
       </p>
       <ul className="list-disc pl-5">
-        {description.map((item, index) => (
-          <li key={index} className="text-gray-700 dark:text-gray-300">
+        {description.map((item) => (
+          <li key={item} className="text-gray-700 dark:text-gray-300">
             {item}
           </li>
         ))}

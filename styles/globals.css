@@ -2,166 +2,100 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Anchor targets must clear the sticky header. */
+    scroll-padding-top: 6rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Subtle paper grain over the whole page. A static SVG data URI is used
+     rather than a live feTurbulence filter, which the browser has to
+     recompute across the full viewport on every paint. */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.18;
+    mix-blend-mode: soft-light;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/></filter><rect width='120' height='120' filter='url(%23g)' opacity='0.3'/></svg>");
+    background-size: 200px 200px;
+    background-repeat: repeat;
+  }
+}
+
+@layer components {
+  /* Surfaces.
+     The site deliberately runs on one neutral palette: cards, pills and
+     frames all use these three classes rather than per-item colours. Accent
+     colour is reserved for interaction — hover, focus, the active nav item —
+     so that colour always means "this responds to you", never decoration. */
+  .paper-card {
+    @apply bg-paper-white dark:bg-zinc-900 border border-paper-border dark:border-white/10 shadow-paper dark:shadow-none;
+  }
+
+  /* One step recessed from .paper-card — image frames, inset panels. */
+  .paper-inset {
+    @apply bg-paper-cream dark:bg-zinc-800 border border-paper-border dark:border-white/10;
+  }
+
+  .paper-pill {
+    @apply bg-paper-cream dark:bg-white/10 border border-paper-border dark:border-white/15 text-paper-text dark:text-gray-200;
+  }
+}
+
 /* Paper Design Button Components */
 @layer components {
   .btn-primary {
     @apply relative inline-block;
   }
-  
+
   .btn-primary-bg {
     @apply absolute inset-0 bg-accent-yellow rounded-xl transform translate-x-0 translate-y-0 opacity-0 transition-all duration-200;
   }
-  
+
   .btn-primary-shadow {
     @apply absolute inset-0 bg-accent-coral rounded-xl transform translate-x-0 translate-y-0 opacity-0 transition-all duration-200;
   }
-  
+
   .btn-primary-content {
     @apply relative px-6 py-3 bg-paper-text text-paper-white rounded-xl font-medium transition-all duration-200;
   }
-  
+
   .btn-primary:hover .btn-primary-bg {
     @apply translate-x-1 translate-y-1 opacity-100;
   }
-  
+
   .btn-primary:hover .btn-primary-shadow {
     @apply translate-x-0.5 translate-y-0.5 opacity-100;
   }
-  
+
   .btn-secondary {
     @apply relative inline-block;
   }
-  
+
   .btn-secondary-shadow {
     @apply absolute inset-0 bg-paper-text rounded-full transform translate-x-0 translate-y-0 opacity-0 transition-all duration-200;
   }
-  
+
   .btn-secondary-content {
     @apply relative px-6 py-3 bg-paper-white text-paper-text border-2 border-paper-text rounded-full font-medium transition-all duration-200;
   }
-  
+
   .btn-secondary:hover .btn-secondary-shadow {
     @apply translate-x-1 translate-y-1 opacity-100;
   }
-}
-
-.border-gradient-shiny {
-  border-image: linear-gradient(45deg, #ff6b6b, #d610dd);
-  border-image-slice: 1;
-}
-
-/* PartnersSection.css */
-.partners-section {
-  overflow: hidden;
-}
-
-.partner-icons {
-  display: flex;
-  animation: scroll 20s linear infinite;
-}
-
-.partner-icon {
-  margin-right: 30px; /* Adjust the spacing between icons */
-}
-
-@keyframes scroll {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(-200%);
-  }
-}
-
-@layer base {
-  h1 {
-    @apply text-2xl;
-  }
-  h2 {
-    @apply text-xl;
-  }
-}
-
-.ssection {
-  height: 100vh;
-  scroll-snap-align: center;
-}
-.contnr {
-  scroll-snap-type: y mandatory;
-  overflow-y: scroll;
-  height: 100vh;
-}
-.font-neon {
-  text-shadow: 0 0 10px #ff00b0, 0 0 20px #ff00b0, 0 0 30px #ff00b0,
-    0 0 40px #ff00b0, 0 0 50px #ff00b0;
-}
-.glow {
-  filter: drop-shadow(0 0 5px #ff00b0) drop-shadow(0 0 10px #ff00b0);
-}
-.neon {
-  color: rgb(10, 210, 10); /* set the text color */
-  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #f00,
-    0 0 70px #f00, 0 0 80px #f00, 0 0 100px #f00, 0 0 150px #f00; /* set the neon effect with text shadow */
-  background-color: transparent; /* set the background color to transparent */
-  font-size: 1em; /* set the font size */
-  font-family: 'Arial Black', sans-serif; /* set the font family */
-  text-align: center; /* center the text */
-}
-
-.glow-green {
-  filter: drop-shadow(0 0 5px #13c33c) drop-shadow(0 0 10px #13c33c);
-}
-
-.glow-red {
-  filter: drop-shadow(0 0 5px #a71919) drop-shadow(0 0 10px #a71919);
-}
-.custom-cursor {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  border: 2px solid #000;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-}
-
-/* Subtle page-wide noise background */
-.noise-bg {
-  position: relative;
-}
-
-.noise-bg::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  /* Tiny SVG with fractal noise */
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'><filter id='grain'><feTurbulence type='turbulence' baseFrequency='0.69'/></filter><rect width='120' height='120' filter='url(%23grain)' opacity='0.06'/></svg>");
-  background-size: 220px 220px;
-  background-repeat: repeat;
-  mix-blend-mode: soft-light;
-}
-
-/* Site-wide overlay using CSS filter url(#grain) */
-body {
-  position: relative;
-}
-
-body::before,
-body::after {
-  position: absolute;
-  left: 0;
-  top: 0;
-  content: '';
-  width: 100%;
-  height: 100%;
-  z-index: 9999;
-  opacity: 0.18;
-  filter: url(#grain) contrast(150%) brightness(300%);
-  pointer-events: none;
-}
-
-body::before {
-  filter: url(#grain) contrast(150%) brightness(300%);
 }

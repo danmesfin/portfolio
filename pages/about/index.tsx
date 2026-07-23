@@ -1,10 +1,14 @@
 import React from 'react';
 import About from '../../components/About';
+import Seo from '../../components/Seo';
 
-type Props = {};
-
-const Page = (props: Props) => (
+const Page = () => (
   <div className="w-full flex">
+    <Seo
+      title="About"
+      description="How Daniel Mesfin went from writing HTML on an Android phone in 2017 to building full-stack products for clients worldwide."
+      path="/about"
+    />
     <About />
   </div>
 );

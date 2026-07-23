@@ -3,31 +3,25 @@ import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import Navbar from './Navbar';
 import Footer from './Footer';
-// import CustomCursor from '../CustomCursor/index';
+
 // eslint-disable-next-line react/prop-types
 function Layout({ children }) {
-  // const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  // useEffect(() => {
-  //   const handleMouseMove = (event) => {
-  //     setMousePosition({ x: event.clientX, y: event.clientY });
-  //   };
-
-  //   window.addEventListener('mousemove', handleMouseMove);
-
-  //   return () => {
-  //     window.removeEventListener('mousemove', handleMouseMove);
-  //   };
-  // }, []);
   return (
-    <main className=" bg-base dark:bg-black snap-y h-screen overflow-y-scroll scroll-smooth">
-      {/* <CustomCursor mousePosition={mousePosition} /> */}
+    <div className="flex min-h-screen flex-col bg-base dark:bg-black text-paper-text dark:text-gray-200">
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:rounded-xl focus:bg-paper-white focus:px-4 focus:py-2 focus:text-paper-text focus:shadow-paper"
+      >
+        Skip to content
+      </a>
       <Navbar />
-      {children}
+      <main id="main-content" className="flex-1">
+        {children}
+      </main>
+      <Footer />
       <Analytics />
       <SpeedInsights />
-      <Footer />
-    </main>
+    </div>
   );
 }
 
