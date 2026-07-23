@@ -22,20 +22,35 @@ export default function Banner() {
         variants={containerVariants}
         transition={{ duration: 1 }}
       >
-        <div className="h-4/5 mx-auto flex flex-wrap-reverse md:flex-row md:flex-nowrap">
-          <div className="w-full md:w-1/2 flex flex-col px-5 md:pl-40 justify-start md:justify-center py-5">
+        <div className="w-full max-w-7xl mx-auto flex flex-wrap-reverse lg:flex-row lg:flex-nowrap lg:items-center gap-6 lg:gap-8">
+          <div className="w-full lg:w-1/2 min-w-0 flex flex-col px-5 lg:pl-16 xl:pl-24 justify-start lg:justify-center py-5">
             <h1
               className="flex flex-col mt-4 p-1 font-display text-paper-text dark:text-white
-               text-center md:text-left text-4xl md:text-5xl"
+               text-center lg:text-left text-4xl sm:text-5xl"
             >
               <span>HI, I&apos;M DANIEL.</span>
               <span>A FULLSTACK ENGINEER</span>
               <span>BASED IN ADDIS</span>
             </h1>
-            <p className="text-paper-text dark:text-gray-300 text-center md:text-start text-3xl font-hand font-bold md:text-4xl mt-4 p-1">
+            <p className="text-paper-text dark:text-gray-300 text-center lg:text-start text-3xl font-hand font-bold sm:text-4xl mt-4 p-1">
               DESIGN - DEVELOP - DEPLOY
             </p>
-            <div className="flex gap-4 mt-4 p-1 mx-auto md:ml-0">
+            <p className="mt-5 p-1 max-w-prose mx-auto lg:mx-0 text-center lg:text-start text-base sm:text-lg leading-relaxed text-paper-muted dark:text-gray-400">
+              I build data-heavy products end to end — large-scale crawling, AI
+              pipelines, and the interfaces that make them useful. Currently
+              Senior Data Engineer at{' '}
+              <a
+                href="https://www.lexis.solutions/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-paper-text dark:text-gray-200 underline decoration-accent-coral decoration-2 underline-offset-4 hover:text-accent-coral transition-colors"
+              >
+                Lexis Solutions
+              </a>
+              , and recently shipped Ethiopia&apos;s largest AI creative
+              competition to 50,000+ users.
+            </p>
+            <div className="flex flex-wrap justify-center lg:justify-start gap-4 mt-6 p-1">
               <Link href="/#contact" className={ctaClass}>
                 Got a project?
               </Link>
@@ -44,19 +59,16 @@ export default function Banner() {
               </Link>
             </div>
           </div>
-          <div
-            className="w-full md:w-1/2 flex justify-center md:justify-start
-           items-start "
-          >
+          <div className="w-full lg:w-1/2 min-w-0 flex justify-center lg:justify-start items-start">
             <div
-              className="relative flex h-72 w-52 md:w-[20rem] md:h-[30rem]
+              className="relative flex h-72 w-52 sm:h-[24rem] sm:w-[16.5rem] lg:h-[26rem] lg:w-[18rem] xl:h-[30rem] xl:w-[20rem]
              overflow-hidden rounded-lg bg-opacity-20"
             >
               <Image
                 src={portrait}
                 style={{ objectFit: 'contain' }}
                 fill
-                sizes="(max-width: 768px) 13rem, 20rem"
+                sizes="(max-width: 640px) 13rem, (max-width: 1024px) 16.5rem, (max-width: 1280px) 18rem, 20rem"
                 placeholder="blur"
                 priority
                 alt="Portrait of Daniel Mesfin"

@@ -46,7 +46,7 @@ const SOCIALS = [
 ];
 
 const socialLinkClass =
-  'mx-1 sm:mx-2 p-2 text-paper-text dark:text-gray-300 hover:text-accent-coral dark:hover:text-accent-coral hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-all duration-200';
+  'p-2 text-paper-text dark:text-gray-300 hover:text-accent-coral dark:hover:text-accent-coral hover:bg-paper-light dark:hover:bg-gray-800 rounded-full transition-all duration-200';
 
 function Navbar() {
   const [mounted, setMounted] = useState(false);
@@ -57,15 +57,22 @@ function Navbar() {
     setMounted(true);
   }, []);
 
-  // Close the mobile menu on Escape for keyboard users.
+  // Close the panel on Escape, and whenever navigation happens — otherwise it
+  // stays open behind the new page after tapping a link.
   useEffect(() => {
-    if (!navActive) return undefined;
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') setNavActive(false);
     };
+    const close = () => setNavActive(false);
     window.addEventListener('keydown', onKeyDown);
-    return () => window.removeEventListener('keydown', onKeyDown);
-  }, [navActive]);
+    router.events.on('routeChangeComplete', close);
+    router.events.on('hashChangeComplete', close);
+    return () => {
+      window.removeEventListener('keydown', onKeyDown);
+      router.events.off('routeChangeComplete', close);
+      router.events.off('hashChangeComplete', close);
+    };
+  }, [router.events]);
 
   const isActive = (link: string) => {
     const path = router.asPath;
@@ -77,66 +84,56 @@ function Navbar() {
 
   const closeNav = () => setNavActive(false);
 
+  const socialLinks = SOCIALS.map(({ label, href, Icon }) => (
+    <a
+      key={label}
+      className={socialLinkClass}
+      href={href}
+      target="_blank"
+      rel="noreferrer noopener"
+      aria-label={label}
+    >
+      <Icon className="h-5 w-5" aria-hidden="true" />
+    </a>
+  ));
+
+  const resumeButton = (
+    <a
+      href="/downloads/Daniel_Mesfin_Resume.pdf"
+      target="_blank"
+      rel="noreferrer noopener"
+      onClick={closeNav}
+      className="block"
+    >
+      <div className="btn-primary">
+        <div className="btn-primary-bg" />
+        <div className="btn-primary-shadow" />
+        <div className="btn-primary-content whitespace-nowrap text-sm xl:text-base">
+          See Resume
+        </div>
+      </div>
+    </a>
+  );
+
   return (
-    <header className="sticky top-0 z-[99] px-2 py-3 md:px-10">
-      <div className="bg-paper-white/95 dark:bg-gray-900/95 backdrop-blur-sm rounded-2xl mx-2 md:mx-4 px-4 py-3 border border-paper-border dark:border-gray-700">
-        <div className="flex flex-wrap justify-between items-center mx-auto">
-          <Link href="/" aria-label="Daniel Mesfin — home">
-            <div className="cursor-pointer flex justify-center text-xl font-display whitespace-nowrap text-paper-text dark:text-white hover:text-accent-coral dark:hover:text-accent-coral transition-colors duration-200">
-              <p className="my-auto text-3xl font-bold">DM</p>
-            </div>
+    <header className="sticky top-0 z-[99] px-2 py-3 sm:px-4 lg:px-8">
+      <div className="paper-card mx-auto max-w-[1600px] rounded-2xl bg-paper-white/95 dark:bg-gray-900/95 backdrop-blur-sm px-3 py-2.5 sm:px-4 sm:py-3">
+        {/* Single row: never wraps. Everything that cannot fit moves into the
+            panel below at the breakpoint where it stops fitting. */}
+        <div className="flex items-center justify-between gap-2 sm:gap-4">
+          <Link
+            href="/"
+            aria-label="Daniel Mesfin — home"
+            className="flex-shrink-0"
+          >
+            <p className="my-auto text-2xl sm:text-3xl font-bold font-display text-paper-text dark:text-white hover:text-accent-coral dark:hover:text-accent-coral transition-colors duration-200">
+              DM
+            </p>
           </Link>
 
-          <div className="flex mx-auto">
-            {SOCIALS.map(({ label, href, Icon }) => (
-              <a
-                key={label}
-                className={socialLinkClass}
-                href={href}
-                target="_blank"
-                rel="noreferrer noopener"
-                aria-label={label}
-              >
-                <Icon className="h-6 w-6" aria-hidden="true" />
-              </a>
-            ))}
-          </div>
-
-          <div className="flex md:hidden">
-            <button
-              onClick={() => setNavActive(!navActive)}
-              type="button"
-              aria-expanded={navActive}
-              aria-controls="primary-navigation"
-              className="inline-flex items-center p-2 ml-3 text-sm text-paper-muted dark:text-gray-300 rounded-xl hover:bg-paper-light dark:hover:bg-gray-800 hover:shadow-paper-hover focus:outline-none focus:ring-2 focus:ring-accent-coral/40 transition-all duration-200"
-            >
-              <span className="sr-only">
-                {navActive ? 'Close main menu' : 'Open main menu'}
-              </span>
-              <svg
-                className="w-6 h-6"
-                aria-hidden="true"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </button>
-          </div>
-
-          <nav
-            id="primary-navigation"
-            aria-label="Main"
-            className={`w-full bg-paper-white/95 dark:bg-gray-900/95 backdrop-blur-sm shadow-paper dark:shadow-gray-800/20 rounded-2xl border border-paper-border dark:border-gray-700 md:block md:w-auto md:bg-transparent md:dark:bg-transparent md:shadow-none md:border-0 ${
-              navActive ? 'mt-4' : 'hidden'
-            }`}
-          >
-            <ul className="flex flex-col items-center py-3 px-4 md:flex-row md:space-x-4 lg:space-x-8 md:py-0 md:px-0 md:font-medium">
+          {/* Primary nav — inline from lg, in the panel below that. */}
+          <nav aria-label="Main" className="hidden lg:block min-w-0">
+            <ul className="flex items-center gap-0.5 xl:gap-3">
               {MENU.map((menu) => (
                 <Navitem
                   key={menu.title}
@@ -147,26 +144,87 @@ function Navbar() {
                   onClick={closeNav}
                 />
               ))}
-
-              <li className="flex justify-center items-center mx-2 my-1">
-                {mounted && <ThemeChanger />}
-              </li>
-              <li>
-                <a
-                  href="/downloads/Daniel_Mesfin.pdf"
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  onClick={closeNav}
-                  className="block"
-                >
-                  <div className="btn-primary">
-                    <div className="btn-primary-bg" />
-                    <div className="btn-primary-shadow" />
-                    <div className="btn-primary-content">See Resume</div>
-                  </div>
-                </a>
-              </li>
             </ul>
+          </nav>
+
+          <div className="flex flex-shrink-0 items-center gap-1 sm:gap-2">
+            {/* Socials need the most room, so they appear last — at xl. */}
+            <div className="hidden xl:flex items-center">{socialLinks}</div>
+
+            {mounted && <ThemeChanger />}
+
+            <div className="hidden lg:block">{resumeButton}</div>
+
+            <button
+              onClick={() => setNavActive(!navActive)}
+              type="button"
+              aria-expanded={navActive}
+              aria-controls="primary-navigation"
+              className="lg:hidden inline-flex items-center p-2 text-paper-text dark:text-gray-300 rounded-xl hover:bg-paper-light dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-accent-coral/40 transition-all duration-200"
+            >
+              <span className="sr-only">
+                {navActive ? 'Close main menu' : 'Open main menu'}
+              </span>
+              <svg
+                className="w-6 h-6"
+                aria-hidden="true"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+                viewBox="0 0 24 24"
+              >
+                {navActive ? (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                ) : (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                )}
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        {/* Panel: holds whatever the row could not. Scrolls if the viewport is
+            too short (landscape phones). */}
+        <div
+          id="primary-navigation"
+          className={`lg:hidden transition-[max-height] duration-300 ${
+            navActive
+              ? 'max-h-[70vh] overflow-y-auto'
+              : 'max-h-0 overflow-hidden'
+          }`}
+        >
+          <nav
+            aria-label="Mobile"
+            className="mt-3 border-t border-paper-border dark:border-white/10 pt-3"
+          >
+            <ul className="flex flex-col gap-0.5">
+              {MENU.map((menu) => (
+                <Navitem
+                  key={menu.title}
+                  menu={menu.title}
+                  link={menu.link}
+                  description={menu.description}
+                  active={isActive(menu.link)}
+                  onClick={closeNav}
+                  block
+                />
+              ))}
+            </ul>
+
+            <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
+              <div className="flex flex-wrap items-center xl:hidden">
+                {socialLinks}
+              </div>
+              <div className="lg:hidden">{resumeButton}</div>
+            </div>
           </nav>
         </div>
       </div>

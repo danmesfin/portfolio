@@ -1,7 +1,7 @@
 import React from 'react';
 import Seo from '../../components/Seo';
 
-const RESUME_PATH = '/downloads/Daniel_Mesfin.pdf';
+const RESUME_PATH = '/downloads/Daniel_Mesfin_Resume.pdf';
 
 function Page() {
   return (
