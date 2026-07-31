@@ -5,6 +5,7 @@ import Contact from '../components/Contact';
 import Services from '../components/Services';
 import TechStacks from '../components/TechStacks';
 import Experience from '../components/Experience';
+import Certifications from '../components/Certifications';
 import BentoGrid from '../components/BentoGrid';
 import CaseStudyCarousel from '../components/CaseStudyGrid';
 import Seo from '../components/Seo';
@@ -45,6 +46,7 @@ function Home({ caseStudies }: HomeProps) {
       <BentoGrid />
       <CaseStudyCarousel caseStudies={caseStudies} />
       <Experience />
+      <Certifications />
       <Services />
       <TechStacks />
       <Contact />

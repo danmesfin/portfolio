@@ -1,5 +1,6 @@
 import { GetServerSideProps } from 'next';
 import { experienceData } from '../components/Experience';
+import { certifications } from '../components/Certifications';
 import { projects } from '../components/BentoGrid';
 import { getAllBlogs } from '../utils/getBlogs';
 import { getCaseStudies } from '../utils/getCaseStudies';
@@ -45,6 +46,13 @@ function buildDocument(): string {
       ...role.description.map((point) => `- ${point}`),
       '',
     ]),
+    '## Certifications',
+    '',
+    ...certifications.map(
+      ({ title, issuer, date, url }) =>
+        `- [${title}](${url}) — ${issuer}${date ? `, ${date}` : ''}`
+    ),
+    '',
     '## Case studies',
     '',
     'In-depth write-ups. Each page covers the problem, architecture and outcome.',
