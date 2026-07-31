@@ -20,22 +20,18 @@ function Navitem({
   block = false,
 }: NavitemProps) {
   return (
-    <li
-      className={`font-display rounded-xl transition-colors duration-200 ${
-        block ? 'w-full text-left' : 'text-center'
-      } ${
-        active
-          ? 'text-accent-coral bg-paper-light dark:bg-gray-800'
-          : 'text-paper-text dark:text-gray-300 hover:text-accent-coral dark:hover:text-accent-coral hover:bg-paper-light dark:hover:bg-gray-800'
-      }`}
-    >
+    <li className={block ? 'w-full' : ''}>
       <Link
         onClick={onClick}
         href={link}
         title={description}
         aria-current={active ? 'page' : undefined}
-        className={`block w-full whitespace-nowrap ${
-          block ? 'px-4 py-3 text-lg' : 'px-2 py-2 xl:px-3'
+        className={`block font-mono text-sm whitespace-nowrap transition-colors duration-150 ${
+          block ? 'w-full px-1 py-3 text-base' : 'px-2 py-1.5'
+        } ${
+          active
+            ? 'text-paper-text dark:text-paper-white underline decoration-1 underline-offset-[6px]'
+            : 'text-paper-muted hover:text-paper-text dark:text-gray-400 dark:hover:text-paper-white'
         }`}
       >
         {menu}

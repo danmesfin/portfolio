@@ -39,7 +39,7 @@ export const SOCIAL_ICONS: Record<string, typeof SiGithub> = {
 const INERT = { inert: '' };
 
 const socialLinkClass =
-  'p-2 text-paper-text dark:text-gray-300 hover:text-accent-coral dark:hover:text-accent-coral hover:bg-paper-light dark:hover:bg-gray-800 rounded-full transition-all duration-200';
+  'p-2 text-paper-muted dark:text-gray-400 hover:text-paper-text dark:hover:text-paper-white transition-colors duration-200';
 
 function Navbar() {
   const [mounted, setMounted] = useState(false);
@@ -101,35 +101,32 @@ function Navbar() {
       onClick={closeNav}
       className="block"
     >
-      <div className="btn-primary">
-        <div className="btn-primary-bg" />
-        <div className="btn-primary-shadow" />
-        <div className="btn-primary-content whitespace-nowrap text-sm xl:text-base">
-          See Resume
-        </div>
-      </div>
+      <span className="btn-ink whitespace-nowrap px-4 py-2.5">See résumé</span>
     </a>
   );
 
   return (
-    <header className="sticky top-0 z-[99] px-2 py-3 sm:px-4 lg:px-8">
-      <div className="paper-card mx-auto max-w-[1600px] rounded-2xl bg-paper-white/95 dark:bg-gray-900/95 backdrop-blur-sm px-3 py-2.5 sm:px-4 sm:py-3">
+    <header className="sticky top-0 z-[99] bg-base/85 dark:bg-black/85 backdrop-blur-md border-b border-paper-border dark:border-white/10">
+      <div className="mx-auto max-w-6xl px-5 sm:px-8 lg:px-12">
         {/* Single row: never wraps. Everything that cannot fit moves into the
             panel below at the breakpoint where it stops fitting. */}
-        <div className="flex items-center justify-between gap-2 sm:gap-4">
+        <div className="flex items-center justify-between gap-2 sm:gap-4 py-4">
           <Link
             href="/"
             aria-label="Daniel Mesfin — home"
-            className="flex-shrink-0"
+            className="flex-shrink-0 group"
           >
-            <p className="my-auto text-2xl sm:text-3xl font-bold font-display text-paper-text dark:text-white hover:text-accent-coral dark:hover:text-accent-coral transition-colors duration-200">
-              DM
-            </p>
+            <span className="font-display text-xl sm:text-2xl text-paper-text dark:text-paper-white">
+              Daniel Mesfin
+            </span>
+            <span className="ml-2 eyebrow hidden sm:inline align-middle">
+              Engineer
+            </span>
           </Link>
 
           {/* Primary nav — inline from lg, in the panel below that. */}
           <nav aria-label="Main" className="hidden lg:block min-w-0">
-            <ul className="flex items-center gap-0.5 xl:gap-3">
+            <ul className="flex items-center gap-1 xl:gap-2">
               {MENU.map((menu) => (
                 <Navitem
                   key={menu.title}
@@ -156,7 +153,7 @@ function Navbar() {
               type="button"
               aria-expanded={navActive}
               aria-controls="primary-navigation"
-              className="lg:hidden inline-flex items-center p-2 text-paper-text dark:text-gray-300 rounded-xl hover:bg-paper-light dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-accent-coral/40 transition-all duration-200"
+              className="lg:hidden inline-flex items-center p-2 text-paper-text dark:text-paper-white focus:outline-none focus-visible:ring-2 focus-visible:ring-paper-text/40 transition-all duration-200"
             >
               <span className="sr-only">
                 {navActive ? 'Close main menu' : 'Open main menu'}

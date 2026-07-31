@@ -4,23 +4,22 @@ import React from 'react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 // eslint-disable-next-line camelcase -- next/font exports Google's exact family names
-import { Nanum_Pen_Script, Inter } from 'next/font/google';
+import { Fraunces, IBM_Plex_Mono } from 'next/font/google';
 import { ThemeProvider } from 'next-themes';
 import { Toaster } from 'react-hot-toast';
 import Layout from '../components/Layout';
 
-// Self-hosted by next/font at build time: no render-blocking request to
-// Google, and no layout shift while the face loads.
-const handwriting = Nanum_Pen_Script({
-  weight: '400',
+// Editorial serif for display headings. Self-hosted by next/font at build
+// time, so no render-blocking request and no layout shift.
+const display = Fraunces({
   subsets: ['latin'],
   display: 'swap',
-  // No font metrics are published for this face, so next/font cannot build a
-  // size-adjusted fallback. Opting out keeps the build free of warnings.
-  adjustFontFallback: false,
+  axes: ['opsz', 'SOFT', 'WONK'],
 });
 
-const body = Inter({
+// Monospace for body copy, labels and UI — the workhorse face.
+const mono = IBM_Plex_Mono({
+  weight: ['400', '500', '600'],
   subsets: ['latin'],
   display: 'swap',
 });
@@ -33,8 +32,8 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <style jsx global>{`
         :root {
-          --font-sans: ${body.style.fontFamily};
-          --font-hand: ${handwriting.style.fontFamily};
+          --font-sans: ${mono.style.fontFamily};
+          --font-display: ${display.style.fontFamily};
         }
       `}</style>
       <Layout>

@@ -21,60 +21,62 @@ interface ProjectsPageProps {
 
 function Page({ repos, unavailable }: ProjectsPageProps) {
   return (
-    <div className="max-w-6xl mx-auto px-4 py-16 sm:py-20">
+    <div className="mx-auto max-w-6xl px-5 sm:px-8 lg:px-12 py-16 sm:py-24">
       <Seo
         title="Open Source"
         description="Public repositories and open-source work by Daniel Mesfin on GitHub."
         path="/projects"
       />
 
-      <div className="text-center mb-12">
-        <h1 className="text-4xl sm:text-5xl font-display font-bold text-paper-text dark:text-white mb-4">
-          Open Source
-        </h1>
-        <p className="text-lg text-paper-muted dark:text-gray-300 max-w-2xl mx-auto">
-          Public repositories from my GitHub, sorted by most recently updated.
-        </p>
-      </div>
+      <p className="eyebrow">Open source</p>
+      <h1 className="font-display mt-4 text-4xl sm:text-5xl lg:text-6xl leading-[1.05] text-paper-text dark:text-paper-white">
+        Public repositories.
+      </h1>
+      <p className="mt-6 max-w-2xl text-paper-muted dark:text-gray-400 leading-relaxed">
+        Pulled from my GitHub, sorted by most recently updated.
+      </p>
+      <hr className="rule mt-10" />
 
       {unavailable || repos.length === 0 ? (
-        <div className="text-center py-16">
-          <p className="text-paper-muted dark:text-gray-400 mb-6">
+        <div className="py-16">
+          <p className="font-mono text-sm text-paper-muted dark:text-gray-400 mb-6">
             The repository list could not be loaded right now.
           </p>
           <a
             href="https://github.com/danmesfin"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 px-6 py-3 rounded-xl font-semibold transition-colors"
+            className="btn-ink"
           >
             View on GitHub
           </a>
         </div>
       ) : (
-        <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <ul className="divide-y divide-paper-border dark:divide-white/10">
           {repos.map((repo) => (
             <li key={repo.id}>
               <a
                 href={repo.htmlUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="h-full flex flex-col p-6 rounded-2xl border border-paper-border dark:border-gray-700 bg-paper-white dark:bg-zinc-900 hover:border-accent-coral hover:shadow-paper-hover transition-all duration-200"
+                className="group flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-x-8 gap-y-2 py-6"
               >
-                <h2 className="text-lg font-bold text-paper-text dark:text-white mb-2 break-words">
-                  {repo.name}
-                </h2>
-                <p className="text-sm text-paper-muted dark:text-gray-400 flex-1 line-clamp-3">
-                  {repo.description || 'No description provided.'}
-                </p>
-                <div className="flex items-center gap-4 mt-4 text-sm text-paper-muted dark:text-gray-400">
+                <div className="min-w-0">
+                  <h2 className="font-display text-xl text-paper-text dark:text-paper-white group-hover:underline decoration-1 underline-offset-4 break-words">
+                    {repo.name}
+                  </h2>
+                  <p className="mt-2 max-w-xl font-mono text-sm text-paper-muted dark:text-gray-400 line-clamp-2">
+                    {repo.description || 'No description provided.'}
+                  </p>
+                </div>
+                <div className="flex flex-shrink-0 items-center gap-5 font-mono text-xs text-paper-muted dark:text-gray-500">
                   {repo.language && <span>{repo.language}</span>}
-                  <span className="flex items-center gap-1">
+                  <span className="flex items-center gap-1.5">
                     <FaStar aria-hidden="true" />
                     {repo.stars}
                     <span className="sr-only">stars</span>
                   </span>
-                  <span className="flex items-center gap-1">
+                  <span className="flex items-center gap-1.5">
                     <FaCodeBranch aria-hidden="true" />
                     {repo.forks}
                     <span className="sr-only">forks</span>

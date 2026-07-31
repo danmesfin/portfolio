@@ -4,77 +4,97 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import portrait from '../../public/images/danmesfin.webp';
 
-const ctaClass =
-  'inline-block py-3 px-4 text-lg rounded-lg border border-black dark:border-gray-600 text-paper-text dark:text-gray-300 hover:text-black hover:border-black dark:hover:text-white dark:hover:border-accent-coral dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-accent-coral/40 transition-all duration-150';
+const GLANCE = [
+  { label: 'Focus', value: 'Extraction · Pipelines · AI agents' },
+  { label: 'Now', value: 'Senior Data Engineer, Lexis Solutions' },
+  { label: 'Stack', value: 'TypeScript · Next.js · Python · AWS' },
+  { label: 'Based in', value: 'Addis Ababa, Ethiopia' },
+];
 
 export default function Banner() {
   const containerVariants = {
-    hidden: { opacity: 0, y: 100 },
+    hidden: { opacity: 0, y: 24 },
     visible: { opacity: 1, y: 0 },
   };
 
   return (
-    <section className="md:pt-16" id="banner">
+    <section className="px-5 sm:px-8 lg:px-12 pt-10 sm:pt-16" id="banner">
       <motion.div
-        className="flex flex-col justify-center px-2 items-center"
+        className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-10 lg:gap-16"
         initial="hidden"
         animate="visible"
         variants={containerVariants}
-        transition={{ duration: 1 }}
+        transition={{ duration: 0.7, ease: 'easeOut' }}
       >
-        <div className="w-full max-w-7xl mx-auto flex flex-wrap-reverse lg:flex-row lg:flex-nowrap lg:items-center gap-6 lg:gap-8">
-          <div className="w-full lg:w-1/2 min-w-0 flex flex-col px-5 lg:pl-16 xl:pl-24 justify-start lg:justify-center py-5">
-            <h1
-              className="flex flex-col mt-4 p-1 font-display text-paper-text dark:text-white
-               text-center lg:text-left text-4xl sm:text-5xl"
-            >
-              <span>HI, I&apos;M DANIEL.</span>
-              <span>A FULLSTACK ENGINEER</span>
-              <span>BASED IN ADDIS</span>
-            </h1>
-            <p className="text-paper-text dark:text-gray-300 text-center lg:text-start text-3xl font-hand font-bold sm:text-4xl mt-4 p-1">
-              DESIGN - DEVELOP - DEPLOY
+        {/* Left — headline + intro */}
+        <div className="min-w-0">
+          <p className="eyebrow">Daniel Mesfin</p>
+
+          <h1 className="font-display mt-5 text-4xl sm:text-5xl lg:text-6xl leading-[1.05] text-paper-text dark:text-paper-white">
+            I build data and AI systems on the public web.
+          </h1>
+
+          <div className="mt-8 space-y-5 max-w-xl text-paper-muted dark:text-gray-400 leading-relaxed">
+            <p>
+              Large-scale extraction from sites that fight back, pipelines that
+              deliver clean records into the tools you already use, and the
+              interfaces that make the whole thing useful.
             </p>
-            <p className="mt-5 p-1 max-w-prose mx-auto lg:mx-0 text-center lg:text-start text-base sm:text-lg leading-relaxed text-paper-muted dark:text-gray-400">
-              I build data-heavy products end to end — large-scale crawling, AI
-              pipelines, and the interfaces that make them useful. Currently
-              Senior Data Engineer at{' '}
+            <p>
+              Currently Senior Data Engineer at{' '}
               <a
                 href="https://www.lexis.solutions/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-paper-text dark:text-gray-200 underline decoration-accent-coral decoration-2 underline-offset-4 hover:text-accent-coral transition-colors"
+                className="text-paper-text dark:text-paper-white underline decoration-1 underline-offset-4 decoration-paper-muted hover:decoration-paper-text dark:hover:decoration-paper-white transition-colors"
               >
                 Lexis Solutions
               </a>
               , and recently shipped Ethiopia&apos;s largest AI creative
               competition to 50,000+ users.
             </p>
-            <div className="flex flex-wrap justify-center lg:justify-start gap-4 mt-6 p-1">
-              <Link href="/#contact" className={ctaClass}>
-                Got a project?
-              </Link>
-              <Link href="/#projects" className={ctaClass}>
-                See my work
-              </Link>
-            </div>
           </div>
-          <div className="w-full lg:w-1/2 min-w-0 flex justify-center lg:justify-start items-start">
-            <div
-              className="relative flex h-72 w-52 sm:h-[24rem] sm:w-[16.5rem] lg:h-[26rem] lg:w-[18rem] xl:h-[30rem] xl:w-[20rem]
-             overflow-hidden rounded-lg bg-opacity-20"
-            >
-              <Image
-                src={portrait}
-                style={{ objectFit: 'contain' }}
-                fill
-                sizes="(max-width: 640px) 13rem, (max-width: 1024px) 16.5rem, (max-width: 1280px) 18rem, 20rem"
-                placeholder="blur"
-                priority
-                alt="Portrait of Daniel Mesfin"
-              />
-            </div>
+
+          <div className="mt-10 flex flex-wrap gap-3">
+            <Link href="/#contact" className="btn-ink">
+              Start a conversation
+            </Link>
+            <Link href="/#projects" className="btn-outline">
+              See selected work
+            </Link>
           </div>
+        </div>
+
+        {/* Right — portrait + at-a-glance */}
+        <div className="min-w-0">
+          <div className="relative w-full aspect-[4/5] max-w-xs mx-auto lg:mx-0 overflow-hidden grayscale">
+            <Image
+              src={portrait}
+              fill
+              sizes="(max-width: 1024px) 20rem, 22rem"
+              className="object-cover object-top"
+              placeholder="blur"
+              priority
+              alt="Portrait of Daniel Mesfin"
+            />
+          </div>
+
+          <p className="eyebrow mt-8">At a glance</p>
+          <dl className="mt-4">
+            {GLANCE.map(({ label, value }) => (
+              <div
+                key={label}
+                className="rule flex justify-between gap-6 py-3 first:border-t-0 first:pt-0"
+              >
+                <dt className="font-mono text-sm text-paper-muted dark:text-gray-500 flex-shrink-0">
+                  {label}
+                </dt>
+                <dd className="font-mono text-sm text-right text-paper-text dark:text-gray-300">
+                  {value}
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </motion.div>
     </section>

@@ -1,17 +1,17 @@
 import React, { useRef, useState, FormEvent } from 'react';
 import emailjs from '@emailjs/browser';
-import { motion } from 'framer-motion';
 import { toast } from 'react-hot-toast';
+import SectionHeading from '../SectionHeading';
+import { siteConfig } from '../../utils/siteConfig';
 
 const EMAIL_SERVICE_ID = process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID;
 const EMAIL_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID;
 const EMAIL_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY;
 
 const fieldClass =
-  'w-full px-4 py-3 bg-paper-white/10 border border-paper-white/20 rounded-xl text-paper-white placeholder-paper-white/50 focus:outline-none focus:ring-2 focus:ring-accent-yellow focus:border-accent-yellow focus:bg-paper-white/20 transition-all duration-200';
+  'w-full bg-transparent border-b border-paper-border dark:border-white/20 py-3 font-mono text-sm text-paper-text dark:text-paper-white placeholder-paper-muted/60 dark:placeholder-gray-600 focus:outline-none focus:border-paper-text dark:focus:border-paper-white transition-colors duration-200';
 
-const labelClass =
-  'block text-left text-sm font-medium text-paper-white/80 mb-2';
+const labelClass = 'eyebrow block mb-2';
 
 const Contact: React.FC = () => {
   const form = useRef<HTMLFormElement | null>(null);
@@ -49,103 +49,104 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <div className="w-full px-2 md:px-4">
-      <section
-        className="max-w-7xl mx-auto py-12 md:py-20 bg-paper-text rounded-3xl my-8"
-        id="contact"
-      >
-        <div className="max-w-4xl mx-auto px-4 md:px-6 text-center">
-          <motion.div
-            initial={{ y: 50, opacity: 0.5 }}
-            transition={{ duration: 1 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            className="mb-12"
-          >
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-paper-white mb-6 font-display leading-tight">
-              Let&apos;s work together to bring
-              <br />
-              your ideas to life
-            </h2>
-            <p className="text-lg md:text-xl text-paper-white/80 max-w-2xl mx-auto">
-              Have a project in mind, or just want to say hello? Send me a
-              message and I&apos;ll get back to you within a couple of days.
-            </p>
-          </motion.div>
+    <section className="px-5 sm:px-8 lg:px-12 py-16 sm:py-24" id="contact">
+      <div className="mx-auto max-w-6xl">
+        <SectionHeading
+          eyebrow="Contact"
+          title="Let’s build something."
+          intro="Have a project in mind, or just want to say hello? Send a message and I’ll reply within a couple of days."
+        />
 
-          {/* Contact Form Section */}
-          <div
-            id="contact-form"
-            className="mt-16 pt-16 border-t border-paper-white/20"
-          >
-            <form className="max-w-2xl mx-auto" ref={form} onSubmit={sendEmail}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <label htmlFor="contact-name" className="block">
-                  <span className={labelClass}>Your name</span>
-                  <input
-                    id="contact-name"
-                    type="text"
-                    name="name"
-                    required
-                    autoComplete="name"
-                    placeholder="Jane Doe"
-                    className={fieldClass}
-                  />
-                </label>
-                <label htmlFor="contact-email" className="block">
-                  <span className={labelClass}>Your email</span>
-                  <input
-                    id="contact-email"
-                    type="email"
-                    name="email"
-                    required
-                    autoComplete="email"
-                    placeholder="jane@example.com"
-                    className={fieldClass}
-                  />
-                </label>
-              </div>
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-10 lg:gap-16">
+          {/* Direct line */}
+          <div className="font-mono text-sm space-y-6">
+            <div>
+              <p className="eyebrow mb-2">Email</p>
+              <a
+                href={`mailto:${siteConfig.email}`}
+                className="text-paper-text dark:text-paper-white underline decoration-1 underline-offset-4 decoration-paper-muted hover:decoration-paper-text dark:hover:decoration-paper-white transition-colors"
+              >
+                {siteConfig.email}
+              </a>
+            </div>
+            <div>
+              <p className="eyebrow mb-2">Based in</p>
+              <p className="text-paper-muted dark:text-gray-400">
+                {siteConfig.location}
+              </p>
+            </div>
+            <div>
+              <p className="eyebrow mb-2">Availability</p>
+              <p className="text-paper-muted dark:text-gray-400">
+                {siteConfig.availability}
+              </p>
+            </div>
+          </div>
 
-              <label htmlFor="contact-subject" className="block mb-6">
-                <span className={labelClass}>Subject</span>
+          {/* Form */}
+          <form id="contact-form" ref={form} onSubmit={sendEmail}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+              <label htmlFor="contact-name" className="block">
+                <span className={labelClass}>Your name</span>
                 <input
-                  id="contact-subject"
+                  id="contact-name"
                   type="text"
-                  name="subject"
+                  name="name"
                   required
-                  placeholder="What is this about?"
+                  autoComplete="name"
+                  placeholder="Jane Doe"
                   className={fieldClass}
                 />
               </label>
-
-              <label htmlFor="contact-message" className="block mb-6">
-                <span className={labelClass}>Message</span>
-                <textarea
-                  id="contact-message"
-                  name="message"
+              <label htmlFor="contact-email" className="block">
+                <span className={labelClass}>Your email</span>
+                <input
+                  id="contact-email"
+                  type="email"
+                  name="email"
                   required
-                  rows={6}
-                  placeholder="Tell me about your project..."
-                  className={`${fieldClass} resize-none`}
+                  autoComplete="email"
+                  placeholder="jane@example.com"
+                  className={fieldClass}
                 />
               </label>
+            </div>
 
-              <div className="btn-primary inline-block">
-                <div className="btn-primary-bg" />
-                <div className="btn-primary-shadow" />
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="btn-primary-content px-8 py-3 text-lg font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {loading ? 'Sending...' : 'Send Message'}
-                </button>
-              </div>
-            </form>
-          </div>
+            <label htmlFor="contact-subject" className="block mb-8">
+              <span className={labelClass}>Subject</span>
+              <input
+                id="contact-subject"
+                type="text"
+                name="subject"
+                required
+                placeholder="What is this about?"
+                className={fieldClass}
+              />
+            </label>
+
+            <label htmlFor="contact-message" className="block mb-8">
+              <span className={labelClass}>Message</span>
+              <textarea
+                id="contact-message"
+                name="message"
+                required
+                rows={5}
+                placeholder="Tell me about your project…"
+                className={`${fieldClass} resize-none`}
+              />
+            </label>
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="btn-ink disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {loading ? 'Sending…' : 'Send message'}
+            </button>
+          </form>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 };
 

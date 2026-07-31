@@ -11,19 +11,14 @@ export default function Document() {
         <link rel="manifest" href="/site.webmanifest" />
         <meta
           name="theme-color"
-          content="#f4f4f0"
+          content="#efece3"
           media="(prefers-color-scheme: light)"
         />
         <meta
           name="theme-color"
-          content="#000000"
+          content="#17150f"
           media="(prefers-color-scheme: dark)"
         />
-        {/* Adobe Fonts serves the display face (peachy-keen-jf). Preconnect so
-            the stylesheet request does not wait on DNS + TLS. */}
-        <link rel="preconnect" href="https://use.typekit.net" crossOrigin="" />
-        <link rel="preconnect" href="https://p.typekit.net" crossOrigin="" />
-        <link rel="stylesheet" href="https://use.typekit.net/vja6aok.css" />
       </Head>
       <body>
         <Main />

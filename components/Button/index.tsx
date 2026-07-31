@@ -13,7 +13,7 @@ const ThemeChanger: React.FC = () => {
       type="button"
       onClick={() => setTheme(isDark ? 'light' : 'dark')}
       aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
-      className="flex justify-center items-center w-9 h-9 text-paper-text dark:text-gray-300 hover:text-accent-coral dark:hover:text-accent-coral hover:bg-paper-light dark:hover:bg-gray-800 rounded-full focus:outline-none focus:ring-2 focus:ring-accent-coral/40 transition-all duration-200"
+      className="flex justify-center items-center w-9 h-9 text-paper-muted dark:text-gray-400 hover:text-paper-text dark:hover:text-paper-white focus:outline-none focus-visible:ring-2 focus-visible:ring-paper-text/40 transition-colors duration-200"
     >
       {isDark ? (
         <RxSun className="w-5 h-5" aria-hidden="true" />

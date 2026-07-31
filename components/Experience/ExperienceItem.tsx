@@ -22,36 +22,40 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({
   duration,
   description,
 }) => (
-  <div className="mb-8 flex">
-    <div className="flex-shrink-0 w-32 text-right pr-4">
-      <span className="text-sm font-semibold text-gray-600 dark:text-gray-400">
-        {duration.start} - {duration.end}
-      </span>
+  <div className="grid grid-cols-1 md:grid-cols-[14rem_1fr] gap-x-8 gap-y-3 py-8 lg:py-10">
+    <div>
+      <p className="eyebrow">
+        {duration.start} — {duration.end}
+      </p>
+      <p className="mt-2 font-mono text-sm text-paper-muted dark:text-gray-500">
+        {location}
+      </p>
     </div>
-    <div className="border-l-2 border-gray-300 dark:border-gray-700 pl-4">
-      <h3 className="text-xl font-bold text-gray-800 dark:text-white">
+
+    <div>
+      <h3 className="font-display text-xl lg:text-2xl text-paper-text dark:text-paper-white">
         {title}
-      </h3>
-      <p className="text-lg font-semibold text-gray-600 dark:text-gray-300">
+        <span className="text-paper-muted dark:text-gray-500"> · </span>
         {companyUrl ? (
           <a
             href={companyUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-accent-coral dark:hover:text-accent-coral underline decoration-transparent hover:decoration-inherit transition-colors"
+            className="underline decoration-1 underline-offset-4 decoration-paper-muted hover:decoration-paper-text dark:hover:decoration-paper-white transition-colors"
           >
             {company}
           </a>
         ) : (
           company
         )}
-      </p>
-      <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
-        {location}
-      </p>
-      <ul className="list-disc pl-5">
+      </h3>
+
+      <ul className="mt-4 space-y-2">
         {description.map((item) => (
-          <li key={item} className="text-gray-700 dark:text-gray-300">
+          <li
+            key={item}
+            className="relative pl-5 font-mono text-sm leading-relaxed text-paper-muted dark:text-gray-400 before:absolute before:left-0 before:content-['—'] before:text-paper-muted/60"
+          >
             {item}
           </li>
         ))}

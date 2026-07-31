@@ -13,32 +13,30 @@ export default function NotFound() {
   return (
     <div className="min-h-[70vh] flex items-center justify-center px-4 py-20">
       <Seo title="Page not found" noIndex />
-      <div className="text-center max-w-xl">
-        <p className="font-hand text-6xl text-accent-coral mb-4">404</p>
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-paper-text dark:text-white mb-4">
-          This page took a wrong turn
+      <div className="max-w-xl">
+        <p className="eyebrow">Error 404</p>
+        <h1 className="font-display mt-4 text-4xl sm:text-5xl md:text-6xl leading-[1.05] text-paper-text dark:text-paper-white">
+          This page took a wrong turn.
         </h1>
-        <p className="text-lg text-paper-muted dark:text-gray-300 mb-8">
-          The page you are looking for does not exist or has moved. Here are
-          some places worth trying instead.
+        <p className="mt-6 text-paper-muted dark:text-gray-400 leading-relaxed">
+          The page you are looking for does not exist or has moved. A few places
+          worth trying instead:
         </p>
 
-        <div className="flex flex-wrap gap-3 justify-center mb-10">
+        <ul className="mt-8 space-y-2">
           {LINKS.map(({ label, href }) => (
-            <Link
-              key={label}
-              href={href}
-              className="px-5 py-3 rounded-xl border border-paper-border dark:border-gray-700 text-paper-text dark:text-gray-200 hover:border-accent-coral hover:text-accent-coral transition-colors"
-            >
-              {label}
-            </Link>
+            <li key={label}>
+              <Link
+                href={href}
+                className="font-mono text-sm text-paper-muted hover:text-paper-text dark:text-gray-400 dark:hover:text-paper-white transition-colors"
+              >
+                → {label}
+              </Link>
+            </li>
           ))}
-        </div>
+        </ul>
 
-        <Link
-          href="/"
-          className="inline-block bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 px-8 py-4 rounded-xl font-semibold transition-colors"
-        >
+        <Link href="/" className="btn-ink mt-10">
           Back to home
         </Link>
       </div>

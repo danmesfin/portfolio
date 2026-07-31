@@ -1,6 +1,7 @@
 // components/Experience/index.tsx
 import React from 'react';
 import ExperienceItem from './ExperienceItem';
+import SectionHeading from '../SectionHeading';
 
 export const experienceData = [
   {
@@ -81,12 +82,13 @@ export const experienceData = [
 
 export default function Experience() {
   return (
-    <section className="py-20" id="experience">
-      <div className="container mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-display text-center text-gray-800 dark:text-white mb-16">
-          Experience
-        </h2>
-        <div className="max-w-3xl mx-auto">
+    <section className="px-5 sm:px-8 lg:px-12 py-16 sm:py-24" id="experience">
+      <div className="mx-auto max-w-6xl">
+        <SectionHeading
+          eyebrow="How it goes"
+          title="Five years, shipping in production."
+        />
+        <div className="divide-y divide-paper-border dark:divide-white/10">
           {experienceData.map((exp) => (
             <ExperienceItem
               key={`${exp.company}-${exp.title}`}

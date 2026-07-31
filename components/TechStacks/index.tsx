@@ -27,6 +27,7 @@ import {
   SiRedis,
   SiRabbitmq,
 } from 'react-icons/si';
+import SectionHeading from '../SectionHeading';
 
 interface TechTag {
   icon: React.ComponentType<{ size?: number; className?: string }>;
@@ -136,33 +137,25 @@ const TechTag: React.FC<{ tech: TechTag }> = ({ tech }) => {
   const { icon: Icon, name } = tech;
 
   return (
-    <div className="paper-pill inline-flex items-center gap-2 px-4 py-2 rounded-full">
-      <Icon size={20} className="flex-shrink-0" aria-hidden="true" />
-      <span className="font-medium text-sm whitespace-nowrap">{name}</span>
+    <div className="inline-flex items-center gap-2 text-paper-muted dark:text-gray-400">
+      <Icon size={16} className="flex-shrink-0" aria-hidden="true" />
+      <span className="font-mono text-sm whitespace-nowrap">{name}</span>
     </div>
   );
 };
 
 const TechStack: React.FC = () => (
-  <div id="TechStack" className="py-16 w-full">
-    <div className="max-w-6xl mx-auto px-4">
-      <div className="text-center mb-12">
-        <h2 className="text-4xl md:text-5xl font-extrabold mb-4 text-paper-text dark:text-white font-display">
-          Unlimited possibilities
-        </h2>
-        <p className="text-lg text-paper-muted dark:text-gray-300 max-w-2xl mx-auto">
-          Discover the technologies and tools I use to create amazing digital
-          experiences
-        </p>
-      </div>
+  <section id="TechStack" className="px-5 sm:px-8 lg:px-12 py-16 sm:py-24">
+    <div className="mx-auto max-w-6xl">
+      <SectionHeading eyebrow="Toolkit" title="The stack I reach for." />
 
-      <div className="flex flex-wrap gap-3 justify-center items-center">
+      <div className="flex flex-wrap gap-x-8 gap-y-4">
         {techStacks.map((tech) => (
           <TechTag key={tech.name} tech={tech} />
         ))}
       </div>
     </div>
-  </div>
+  </section>
 );
 
 export default TechStack;
