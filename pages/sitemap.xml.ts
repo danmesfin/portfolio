@@ -5,28 +5,27 @@ import { siteConfig } from '../utils/siteConfig';
 
 interface SitemapEntry {
   path: string;
-  changefreq: string;
-  priority: string;
+  /** YYYY-MM-DD. Omitted where no reliable date exists. */
   lastmod?: string;
 }
 
-const STATIC_ENTRIES: SitemapEntry[] = [
-  { path: '/', changefreq: 'monthly', priority: '1.0' },
-  { path: '/case-studies', changefreq: 'monthly', priority: '0.9' },
-  { path: '/blogs', changefreq: 'weekly', priority: '0.8' },
-  { path: '/about', changefreq: 'yearly', priority: '0.5' },
-  { path: '/open-resume', changefreq: 'yearly', priority: '0.5' },
+// `changefreq` and `priority` are left out: Google ignores both.
+const STATIC_PATHS = [
+  '/',
+  '/case-studies',
+  '/blogs',
+  '/projects',
+  '/about',
+  '/open-resume',
 ];
 
 function toXml(entries: SitemapEntry[]): string {
   const urls = entries
-    .map(({ path, changefreq, priority, lastmod }) =>
+    .map(({ path, lastmod }) =>
       [
         '  <url>',
         `    <loc>${siteConfig.url}${path}</loc>`,
         lastmod ? `    <lastmod>${lastmod}</lastmod>` : null,
-        `    <changefreq>${changefreq}</changefreq>`,
-        `    <priority>${priority}</priority>`,
         '  </url>',
       ]
         .filter(Boolean)
@@ -44,25 +43,24 @@ ${urls}
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const blogEntries: SitemapEntry[] = getAllBlogs().map((blog) => ({
     path: `/blogs/${blog.slug}`,
-    changefreq: 'yearly',
-    priority: '0.7',
-    lastmod: blog.frontmatter.date
-      ? new Date(blog.frontmatter.date).toISOString().split('T')[0]
-      : undefined,
+    lastmod:
+      (blog.frontmatter.updated || blog.frontmatter.date).split('T')[0] ||
+      undefined,
   }));
 
   const caseStudyEntries: SitemapEntry[] = getCaseStudies().map((study) => ({
     path: `/case-studies/${study.slug}`,
-    changefreq: 'monthly',
-    priority: '0.8',
+    lastmod: study.updated ?? study.date,
   }));
+
+  const staticEntries: SitemapEntry[] = STATIC_PATHS.map((path) => ({ path }));
 
   res.setHeader('Content-Type', 'text/xml');
   res.setHeader(
     'Cache-Control',
     'public, s-maxage=3600, stale-while-revalidate=86400'
   );
-  res.write(toXml([...STATIC_ENTRIES, ...caseStudyEntries, ...blogEntries]));
+  res.write(toXml([...staticEntries, ...caseStudyEntries, ...blogEntries]));
   res.end();
 
   return { props: {} };

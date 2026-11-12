@@ -10,38 +10,17 @@ import BentoGrid from '../components/BentoGrid';
 import CaseStudyCarousel from '../components/CaseStudyGrid';
 import Seo from '../components/Seo';
 import { getFeaturedCaseStudies, CaseStudy } from '../utils/getCaseStudies';
-import { siteConfig, absoluteUrl, profileUrls } from '../utils/siteConfig';
+import personSchema from '../utils/personSchema';
+import { websiteSchema } from '../utils/structuredData';
 
 interface HomeProps {
   caseStudies: CaseStudy[];
 }
 
-const personSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: siteConfig.name,
-  url: siteConfig.url,
-  image: absoluteUrl(siteConfig.ogImage),
-  jobTitle: 'Full-Stack Developer',
-  description: siteConfig.description,
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Addis Ababa',
-    addressCountry: 'ET',
-  },
-  sameAs: profileUrls,
-};
-
 function Home({ caseStudies }: HomeProps) {
   return (
     <div className="flex flex-col mt-0">
-      <Seo path="/">
-        <script
-          type="application/ld+json"
-          // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
-        />
-      </Seo>
+      <Seo path="/" jsonLd={[websiteSchema, personSchema]} />
       <Banner />
       <BentoGrid />
       <CaseStudyCarousel caseStudies={caseStudies} />

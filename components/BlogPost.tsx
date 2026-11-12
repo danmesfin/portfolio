@@ -5,14 +5,11 @@ import Link from 'next/link';
 import Seo from './Seo';
 import formatDate from '../utils/date';
 import proseClasses from '../utils/proseClasses';
+import { BlogFrontMatter } from '../utils/getBlogs';
+import { articleSchema, breadcrumbSchema } from '../utils/structuredData';
 
 interface BlogPostProps {
-  frontmatter: {
-    title: string;
-    date: string;
-    preview: string;
-    description?: string;
-  };
+  frontmatter: BlogFrontMatter;
   markdownBody: string;
   slug: string;
 }
@@ -29,9 +26,27 @@ const BlogPost: React.FC<BlogPostProps> = ({
       image={frontmatter.preview}
       type="article"
       path={`/blogs/${slug}`}
-      publishedTime={
-        frontmatter.date ? new Date(frontmatter.date).toISOString() : undefined
-      }
+      publishedTime={frontmatter.date || undefined}
+      modifiedTime={frontmatter.updated}
+      jsonLd={[
+        articleSchema({
+          type: 'BlogPosting',
+          path: `/blogs/${slug}`,
+          headline: frontmatter.title,
+          description: frontmatter.description,
+          image: frontmatter.preview,
+          datePublished: frontmatter.date || undefined,
+          dateModified: frontmatter.updated,
+          keywords: [
+            ...(frontmatter.tags ?? []),
+            ...(frontmatter.keywords ?? []),
+          ],
+        }),
+        breadcrumbSchema([
+          { name: 'Blog', path: '/blogs' },
+          { name: frontmatter.title, path: `/blogs/${slug}` },
+        ]),
+      ]}
     />
 
     <div className="mx-auto max-w-2xl px-5 sm:px-8 py-16 sm:py-24">

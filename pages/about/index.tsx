@@ -1,6 +1,8 @@
 import React from 'react';
 import About from '../../components/About';
 import Seo from '../../components/Seo';
+import personSchema from '../../utils/personSchema';
+import { profilePageSchema } from '../../utils/structuredData';
 
 const Page = () => (
   <div className="w-full flex">
@@ -8,6 +10,7 @@ const Page = () => (
       title="About"
       description="How Daniel Mesfin went from writing HTML on an Android phone in 2017 to building full-stack products for clients worldwide."
       path="/about"
+      jsonLd={profilePageSchema(personSchema)}
     />
     <About />
   </div>

@@ -25,12 +25,6 @@ function Footer() {
             <p className="mt-2 font-mono text-sm text-paper-muted dark:text-gray-400">
               {siteConfig.role}
             </p>
-            <a
-              href={`mailto:${siteConfig.email}`}
-              className="mt-4 inline-block font-mono text-sm text-paper-text dark:text-paper-white underline decoration-1 underline-offset-4 decoration-paper-muted hover:decoration-paper-text dark:hover:decoration-paper-white transition-colors"
-            >
-              {siteConfig.email}
-            </a>
           </div>
 
           <nav aria-label="Footer">

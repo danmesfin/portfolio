@@ -26,8 +26,6 @@ export const socials: SocialLink[] = [
     href: 'https://instagram.com/danmesfinn',
     primary: true,
   },
-  { label: 'Email', href: 'mailto:danielmsfn@gmail.com', primary: true },
-  { label: 'WhatsApp', href: 'https://wa.me/251945640369' },
 ];
 
 export const siteConfig = {
@@ -39,13 +37,24 @@ export const siteConfig = {
   bio: 'I build data-heavy products end to end — large-scale crawling, AI pipelines, and the interfaces that make them useful. Currently Senior Data Engineer at Lexis Solutions, and recently shipped Ethiopia’s largest AI creative competition to 50,000+ users.',
   role: 'Full-Stack Engineer & Senior Data Engineer',
   location: 'Addis Ababa, Ethiopia',
-  email: 'danielmsfn@gmail.com',
   availability: 'Open to freelance and contract work.',
+  /** Topics for the JSON-LD `knowsAbout` list. */
+  expertise: [
+    'Full-stack web development',
+    'SaaS platforms',
+    'Data engineering',
+    'Web crawling and data extraction',
+    'AI-powered applications',
+    'React',
+    'Next.js',
+    'TypeScript',
+    'Node.js',
+    'Laravel',
+  ],
   // Override per environment (e.g. preview deploys) with NEXT_PUBLIC_SITE_URL.
-  url: (process.env.NEXT_PUBLIC_SITE_URL || 'https://danielmesfin.com').replace(
-    /\/$/,
-    ''
-  ),
+  url: (
+    process.env.NEXT_PUBLIC_SITE_URL || 'https://www.danmesfin.com'
+  ).replace(/\/$/, ''),
   ogImage: '/og-image.jpg',
   twitterHandle: '@danmesfinn',
   author: 'Daniel Mesfin',
@@ -59,9 +68,7 @@ export function absoluteUrl(pathOrUrl: string): string {
   return `${siteConfig.url}${pathOrUrl.startsWith('/') ? '' : '/'}${pathOrUrl}`;
 }
 
-/** Profile URLs only — `mailto:` and `wa.me` are not identity links. */
-export const profileUrls = socials
-  .filter((s) => /^https?:/.test(s.href) && !s.href.includes('wa.me'))
-  .map((s) => s.href);
+/** Profile URLs for the JSON-LD `sameAs` list. */
+export const profileUrls = socials.map((s) => s.href);
 
 export default siteConfig;

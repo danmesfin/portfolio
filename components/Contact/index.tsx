@@ -58,17 +58,8 @@ const Contact: React.FC = () => {
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-10 lg:gap-16">
-          {/* Direct line */}
+          {/* Details */}
           <div className="font-mono text-sm space-y-6">
-            <div>
-              <p className="eyebrow mb-2">Email</p>
-              <a
-                href={`mailto:${siteConfig.email}`}
-                className="text-paper-text dark:text-paper-white underline decoration-1 underline-offset-4 decoration-paper-muted hover:decoration-paper-text dark:hover:decoration-paper-white transition-colors"
-              >
-                {siteConfig.email}
-              </a>
-            </div>
             <div>
               <p className="eyebrow mb-2">Based in</p>
               <p className="text-paper-muted dark:text-gray-400">

@@ -30,10 +30,7 @@ function buildDocument(): string {
     '',
     '## Contact',
     '',
-    // `mailto:` / `tel:` schemes are noise in a plain-text list.
-    ...socials.map(
-      ({ label, href }) => `- ${label}: ${href.replace(/^mailto:/, '')}`
-    ),
+    ...socials.map(({ label, href }) => `- ${label}: ${href}`),
     '',
     '## Experience',
     '',

@@ -1,3 +1,8 @@
+---
+date: '2026-07-23'
+updated: '2026-07-23'
+---
+
 # AI Creative Award — Building a Vote-at-Scale Competition Platform Solo
 
 > A monthly creative competition where people submit AI-generated art, vote on their

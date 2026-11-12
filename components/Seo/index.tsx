@@ -13,6 +13,10 @@ interface SeoProps {
   /** Canonical path. Defaults to the current route without its query string. */
   path?: string;
   publishedTime?: string;
+  /** Defaults to `publishedTime` on articles. */
+  modifiedTime?: string;
+  /** schema.org object(s), emitted as a single JSON-LD script. */
+  jsonLd?: object | object[];
   noIndex?: boolean;
   children?: React.ReactNode;
 }
@@ -24,6 +28,8 @@ const Seo: React.FC<SeoProps> = ({
   type = 'website',
   path,
   publishedTime,
+  modifiedTime,
+  jsonLd,
   noIndex = false,
   children,
 }) => {
@@ -53,6 +59,12 @@ const Seo: React.FC<SeoProps> = ({
       {publishedTime && (
         <meta property="article:published_time" content={publishedTime} />
       )}
+      {(modifiedTime || publishedTime) && (
+        <meta
+          property="article:modified_time"
+          content={modifiedTime || publishedTime}
+        />
+      )}
       {type === 'article' && (
         <meta property="article:author" content={siteConfig.author} />
       )}
@@ -63,6 +75,25 @@ const Seo: React.FC<SeoProps> = ({
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={imageUrl} />
       <meta name="twitter:creator" content={siteConfig.twitterHandle} />
+
+      {/* Markdown summary of the site for language models — llmstxt.org */}
+      <link
+        rel="alternate"
+        type="text/markdown"
+        title="LLM-readable summary"
+        href={absoluteUrl('/llms.txt')}
+      />
+
+      {jsonLd && (
+        <script
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{
+            // Escape `<` so content can never close the script element.
+            __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c'),
+          }}
+        />
+      )}
 
       {children}
     </Head>

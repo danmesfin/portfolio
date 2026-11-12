@@ -5,15 +5,14 @@ import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
 import rehypeStringify from 'rehype-stringify';
 import BlogPost from '../../components/BlogPost';
-import { getAllBlogs, getBlogBySlug } from '../../utils/getBlogs';
+import {
+  getAllBlogs,
+  getBlogBySlug,
+  BlogFrontMatter,
+} from '../../utils/getBlogs';
 
 interface BlogProps {
-  frontmatter: {
-    title: string;
-    date: string;
-    preview: string;
-    description?: string;
-  };
+  frontmatter: BlogFrontMatter;
   markdownBody: string;
   slug: string;
 }

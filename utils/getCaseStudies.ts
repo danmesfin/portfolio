@@ -18,6 +18,10 @@ export interface CaseStudy {
   images: string[];
   content: string;
   excerpt: string;
+  /** Frontmatter `date` — first published, as YYYY-MM-DD. */
+  date?: string;
+  /** Frontmatter `updated` — last substantive edit, as YYYY-MM-DD. */
+  updated?: string;
   /** Set `draft: true` in frontmatter to keep a study out of the site. */
   draft?: boolean;
 }
@@ -31,6 +35,17 @@ const IMAGE_EXTENSIONS = /\.(jpg|jpeg|png|webp|gif)$/i;
 /** Strips markdown emphasis so parsed prose reads as plain text. */
 function stripEmphasis(value: string): string {
   return value.replace(/\*\*/g, '').replace(/(^|\W)\*(\S[^*]*)\*/g, '$1$2');
+}
+
+/**
+ * Frontmatter dates arrive as Date objects (unquoted YAML) or strings; both
+ * become YYYY-MM-DD so they survive getStaticProps serialisation.
+ */
+function toDateString(value: unknown): string | undefined {
+  const date = value instanceof Date ? value : new Date(String(value ?? ''));
+  return Number.isNaN(date.getTime())
+    ? undefined
+    : date.toISOString().split('T')[0];
 }
 
 function truncate(value: string, max: number): string {
@@ -64,7 +79,10 @@ function firstProseBlock(content: string): string {
 function parseCaseStudy(name: string): CaseStudy {
   const fullPath = path.join(CASE_STUDIES_DIR, name);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
-  const { data, content } = matter(fileContents);
+  const { data: rawData, content } = matter(fileContents);
+  const { date: rawDate, updated: rawUpdated, ...data } = rawData;
+  const date = toDateString(rawDate);
+  const updated = toDateString(rawUpdated);
 
   const slug = name.replace(/\.md$/, '');
 
@@ -164,6 +182,8 @@ function parseCaseStudy(name: string): CaseStudy {
     content,
     excerpt: truncate(description, 200),
     ...data,
+    ...(date ? { date } : {}),
+    ...(updated ? { updated } : {}),
   };
 }
 

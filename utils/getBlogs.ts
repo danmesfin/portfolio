@@ -7,6 +7,8 @@ export interface BlogFrontMatter {
   description?: string;
   /** ISO string — gray-matter parses YAML dates into Date objects. */
   date: string;
+  /** Optional ISO string for the last substantive edit. */
+  updated?: string;
   preview: string;
   draft?: boolean;
   category?: string;
@@ -34,11 +36,22 @@ export function getBlogBySlug(slug: string | undefined): BlogData {
   const realSlug = (slug ?? '').replace(/\.md$/, '');
   const fullPath = path.join(blogsDirectory, `${realSlug}.md`);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
-  const { data, content } = matter(fileContents);
+  const { data: rawData, content } = matter(fileContents);
+  // `updated` is re-added below only when it parses, so a raw Date (or an
+  // `undefined`) never reaches getStaticProps.
+  const { updated: rawUpdated, ...data } = rawData;
 
   // YAML dates come back as Date objects; normalise to a serialisable string
   // so they can cross the getStaticProps boundary.
-  const date = data.date instanceof Date ? data.date.toISOString() : '';
+  const toIso = (value: unknown): string | undefined => {
+    if (value instanceof Date) return value.toISOString();
+    if (typeof value === 'string' && !Number.isNaN(Date.parse(value))) {
+      return new Date(value).toISOString();
+    }
+    return undefined;
+  };
+  const date = toIso(data.date) ?? '';
+  const updated = toIso(rawUpdated);
 
   return {
     slug: realSlug,
@@ -47,6 +60,7 @@ export function getBlogBySlug(slug: string | undefined): BlogData {
       preview: data.preview ?? '',
       ...data,
       date,
+      ...(updated ? { updated } : {}),
     },
     markdownBody: content,
   };

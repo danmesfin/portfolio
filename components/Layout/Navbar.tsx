@@ -1,14 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import {
-  SiGithub,
-  SiGmail,
-  SiInstagram,
-  SiLinkedin,
-  SiUpwork,
-  SiWhatsapp,
-} from 'react-icons/si';
+import { SiGithub, SiInstagram, SiLinkedin, SiUpwork } from 'react-icons/si';
 import Navitem from '../Navitem';
 import ThemeChanger from '../Button';
 import { socials } from '../../utils/siteConfig';
@@ -31,8 +24,6 @@ export const SOCIAL_ICONS: Record<string, typeof SiGithub> = {
   LinkedIn: SiLinkedin,
   Upwork: SiUpwork,
   Instagram: SiInstagram,
-  Email: SiGmail,
-  WhatsApp: SiWhatsapp,
 };
 
 /** `inert` is not in React 18's JSX types yet, so it is spread in. */

@@ -1,3 +1,8 @@
+---
+date: '2025-08-27'
+updated: '2026-07-23'
+---
+
 # Bridge of Hope Ethiopia: Nonprofit Platform with Multi-Payment Integration
 
 ## Project Overview

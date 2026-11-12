@@ -7,6 +7,7 @@ import remarkGfm from 'remark-gfm';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 import Seo from '../../components/Seo';
 import proseClasses from '../../utils/proseClasses';
+import { articleSchema, breadcrumbSchema } from '../../utils/structuredData';
 import {
   getCaseStudies,
   getCaseStudy,
@@ -38,6 +39,28 @@ export default function CaseStudyPage({ caseStudy }: CaseStudyPageProps) {
         image={caseStudy.images[0]}
         type="article"
         path={`/case-studies/${caseStudy.slug}`}
+        publishedTime={caseStudy.date}
+        modifiedTime={caseStudy.updated}
+        jsonLd={[
+          articleSchema({
+            type: 'Article',
+            path: `/case-studies/${caseStudy.slug}`,
+            headline: caseStudy.title,
+            description: caseStudy.description,
+            image: caseStudy.images[0],
+            datePublished: caseStudy.date,
+            dateModified: caseStudy.updated,
+            keywords: caseStudy.technologies,
+            about: caseStudy.name,
+          }),
+          breadcrumbSchema([
+            { name: 'Case studies', path: '/case-studies' },
+            {
+              name: caseStudy.name,
+              path: `/case-studies/${caseStudy.slug}`,
+            },
+          ]),
+        ]}
       />
 
       <div className="min-h-screen bg-base dark:bg-black">
