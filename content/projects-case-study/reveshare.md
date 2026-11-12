@@ -1,6 +1,6 @@
 ---
 date: '2025-08-27'
-updated: '2026-07-23'
+updated: '2026-11-12'
 ---
 
 # Reveshare: Affiliate Management & Commission Tracking Platform
@@ -12,6 +12,14 @@ updated: '2026-07-23'
 **Role**: Development Lead
 **Development Timeline**: Full product development cycle
 **Technology Stack**: React, Vite, Tailwind CSS, Nest.js, TypeScript, Stripe, Shopify SDK, Sentry
+
+---
+
+## At a Glance
+
+- **Problem:** E-commerce brands were running affiliate programs on clunky, desktop-only tools with unreliable commission tracking and manual payouts.
+- **Approach:** A Shopify-native app with separate dashboards for affiliates, brands and admins, an automated commission engine, and scheduled Stripe payouts.
+- **Result:** 40+ active brands and 1,000+ affiliates use the platform, and it holds a 5-star rating on the Shopify App Store.
 
 ---
 
@@ -51,7 +59,7 @@ The Shopify webhook integration handles high-volume event processing with retry 
 
 ## Impact
 
-The platform successfully launched on the Shopify App Store, giving e-commerce brands a complete affiliate management solution with 100% accurate automated commission tracking. The mobile-first design drove strong affiliate engagement, and the automated payout system eliminated the manual payment processing that was previously eating up hours of admin time each month.
+The platform launched on the Shopify App Store, where it holds a 5-star rating, and now serves more than 40 active brands and 1,000 affiliates. It gives e-commerce brands a complete affiliate management solution with 100% accurate automated commission tracking. The mobile-first design drove strong affiliate engagement, and the automated payout system eliminated the manual payment processing that was previously eating up hours of admin time each month.
 
 **Technologies Used**: React, Vite, Tailwind CSS, React Context, Nest.js, TypeScript, Sentry, Cron Jobs, Stripe, Shopify SDK, REST API, Resend
 

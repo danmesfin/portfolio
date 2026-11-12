@@ -66,6 +66,7 @@ Markdown in `content/`, with two different parsing models:
 - Every page renders `<Seo>` (`components/Seo`), which builds title, canonical, Open Graph, and Twitter tags from `siteConfig`. Pass schema.org objects through its `jsonLd` prop; builders live in `utils/structuredData.ts`, and the Person entity (derived from `experienceData` and `certifications`) in `utils/personSchema.ts`.
 - Contact form uses EmailJS (`@emailjs/browser`) with `NEXT_PUBLIC_EMAIL_SERVICE_ID`, `NEXT_PUBLIC_EMAIL_TEMPLATE_ID`, `NEXT_PUBLIC_EMAIL_PUBLIC_KEY`.
 - Animations use framer-motion (`initial` / `animate` / `whileInView`).
+- Interactive line figures come from `@lucasmarkes/hairline/react` (Services cards, 404). Their colours are the `--hairline-*` variables in `styles/globals.css`; `--hairline-plate` must equal the background the figure sits on.
 - `next/image` with `fill` needs an explicit `sizes`, otherwise the largest source is served at every viewport. Screenshots belong in `public/images` as WebP.
 - Anything returned from `getStaticProps` must be JSON-serialisable — gray-matter parses YAML dates into `Date` objects, which `getBlogs.ts` converts to ISO strings.
 

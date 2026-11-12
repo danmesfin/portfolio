@@ -30,9 +30,9 @@ export const socials: SocialLink[] = [
 
 export const siteConfig = {
   name: 'Daniel Mesfin',
-  title: 'Daniel Mesfin — Full-Stack Developer',
+  title: 'Daniel Mesfin — Data & AI Systems Engineer',
   description:
-    'Daniel Mesfin is a full-stack web and mobile developer based in Addis Ababa, building SaaS platforms, AI-powered tools, and data pipelines with React, Next.js, Node.js and Laravel.',
+    'Daniel Mesfin is an engineer in Addis Ababa who builds data and AI systems on the public web: large-scale extraction, data pipelines, AI agents, and the full-stack products around them.',
   /** Longer form, used on the homepage hero and in /llms.txt. */
   bio: 'I build data-heavy products end to end — large-scale crawling, AI pipelines, and the interfaces that make them useful. Currently Senior Data Engineer at Lexis Solutions, and recently shipped Ethiopia’s largest AI creative competition to 50,000+ users.',
   role: 'Full-Stack Engineer & Senior Data Engineer',

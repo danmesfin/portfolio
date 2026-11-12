@@ -3,7 +3,7 @@ title: Understanding Git Staged Changes
 description: Learn how to effectively use Git staging for precise version control.
 date: 2023-12-15T10:30:00.000Z
 preview: /images/git-staged-changes.webp
-draft: false
+draft: true
 tags:
   - git
   - version-control

@@ -1,6 +1,6 @@
 ---
 date: '2025-08-27'
-updated: '2026-07-23'
+updated: '2026-11-12'
 ---
 
 # Bridge of Hope Ethiopia: Nonprofit Platform with Multi-Payment Integration
@@ -12,6 +12,14 @@ updated: '2026-07-23'
 **Role**: Lead Developer
 **Development Timeline**: 6 months
 **Technology Stack**: Laravel, Blade Templates, TailwindCSS, MySQL, PayPal API, Chapa API
+
+---
+
+## At a Glance
+
+- **Problem:** Every content change went through one person editing HTML by hand, and donations could only be made through PayPal, which shut out Ethiopian donors.
+- **Approach:** Rebuilt the site on Laravel as a fully admin-managed platform, so staff update every page themselves, and added Chapa alongside PayPal for local mobile-money and bank payments.
+- **Result:** Online donations rose 60% within three months of launch, Chapa now brings in 40% of total contributions, and the team publishes weekly instead of once or twice a month.
 
 ---
 
@@ -27,9 +35,9 @@ The organization had outgrown its static website. Staff had to email content upd
 
 The most impactful feature was integrating both PayPal for international donors and Chapa — a popular Ethiopian payment processor — for local contributions via mobile money and local banks. This opened an entirely new revenue stream. The unified tracking system reconciles donations from both gateways into a single financial view, handling currency differences and different donation patterns (international donors tend toward larger one-time gifts, while local donors prefer smaller recurring amounts).
 
-### Content Management System
+### Fully Admin-Managed Content
 
-The CMS was designed for non-technical staff. A rich text editor with a draft-to-publish workflow lets content creators prepare stories about the children and programs, have them reviewed, and publish — all without developer involvement. The team went from publishing updates once or twice a month to sharing stories weekly.
+The whole site is managed from an admin panel, so the organization can update it without a developer. The CMS was designed for non-technical staff. A rich text editor with a draft-to-publish workflow lets content creators prepare stories about the children and programs, have them reviewed, and publish — all without developer involvement. The team went from publishing updates once or twice a month to sharing stories weekly.
 
 ### Role-Based Access
 

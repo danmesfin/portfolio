@@ -110,9 +110,6 @@ function Navbar() {
             <span className="font-display text-xl sm:text-2xl text-paper-text dark:text-paper-white">
               Daniel Mesfin
             </span>
-            <span className="ml-2 eyebrow hidden sm:inline align-middle">
-              Engineer
-            </span>
           </Link>
 
           {/* Primary nav — inline from lg, in the panel below that. */}

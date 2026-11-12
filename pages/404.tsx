@@ -1,6 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
+import { Query } from '@lucasmarkes/hairline/react';
 import Seo from '../components/Seo';
+import useNoHover from '../utils/useNoHover';
 
 const LINKS = [
   { label: 'Projects', href: '/#projects' },
@@ -10,10 +12,17 @@ const LINKS = [
 ];
 
 export default function NotFound() {
+  const autoPlay = useNoHover();
+
   return (
     <div className="min-h-[70vh] flex items-center justify-center px-4 py-20">
       <Seo title="Page not found" noIndex />
       <div className="max-w-xl">
+        <Query
+          aria-hidden="true"
+          play={autoPlay}
+          className="mb-8 w-full max-w-[16rem]"
+        />
         <p className="eyebrow">Error 404</p>
         <h1 className="font-display mt-4 text-4xl sm:text-5xl md:text-6xl leading-[1.05] text-paper-text dark:text-paper-white">
           This page took a wrong turn.

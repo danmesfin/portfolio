@@ -1,6 +1,6 @@
 ---
 date: '2025-08-27'
-updated: '2026-07-23'
+updated: '2026-11-12'
 ---
 
 # MiranaPM: Multi-Tenant Property Management Platform
@@ -12,6 +12,14 @@ updated: '2026-07-23'
 **Role**: Full-Stack Developer
 **Development Timeline**: Multi-phase development
 **Technology Stack**: Laravel, Blade Templates, Tailwind CSS, Livewire, MySQL, Redis, AWS S3, Lightsail
+
+---
+
+## At a Glance
+
+- **Problem:** Property managers ran rent collection, maintenance, finances and tenant communication in separate tools, with duplicated data entry and missed payments.
+- **Approach:** A multi-tenant platform with an isolated database per management company, automated billing, a maintenance workflow, and Mira AI, a conversational assistant for landlords.
+- **Result:** The platform manages 1,000+ rental units, roughly 70% of manual rent collection tasks are automated, and landlords have real-time financial visibility across their portfolio.
 
 ---
 
@@ -37,6 +45,10 @@ The platform serves four distinct user types, each with a tailored interface. La
 
 The billing engine handles recurring rent charges, late fee calculations, prorated amounts, and multi-gateway payment processing. Financial reports break down revenue, expenses, and profitability per property and unit type. A queue-based background processing system handles the heavy computation without blocking the user interface.
 
+### Mira AI
+
+Mira AI is an assistant built into the platform that helps landlords manage their properties through a conversational, chat-based interface, as an alternative to working through the dashboards.
+
 ### Maintenance Workflow
 
 Residents submit work orders through the portal, which are routed to the appropriate property manager. The system tracks vendor assignments, scheduling, response times, and costs — giving landlords visibility into maintenance spending and performance.
@@ -53,7 +65,7 @@ The modular architecture organizes features into self-contained modules — prop
 
 ## Impact
 
-The platform automated roughly 70% of manual rent collection tasks and centralized all property operations into a single interface. Landlords gained real-time financial visibility they didn't have before, and the streamlined communication workflow between tenants and managers significantly reduced response times on maintenance issues.
+The platform manages more than 1,000 rental units. It automated roughly 70% of manual rent collection tasks and centralized all property operations into a single interface. Landlords gained real-time financial visibility they didn't have before, and the streamlined communication workflow between tenants and managers significantly reduced response times on maintenance issues.
 
 **Technologies Used**: Laravel, Blade Templates, Tailwind CSS, Livewire, MySQL, Redis, AWS S3, AWS Lightsail, Alpine.js
 

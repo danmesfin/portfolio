@@ -3,7 +3,7 @@ title: Frontend Developer Roadmap 2024
 description: Explore the essential skills and technologies for frontend developers in 2024.
 date: 2023-12-15T12:00:00.000Z
 preview: /images/frontend-roadmap-2024.jpg
-draft: false
+draft: true
 tags:
   - frontend
   - web-development

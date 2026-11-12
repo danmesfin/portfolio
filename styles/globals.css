@@ -44,6 +44,26 @@
   }
 }
 
+/* Hairline figures (@lucasmarkes/hairline) drawn in the site's ink-on-paper
+   palette. The plate must equal the surface behind the figure, because plates
+   are filled to hide what sits behind them. */
+:root {
+  --hairline-plate: #efece3; /* base */
+  --hairline-hi: #1c1a15; /* paper-text */
+  --hairline-edge: #3f3b33;
+  --hairline-mid: #8a8578;
+  --hairline-lo: #cfcabd;
+  --hairline-stroke: 0.9;
+}
+
+.dark {
+  --hairline-plate: #000000;
+  --hairline-hi: #f6f3ec; /* paper-white */
+  --hairline-edge: #a8a397;
+  --hairline-mid: #5f5a50;
+  --hairline-lo: #2b2822;
+}
+
 @layer components {
   /* Editorial vocabulary — the pieces the reference is built from. */
 
