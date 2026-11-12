@@ -30,12 +30,12 @@ export const socials: SocialLink[] = [
 
 export const siteConfig = {
   name: 'Daniel Mesfin',
-  title: 'Daniel Mesfin — Data & AI Systems Engineer',
+  title: 'Daniel Mesfin — Full-Stack Software Engineer',
   description:
-    'Daniel Mesfin is an engineer in Addis Ababa who builds data and AI systems on the public web: large-scale extraction, data pipelines, AI agents, and the full-stack products around them.',
+    'Daniel Mesfin is a full-stack software engineer in Addis Ababa who builds AI and data-heavy products end to end with React, Next.js, Node.js and Laravel. Certified by AWS, Anthropic and NVIDIA.',
   /** Longer form, used on the homepage hero and in /llms.txt. */
-  bio: 'I build data-heavy products end to end — large-scale crawling, AI pipelines, and the interfaces that make them useful. Currently Senior Data Engineer at Lexis Solutions, and recently shipped Ethiopia’s largest AI creative competition to 50,000+ users.',
-  role: 'Full-Stack Engineer & Senior Data Engineer',
+  bio: 'I build AI and data-heavy products end to end — the interface, the backend, the infrastructure and the AI features in between. Recently shipped Ethiopia’s largest AI creative competition to 50,000+ users.',
+  role: 'Full-Stack Software Engineer',
   location: 'Addis Ababa, Ethiopia',
   availability: 'Open to freelance and contract work.',
   /** Upwork talent badge, shown on /about and in the FAQ. */
@@ -44,14 +44,14 @@ export const siteConfig = {
   expertise: [
     'Full-stack web development',
     'SaaS platforms',
-    'Data engineering',
-    'Web crawling and data extraction',
     'AI-powered applications',
+    'Cloud infrastructure',
     'React',
     'Next.js',
     'TypeScript',
     'Node.js',
     'Laravel',
+    'Data engineering',
   ],
   // Override per environment (e.g. preview deploys) with NEXT_PUBLIC_SITE_URL.
   url: (

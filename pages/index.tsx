@@ -1,6 +1,7 @@
 import React from 'react';
 import { GetStaticProps } from 'next';
 import Banner from '../components/Banner';
+import ShippingBand from '../components/Figures/ShippingBand';
 import Contact from '../components/Contact';
 import Services from '../components/Services';
 import TechStacks from '../components/TechStacks';
@@ -22,6 +23,7 @@ function Home({ caseStudies }: HomeProps) {
     <div className="flex flex-col mt-0">
       <Seo path="/" jsonLd={[websiteSchema, personSchema]} />
       <Banner />
+      <ShippingBand />
       <BentoGrid />
       <CaseStudyCarousel caseStudies={caseStudies} />
       <Experience />

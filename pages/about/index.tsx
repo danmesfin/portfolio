@@ -14,7 +14,7 @@ const Page = ({ work }: AboutPageProps) => (
   <div className="w-full flex">
     <Seo
       title="About"
-      description="Daniel Mesfin is a full-stack engineer and data engineer in Addis Ababa. Background, current role, notable projects, and availability for freelance and contract work."
+      description="Daniel Mesfin is a full-stack software engineer in Addis Ababa. Background, current role, notable projects, and availability for freelance and contract work."
       path="/about"
       jsonLd={[profilePageSchema(personSchema), faqPageSchema(faqs)]}
     />

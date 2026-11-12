@@ -5,9 +5,10 @@ import { motion } from 'framer-motion';
 import portrait from '../../public/images/danmesfin.webp';
 
 const GLANCE = [
-  { label: 'Focus', value: 'Extraction · Pipelines · AI agents' },
+  { label: 'Focus', value: 'Full-stack · AI · Data-heavy products' },
   { label: 'Now', value: 'Senior Data Engineer, Lexis Solutions' },
-  { label: 'Stack', value: 'TypeScript · Next.js · Python · AWS' },
+  { label: 'Stack', value: 'TypeScript · Next.js · Laravel · AWS' },
+  { label: 'Certified', value: 'AWS · Anthropic · NVIDIA' },
   { label: 'Based in', value: 'Addis Ababa, Ethiopia' },
 ];
 
@@ -31,17 +32,17 @@ export default function Banner() {
           <p className="eyebrow">Daniel Mesfin</p>
 
           <h1 className="font-display mt-5 text-4xl sm:text-5xl lg:text-6xl leading-[1.05] text-paper-text dark:text-paper-white">
-            I build data and AI systems on the public web.
+            I build AI and data-heavy products, end to end.
           </h1>
 
           <div className="mt-8 space-y-5 max-w-xl text-paper-muted dark:text-gray-400 leading-relaxed">
             <p>
-              Large-scale extraction from sites that fight back, pipelines that
-              deliver clean records into the tools you already use, and the
-              interfaces that make the whole thing useful.
+              A full-stack software engineer working across the interface, the
+              backend and the infrastructure — on SaaS platforms, AI tools and
+              the data systems underneath them.
             </p>
             <p>
-              Currently Senior Data Engineer at{' '}
+              Currently at{' '}
               <a
                 href="https://www.lexis.solutions/"
                 target="_blank"

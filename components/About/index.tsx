@@ -18,12 +18,12 @@ const currentRoleText = currentRole
 export const faqs: { question: string; answer: string }[] = [
   {
     question: 'Who is Daniel Mesfin?',
-    answer: `Daniel Mesfin is a full-stack engineer and data engineer based in ${siteConfig.location}. He is currently ${currentRoleText} and has been building production software professionally since 2022.`,
+    answer: `Daniel Mesfin is a full-stack software engineer based in ${siteConfig.location}. He is currently ${currentRoleText} and has been building production software professionally since 2022.`,
   },
   {
     question: 'What does Daniel Mesfin build?',
     answer:
-      'Three kinds of systems: full-stack web applications and SaaS platforms, including multi-tenant products and payment integrations; AI-powered tools such as LLM integrations and content-generation pipelines; and large-scale web scraping and data pipelines.',
+      'AI and data-heavy products, built full-stack and end to end: web applications and SaaS platforms, including multi-tenant products and payment integrations; AI-powered tools such as LLM integrations, agents and content-generation pipelines; and the data pipelines and automation those products depend on.',
   },
   {
     question: 'What technologies does he work with?',
@@ -119,9 +119,9 @@ function About({ work }: AboutProps) {
         </h1>
 
         <p className="mt-8 text-lg text-paper-muted dark:text-gray-300 leading-relaxed">
-          {siteConfig.name} is a full-stack engineer and data engineer based in{' '}
-          {siteConfig.location}. He builds SaaS platforms, AI-powered tools and
-          large-scale data pipelines end to end, and is currently{' '}
+          {siteConfig.name} is a full-stack software engineer based in{' '}
+          {siteConfig.location}. He builds AI and data-heavy products end to
+          end, from the interface to the infrastructure, and is currently{' '}
           {currentRoleText}.
         </p>
 

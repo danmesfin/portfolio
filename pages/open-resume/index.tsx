@@ -8,7 +8,7 @@ function Page() {
     <div className="max-w-6xl mx-auto px-4 py-16">
       <Seo
         title="Resume"
-        description="View and download the resume of Daniel Mesfin, data and AI systems engineer based in Addis Ababa."
+        description="View and download the resume of Daniel Mesfin, full-stack software engineer based in Addis Ababa."
         path="/open-resume"
       />
       <div className="flex flex-col items-start gap-10 lg:flex-row">
