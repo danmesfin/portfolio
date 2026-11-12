@@ -6,6 +6,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 import Seo from '../../components/Seo';
+import pageFigures from '../../components/Figures';
 import proseClasses from '../../utils/proseClasses';
 import { articleSchema, breadcrumbSchema } from '../../utils/structuredData';
 import {
@@ -31,6 +32,8 @@ function caseStudyBody(content: string): string {
 }
 
 export default function CaseStudyPage({ caseStudy }: CaseStudyPageProps) {
+  const PageFigure = pageFigures[`/case-studies/${caseStudy.slug}`];
+
   return (
     <>
       <Seo
@@ -134,6 +137,8 @@ export default function CaseStudyPage({ caseStudy }: CaseStudyPageProps) {
               />
             </div>
           )}
+
+          {PageFigure && <PageFigure />}
 
           {/* Body */}
           <div className={`mt-12 ${proseClasses}`}>
