@@ -1,7 +1,7 @@
 import React from 'react';
 import { IconType } from 'react-icons';
 import { SiNvidia, SiAmazonaws } from 'react-icons/si';
-import { FaExternalLinkAlt } from 'react-icons/fa';
+import { FaCertificate, FaExternalLinkAlt } from 'react-icons/fa';
 import SectionHeading from '../SectionHeading';
 
 interface Certification {
@@ -14,6 +14,13 @@ interface Certification {
 }
 
 export const certifications: Certification[] = [
+  {
+    title: 'Claude Certified Architect – Foundations',
+    issuer: 'Anthropic',
+    url: 'https://www.credly.com/badges/f692814a-cf29-4ce6-a217-45e7d035a53e/public_url',
+    // react-icons 4.x ships no Anthropic mark.
+    Icon: FaCertificate,
+  },
   {
     title: 'AWS Certified Cloud Practitioner',
     issuer: 'Amazon Web Services',

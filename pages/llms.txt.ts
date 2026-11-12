@@ -2,6 +2,7 @@ import { GetServerSideProps } from 'next';
 import { experienceData } from '../components/Experience';
 import { certifications } from '../components/Certifications';
 import { projects } from '../components/BentoGrid';
+import { faqs } from '../components/About';
 import { getAllBlogs } from '../utils/getBlogs';
 import { getCaseStudies } from '../utils/getCaseStudies';
 import { siteConfig, socials, absoluteUrl } from '../utils/siteConfig';
@@ -91,9 +92,18 @@ function buildDocument(): string {
   }
 
   lines.push(
+    '## FAQ',
+    '',
+    ...faqs.flatMap(({ question, answer }) => [
+      `### ${question}`,
+      '',
+      answer,
+      '',
+    ]),
     '## Pages',
     '',
     `- [Home](${siteConfig.url}): overview, featured projects and contact form`,
+    `- [About](${absoluteUrl('/about')}): profile, background and FAQ`,
     `- [Case studies](${absoluteUrl('/case-studies')}): all project write-ups`,
     `- [Blog](${absoluteUrl('/blogs')}): articles on web development`,
     `- [Open source](${absoluteUrl('/projects')}): public GitHub repositories`,

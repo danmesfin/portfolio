@@ -4,14 +4,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Personal portfolio website for Daniel Mesfin built with Next.js 14 (Pages Router), React 18, TypeScript, and Tailwind CSS. Features case studies, blog posts, project showcases, and a contact form. Deployed on Vercel.
+Personal portfolio website for Daniel Mesfin built with Next.js 16 (Pages Router), React 18, TypeScript, and Tailwind CSS. Features case studies, blog posts, project showcases, and a contact form. Deployed on Vercel.
 
 ## Commands
 
 ```bash
 npm run dev              # Start dev server on localhost:3000
 npm run build            # Production build
-npm run lint             # Lint and auto-fix (next lint --fix)
+npm run lint             # Lint and auto-fix (eslint --fix)
 npm run format           # Format all files with Prettier
 npm run check-types      # TypeScript type checking (tsc --noEmit)
 npm run check-lint       # ESLint check without auto-fix
@@ -35,7 +35,7 @@ No test framework is configured; `test-all` is the only verification gate. Run i
 Site data is defined once and consumed in several places — change it at the source, not in the consumer:
 
 - `utils/siteConfig.ts` — name, bio, canonical URL, résumé path, and the `socials` list. Feeds `<Seo>`, navbar, footer, JSON-LD `sameAs`, sitemap, and `/llms.txt`. Set `NEXT_PUBLIC_SITE_URL` to override the canonical origin on preview deploys.
-- Component-exported data — `experienceData` (`components/Experience`), `certifications` (`components/Certifications`), `projects` (`components/BentoGrid`). These are rendered by their components **and** imported by `pages/llms.txt.ts`, so changing their shape means updating `llms.txt.ts` too.
+- Component-exported data — `experienceData` (`components/Experience`), `certifications` (`components/Certifications`), `projects` (`components/BentoGrid`), `faqs` (`components/About`, also emitted as FAQPage JSON-LD on `/about`). These are rendered by their components **and** imported by `pages/llms.txt.ts`, so changing their shape means updating `llms.txt.ts` too.
 - A new static page must be added to `STATIC_PATHS` in `pages/sitemap.xml.ts` and the "Pages" list in `pages/llms.txt.ts`.
 
 ### Content system

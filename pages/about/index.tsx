@@ -1,19 +1,35 @@
 import React from 'react';
-import About from '../../components/About';
+import { GetStaticProps } from 'next';
+import About, { faqs, AboutWork } from '../../components/About';
 import Seo from '../../components/Seo';
 import personSchema from '../../utils/personSchema';
-import { profilePageSchema } from '../../utils/structuredData';
+import { faqPageSchema, profilePageSchema } from '../../utils/structuredData';
+import { getCaseStudies } from '../../utils/getCaseStudies';
 
-const Page = () => (
+interface AboutPageProps {
+  work: AboutWork[];
+}
+
+const Page = ({ work }: AboutPageProps) => (
   <div className="w-full flex">
     <Seo
       title="About"
-      description="How Daniel Mesfin went from writing HTML on an Android phone in 2017 to building full-stack products for clients worldwide."
+      description="Daniel Mesfin is a full-stack engineer and data engineer in Addis Ababa. Background, current role, notable projects, and availability for freelance and contract work."
       path="/about"
-      jsonLd={profilePageSchema(personSchema)}
+      jsonLd={[profilePageSchema(personSchema), faqPageSchema(faqs)]}
     />
-    <About />
+    <About work={work} />
   </div>
 );
+
+export const getStaticProps: GetStaticProps<AboutPageProps> = async () => ({
+  props: {
+    work: getCaseStudies().map(({ slug, name, subtitle }) => ({
+      slug,
+      name,
+      subtitle,
+    })),
+  },
+});
 
 export default Page;

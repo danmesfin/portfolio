@@ -108,3 +108,15 @@ export function breadcrumbSchema(trail: { name: string; path: string }[]) {
     ),
   };
 }
+
+export function faqPageSchema(faqs: { question: string; answer: string }[]) {
+  return {
+    '@context': CONTEXT,
+    '@type': 'FAQPage',
+    mainEntity: faqs.map(({ question, answer }) => ({
+      '@type': 'Question',
+      name: question,
+      acceptedAnswer: { '@type': 'Answer', text: answer },
+    })),
+  };
+}

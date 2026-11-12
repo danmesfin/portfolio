@@ -38,6 +38,8 @@ export const siteConfig = {
   role: 'Full-Stack Engineer & Senior Data Engineer',
   location: 'Addis Ababa, Ethiopia',
   availability: 'Open to freelance and contract work.',
+  /** Upwork talent badge, shown on /about and in the FAQ. */
+  upworkBadge: 'Top Rated Plus',
   /** Topics for the JSON-LD `knowsAbout` list. */
   expertise: [
     'Full-stack web development',
